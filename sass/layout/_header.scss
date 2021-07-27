@@ -1,0 +1,92 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 'logo nav title';
+  padding-top: 10px;
+  @include mobile {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      'logo title'
+      'nav nav';
+  }
+  &__logo {
+    margin: 25px 25px 0px 25px;
+    grid-area: logo;
+    justify-self: center;
+    align-self: center;
+    img {
+      @include mobile {
+        height: 50px;
+        width: 120px;
+      }
+    }
+  }
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: nav;
+    @include mobile {
+      flex-wrap: wrap;
+    }
+  }
+  &__title {
+    grid-area: title;
+    justify-self: center;
+    align-self: end;
+    color: #901c1c;
+    @include mobile {
+      font-size: 16px;
+      padding-bottom: 5px;
+    }
+  }
+}
+.nav--button {
+  border-radius: 14px;
+  background-color: white;
+  cursor: pointer;
+  border: 0.5px solid #c4c4c4;
+  box-sizing: border-box;
+  color: #901c1c;
+  padding: 4px 7px;
+  margin: 30px 6px 0px 6px;
+  font-weight: 600;
+  transform: scale(1);
+  transition: transform 400ms;
+  &:active {
+    // transform: scale(1.2);
+  }
+  &:focus {
+    transform: scale(1.2);
+    outline: none;
+  }
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+.buttonClicked {
+  background-color: $colour-primary;
+  color: white;
+}
+.redirect {
+  position: fixed;
+  // top: 20px;
+  right: 45%;
+  width: 182px;
+  height: 30px;
+  border-radius: 5px;
+  color: #000000;
+  line-height: 24px;
+  font-size: 18px;
+  margin: 6px 0px 7px 0px;
+  // position: absolute;
+  background-color: #db8876;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  // padding: 3px 6px 8px 6px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 1000;
+}

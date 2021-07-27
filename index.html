@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>FishEye</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fisheye</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div id="mainContent">
+      <a
+        href="#"
+        alt="redirect to main content"
+        class="redirect"
+        aria-modal="true"
+        aria-label="modal is loaded"
+        role="dialog"
+        aria-hidden="true"
+        aria-expanded="false"
+        >Passer au contenu</a
+      >
+      <header class="header">
+        <p class="header__logo">
+          <a href="index.html"
+            ><img src="./logo/logo.svg" alt="Fisheye Home page" tabindex="0"
+          /></a>
+        </p>
+        <nav class="header__nav" aria-label="photographer-categories" tabindex="0" role="menubar">
+          <!-- buttonst of eight items in nav -->
+          <button id="portait" class="nav--button" type="button" tabindex="0" role="menuitem">
+            #Portrait
+            <span class="sr-only">Click here to sort photographers by the tag Portrait </span>
+          </button>
+          <button id="Art" class="nav--button" type="button" tabindex="0" role="menuitem">
+            #Art<span class="sr-only">Click here to sort photographers by the tag Art</span>
+          </button>
+          <button id="Fashion" class="nav--button" type="button" tabindex="0" role="menuitem">
+            #Fashion<span class="sr-only">Click here to sort photographers by the tag Fashion</span>
+          </button>
+          <button id="Architecture" class="nav--button" type="button" tabindex="0" role="menuitem">
+            #Architecture<span class="sr-only"
+              >Click here to sort photographers by the tag Architecture</span
+            >
+          </button>
+          <button id="Travel" class="nav--button" type="button" tabindex="0" role="menuitem">
+            #Travel<span class="sr-only">Click here to sort photographers by the tag Travel</span>
+          </button>
+          <button id="Sport" class="nav--button" type="button" tabindex="0" role="menuitem">
+            #Sport<span class="sr-only">Click here to sort photographers by the tag Sport</span>
+          </button>
+          <button id="Animals" class="nav--button" type="button" tabindex="0" role="menuitem">
+            #Animals<span class="sr-only">Click here to sort photographers by the tag Animals</span>
+          </button>
+          <button id="Events" class="nav--button" type="button" tabindex="0" role="menuitem">
+            #Events<span class="sr-only">Click here to sort photographers by the tag Events</span>
+          </button>
+        </nav>
+        <h1 class="header__title" tabindex="0">Nos photographes</h1>
+      </header>
+      <main id="articles"></main>
+    </div>
+    <script src="redirect.js"></script>
+    <script src="fetch.js"></script>
+    <!-- <script src="modal.js"></script>
+<script src="button.js"></script> -->
+  </body>
+</html>
