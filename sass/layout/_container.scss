@@ -1,0 +1,9 @@
+#mainContent {
+  max-width: 1440px;
+  width: 100%;
+  margin: auto;
+  height: 1600px;
+  @include mobile {
+    width: 100vw;
+  }
+}
