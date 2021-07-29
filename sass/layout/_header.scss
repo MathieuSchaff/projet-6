@@ -2,8 +2,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 'logo nav title';
-  padding-top: 10px;
+  padding-top: 30px;
   @include mobile {
+    padding-top: 20px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
@@ -11,14 +12,13 @@
       'nav nav';
   }
   &__logo {
-    margin: 25px 25px 0px 25px;
     grid-area: logo;
     justify-self: center;
     align-self: center;
     img {
       @include mobile {
-        height: 50px;
-        width: 120px;
+        height: 70px;
+        width: 150px;
       }
     }
   }
@@ -29,12 +29,13 @@
     grid-area: nav;
     @include mobile {
       flex-wrap: wrap;
+      padding: 0px 40px 0px 40px;
     }
   }
   &__title {
     grid-area: title;
     justify-self: center;
-    align-self: end;
+    align-self: center;
     color: #901c1c;
     @include mobile {
       font-size: 16px;
@@ -50,7 +51,7 @@
   box-sizing: border-box;
   color: #901c1c;
   padding: 4px 7px;
-  margin: 30px 6px 0px 6px;
+  margin: 0px 6px 0px 6px;
   font-weight: 600;
   transform: scale(1);
   transition: transform 400ms;
