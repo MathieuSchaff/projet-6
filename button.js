@@ -9,114 +9,71 @@
 // button:
 // aria-expanded="true" Set by the JavaScript when the listbox is displayed.
 // Otherwise, is not present.
+let separator = document.createElement('li');
+separator.setAttribute('role', 'separator');
+separator.setAttribute('tabindex', -1);
+separator.classList.add('dropdown-divider');
+let separator2 = separator.cloneNode(false);
 const button = document.getElementById('sort_button');
-const ul = document.getElementById('tri');
-const tri = document.querySelectorAll('.tri');
-window.addEventListener('keydown', (e) => {
-  console.log(e);
-});
-function openMenu() {
-  ul.classList.remove('displayNone');
+let ul = null;
+let tri = [];
+let sortable = [];
+const openMenu = function (e) {
+  ul = document.getElementById('tri');
   button.setAttribute('aria-expanded', true);
-  // ul.setAttribute('aria-activedescendant', button.);
-  ul.setAttribute('tabindex', 1);
+  ul.style.display = null;
+  tri = Array.from(document.querySelectorAll('.tri, #sort_button'));
+  let triDisplay = Array.from(document.querySelectorAll('.tri'));
   for (let i = 0; i < tri.length; i++) {
-    tri[i].setAttribute('tabindex', 0);
+    if (button.value === triDisplay[i].innerText) {
+      triDisplay[i].style.display = 'none';
+    }
   }
-}
-function closeMenu() {
-  ul.classList.add('displayNone');
+  tri[1].focus();
+  tri[1].setAttribute('aria-selected', true);
+  tri[1].before(separator);
+  tri[1].after(separator2);
+  ul.setAttribute('aria-activedescendant', tri[1].id);
+};
+
+const closeMenu = function (e) {
   button.setAttribute('aria-expanded', false);
+  ul.style.display = 'none';
   ul.setAttribute('tabindex', -1);
-  for (let i = 0; i < tri.length; i++) {
-    tri[i].setAttribute('tabindex', -1);
-  }
-}
+  button.focus();
+  ul = null;
+};
+
 button.addEventListener('click', () => {
-  if (ul.classList.contains('displayNone')) {
-    openMenu();
+  openMenu();
+});
+
+const focusMenu = function (e) {
+  let orderWrapper = document.getElementById('Order-wrapper');
+  let indexTri = tri.findIndex((f) => f === orderWrapper.querySelector(':focus'));
+  if (e.shiftKey === true || e.key === 'ArrowUp') {
+    indexTri--;
   } else {
-    closeMenu();
+    indexTri++;
+  }
+
+  if (indexTri >= triDisplay.length) {
+    indexTri = 0;
+  }
+  if (indexTri < 0) {
+    indexTri = triDisplay.length - 1;
+  }
+  triDisplay[indexTri].focus();
+};
+window.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' || e.key === 'Esc') {
+    closeMenu(e);
   }
 });
-button.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowDown' && ul.classList.contains('displayNone')) {
-    openMenu();
+button.addEventListener('keydown', function (e) {
+  if (e.key === 'Tab' || e.key === 'ArrowDown') {
+    // focusMenu(e);
+    openMenu(e);
   }
 });
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowDown' && !ul.classList.contains('displayNone')){
-    
-  }
-}
-// let focus = document.hasFocus();
-// console.log(focus);
-//
-// $(document).keydown(
-//   function(e)
-//   {
-//       if (e.keyCode == 39) {
-//           $(".tri:focus").next().focus();
-
-//       }
-//       if (e.keyCode == 37) {
-//           $(".tri:focus").prev().focus();
-
-//       }
-//   }
-// );
-// button.addEventListener('keypress', (e) => {
-// console.log(e.key)});
-{
-  /* <i class="fas fa-chevron-up" ></i><i class="fas fa-chevron-down"></i> */
-}
-
-// if (!(key === 'Enter')) {
-//   return false;
-//   }
-//   if (ul.classList.contains('displayNone')) {
-//     openMenu();
-//   } else {
-//     closeMenu();
-//   }
-// });
-//     event,
-//     function (e) {
-//       if (!(e.key === 'Enter')) {
-//         console.log('not good');
-//         return false;
-//       }
-//       if (ul.classList.contains('displayNone')) {
-//        openMenu();
-//         }
-//       } else {
-//         closeMenu();
-//       }
-//     },
-//     false
-//   );
-// });
-
-// function addMultipleEventListener(element, events, handler) {
-//   events.forEach(e => element.addEventListener(e, handler))
-// }
-// ul :
-
-// // tabindex="-1"
-// Makes the listbox focusable.
-// The JavaScript sets focus on the listbox when it is displayed.
-
-// aria-activedescendant="ID REF"
-// Set by the JavaScript when it displays and sets focus on the listbox; otherwise is not present.
-// Refers to the option in the listbox that is visually indicated as having keyboard focus.
-// When navigation keys, such as Down Arrow, are pressed, the JavaScript changes the value.
-// Enables assistive technologies to know which element the application regards as focused while DOM focus remains on the ul element.
-// For more information about this focus management technique, see Using aria-activedescendant to Manage Focus
-// aria.Listbox.prototype.focusItem = function (element) {
-//   this.defocusItem(document.getElementById(this.activeDescendant));
-//   if (!this.multiselectable) {
-//     element.setAttribute('aria-selected', 'true');
-// aria.Utils.addClass(element, 'focused');
-// this.listboxNode.setAttribute('aria-activedescendant', element.id);
-// this.activeDescendant = element.id;
-//
+// au clique sur un bouton quand ul !== null , ça doit close modal et renvoyer dans button.value la bonne ref, ainsi que dans span la bonne valeur. Displayle bloc selectionné

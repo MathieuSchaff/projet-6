@@ -4,21 +4,34 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba($color: #000000, $alpha: 0.8);
+  background-color: rgba(196, 196, 196, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: modalCome 0.3s both;
+}
+.contact-modal[aria-hidden='true'] {
+  animation: modalOut 0.3s both;
 }
 .modal--wrapper {
   margin-top: 20px;
   padding: 35px;
-  max-width: 669px;
-  width: 100%;
+  max-width: 599px;
+  width: 70%;
   height: auto;
   overflow: hidden;
   background-color: $colour-form;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
+  @include mobile {
+    padding: 25px 17px 75px 17px;
+    margin: 0;
+  }
+  @include mobile-only {
+    width: 100%;
+    height: 100vh;
+  }
 }
 #form-header {
   display: flex;
@@ -31,9 +44,24 @@
   font-size: 64px;
   font-style: normal;
   font-weight: 400;
-  line-height: 83px;
+  line-height: 80px;
   letter-spacing: 0em;
   text-align: left;
+  @include mobile {
+    font-size: 36px;
+    line-height: 50px;
+  }
+}
+.contact-name {
+  display: block;
+}
+#closeButton {
+  align-self: start;
+  margin-top: 25px;
+  @include mobile-only {
+    width: 19px;
+    height: 19px;
+  }
 }
 .formData {
   display: flex;
@@ -41,20 +69,23 @@
   width: 100%;
   label {
     font-family: DM Sans;
-    font-size: 36px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 400;
     line-height: 47px;
     letter-spacing: 0em;
     text-align: left;
     color: #312e2e;
+    @include mobile-only {
+      font-size: 24px;
+      margin: 14px 0px 6px 2px;
+      line-height: 31px;
+    }
   }
 }
 input[type='submit'] {
   height: 69px;
   width: 170px;
-  left: 0px;
-  top: 0px;
   border-radius: 5px;
   background-color: #901c1c;
   color: $colour-white;
@@ -68,8 +99,49 @@ input[type='submit'] {
   letter-spacing: 0em;
   text-align: center;
   border: none;
+  align-self: flex-start;
+  @include mobile-only {
+    height: 35px;
+    align-self: center;
+  }
 }
 .text-control {
   width: 100%;
   min-height: 52px;
+  border-radius: 5px;
+}
+#comment {
+  line-height: 170px;
+  @include mobile {
+    height: 189px;
+  }
+}
+label[for='comment'] {
+  margin-bottom: 14px;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@keyframes modalOut {
+  from {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+}
+
+@keyframes modalCome {
+  from {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
