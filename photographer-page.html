@@ -10,6 +10,8 @@
     
 </head>
 <body>
+  <button>click</button>
+  <div id="test"></div>
 <!-- <div id="photographerMain">
     <header class="header">
         <p class="header__logo"> <a href="index.html"><img src="./logo/logo.svg" alt="Fisheye Home page"></a></p>
@@ -23,10 +25,8 @@
     <section id="articles">
         -->
 
-      
-
 <!-- https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html -->
- <!-- <button class="contact-me">Contactez-moi </button>
+ <button class="contact-me">Contactez-moi </button>
  <aside class="contact-modal" role="dialog" aria-modal="false" aria-hidden="true" aria-labelledby="contact__title" style="display: none">
    <div class="modal--wrapper">
    <header id="form-header">
@@ -87,7 +87,7 @@
 <input type="submit" class="submit" value="Envoyer">
 </form>
 </div>
- </aside> -->
+ </aside>
 
         <div class="sort">
           <span id="Order_by"> Trier par </span>
@@ -98,19 +98,19 @@
              <i class="fas fa-chevron-up" ></i><i class="fas fa-chevron-down"></i>
             </button>
 
-            <ul id="tri" aria-labelledby="Order_by"  tabindex="-1" role="listbox" style="display: none">
+            <ul id="tri" aria-labelledby="Order_by" role="listbox" style="display: none">
                   <li id="pop" class="tri choose" role="option">  
                     
                     Popularité 
                     
                   </li>
-                  <li  role="separator" class="dropdown-divider" tabindex="-1"></li>
+
                   <li id="date" role="option" class="tri choose">
                     
                     Date
                     
                   </li>
-                  <li  role="separator" class="dropdown-divider " tabindex="-1"></li>
+
                   <li id="titre" class="tri choose" role="option" >
                     
                     Titre
@@ -138,6 +138,7 @@
   </div>
     </main>
 </div>
+<!-- <script src="web-component.js"></script> -->
 <script src="button.js"></script>
 <!-- <script src="form.js"></script> -->
  <!-- <script src="fetch.js"></script> 

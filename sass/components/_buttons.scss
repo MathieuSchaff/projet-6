@@ -19,6 +19,9 @@
 .fa-chevron-down {
   display: none;
 }
+button:focus {
+  outline: none;
+}
 .choose {
   display: flex;
   align-items: center;
@@ -49,9 +52,7 @@
 .rotate {
   transform: rotate(180deg);
 }
-#tri {
-  // background-color: #901c1c;
-}
+
 .tri {
   display: flex;
   align-items: center;

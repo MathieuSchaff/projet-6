@@ -1,5 +1,5 @@
 // buttonTri1.addEventListener('click', choosePage);
-
+// https://www.w3.org/TR/wai-aria-practices-1.1/examples/listbox/listbox-collapsible.html
 // active descend = id de l'option
 // mettre aria selected true
 // ajouter du style au focus
@@ -15,32 +15,66 @@ separator.setAttribute('tabindex', -1);
 separator.classList.add('dropdown-divider');
 let separator2 = separator.cloneNode(false);
 const button = document.getElementById('sort_button');
+let indexTri = 0;
 let ul = null;
 let tri = [];
-let sortable = [];
+let triLi = [];
+let sortable = '.choose';
 const openMenu = function (e) {
+  debugger;
+
+  if (ul !== null) {
+    return;
+  }
   ul = document.getElementById('tri');
   button.setAttribute('aria-expanded', true);
-  ul.style.display = null;
+  triLi = Array.from(document.querySelectorAll('.tri'));
   tri = Array.from(document.querySelectorAll('.tri, #sort_button'));
-  let triDisplay = Array.from(document.querySelectorAll('.tri'));
-  for (let i = 0; i < tri.length; i++) {
-    if (button.value === triDisplay[i].innerText) {
-      triDisplay[i].style.display = 'none';
+  tri[0].focus();
+  // tri[2].insertAdjacentElement('beforebegin', separator);
+  // tri[2].insertAdjacentElement('afterend', separator2);
+  ul.style.display = null;
+  let orderWrapper = document.getElementById('Order-wrapper');
+  orderWrapper.addEventListener('click', stopPropagationClose);
+  for (let i = 0; i < triLi.length; i++) {
+    if (button.value === triLi[i].innerText.trim()) {
+      triLi[i].style.display = 'none';
+      triLi[i].setAttribute('tabindex', -1);
+    } else {
+      triLi[i].style.display = null;
+      triLi[i].removeAttribute('tabindex');
     }
   }
-  tri[1].focus();
-  tri[1].setAttribute('aria-selected', true);
-  tri[1].before(separator);
-  tri[1].after(separator2);
-  ul.setAttribute('aria-activedescendant', tri[1].id);
+
+  triLi.forEach((el) =>
+    el.addEventListener('click', function () {
+      button.value = el.innerText.trim();
+      button.querySelector('span').innerText = el.innerText.trim();
+      closeMenu();
+    })
+  );
+  document.addEventListener('click', closeMenu);
+  button.addEventListener('click', closeMenu);
 };
 
-const closeMenu = function (e) {
+const closeMenu = function () {
+  // debugger;
+  if (ul == null) {
+    return;
+  }
+
+  button.removeEventListener('click', closeMenu);
+  let orderWrapper = document.getElementById('Order-wrapper');
+  orderWrapper.removeEventListener('click', stopPropagationClose);
+  document.removeEventListener('click', closeMenu);
   button.setAttribute('aria-expanded', false);
+  separator.remove();
+  separator2.remove();
+  triLi = [];
+  tri = [];
   ul.style.display = 'none';
-  ul.setAttribute('tabindex', -1);
   button.focus();
+
   ul = null;
 };
 
@@ -49,31 +83,48 @@ button.addEventListener('click', () => {
 });
 
 const focusMenu = function (e) {
-  let orderWrapper = document.getElementById('Order-wrapper');
-  let indexTri = tri.findIndex((f) => f === orderWrapper.querySelector(':focus'));
+  e.preventDefault();
+
+  console.log(indexTri);
+  tri[indexTri].style.border = 'none';
   if (e.shiftKey === true || e.key === 'ArrowUp') {
     indexTri--;
   } else {
     indexTri++;
   }
 
-  if (indexTri >= triDisplay.length) {
+  if (indexTri >= tri.length) {
     indexTri = 0;
   }
   if (indexTri < 0) {
-    indexTri = triDisplay.length - 1;
+    indexTri = tri.length - 1;
   }
-  triDisplay[indexTri].focus();
+  console.log(indexTri);
+  console.log(tri[indexTri]);
+
+  //si tri[indexTri] a le même texte que le button alors ça passe directement au next
+  if (tri[indexTri].hasAttribute('tabindex')) {
+    focusMenu(e);
+  } else {
+    ul.setAttribute('aria-activedescendant', tri[indexTri].id);
+    tri[indexTri].focus();
+
+    tri[indexTri].style.border = '1px solid black';
+  }
+};
+const stopPropagationClose = function (e) {
+  e.stopPropagation();
 };
 window.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' || e.key === 'Esc') {
-    closeMenu(e);
+    closeMenu();
+  }
+  if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && ul !== null) {
+    focusMenu(e);
   }
 });
 button.addEventListener('keydown', function (e) {
-  if (e.key === 'Tab' || e.key === 'ArrowDown') {
-    // focusMenu(e);
+  if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && ul == null) {
     openMenu(e);
   }
 });
-// au clique sur un bouton quand ul !== null , ça doit close modal et renvoyer dans button.value la bonne ref, ainsi que dans span la bonne valeur. Displayle bloc selectionné

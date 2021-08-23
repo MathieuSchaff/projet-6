@@ -10,9 +10,9 @@ let myInit = {
 let myRequest = new Request('data.json', myInit);
 const mediaImage = [];
 const mediaVideo = [];
-let loaded = 0;
-let arrayPhotographers;
-let array3;
+// let loaded = 0;
+let arrayPhotographers = [];
+// let array3;
 // recupère données
 const getRequest = async () => {
   let reponse = await fetch(myRequest);
@@ -22,169 +22,224 @@ const getRequest = async () => {
 // return une array photographer
 const getPhotographer = async () => {
   let { photographers } = await getRequest();
-  loaded = 1;
+  // loaded = 1;
   arrayPhotographers = Array.from(photographers);
   return photographers;
 };
+getPhotographer();
+// class Photographer {
+//   constructor(name, id, city, country, tags, tagline, price, portrait) {
+//     this.name = name;
+//     this.id = id;
+//     this.city = city;
+//     this.country = country;
+//     this.tags = tags;
+//     this.tagline = tagline;
+//     this.price = price;
+//     this.portait = portrait;
+//     this.count = Number;
+//   }
+//   createCard() {
+//     let userCard = document.createElement('user-card');
+//     document.getElementById('articles').appendChild(userCard);
+//   }
+// }
 
-const createPhotographer = async (method) => {
-  loaded = 1;
-  const articlesContainer = document.getElementById('articles');
-  let photographers = await method;
-  photographers.forEach((element) => {
-    let articlePhotographer = document.createElement('article');
-    articlePhotographer.classList.add('main');
-    articlePhotographer.innerHTML = `
-    <a href="#" class="main__link">
-      <img src="./FishEyePhotos/Sample Photos/Photographers ID Photos/${element.portrait}" alt="Photo portrait du photographe" class="main__photo">
-      <h2 class="main__name">${element.name}</h2>
-    </a>
-    <p class="main__paragraph">
-      <p class="main__location">${element.city}, ${element.country}</p>
-      <p class="main__philosophy">${element.tagline}</p>
-      <p class="main__tarif"> <span class="tarif">${element.price}</span>€/ jour</p>
-    </p>`;
-    articlesContainer.appendChild(articlePhotographer);
-    let tagsDiv = document.createElement('div');
-    tagsDiv.classList.add('tags');
-    for (let i = 0; i < element.tags.length; i++) {
-      let btns = [];
+class UserCard extends HTMLElement {
+  constructor(name, city, country, tags, tagline, price, portrait, id) {
+    super();
+
+    this.name = name;
+    this.id = id;
+    this.city = city;
+    this.country = country;
+    this.tags = tags;
+    this.tagline = tagline;
+    this.price = price;
+    this.portrait = portrait;
+    this.count = 0;
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+    <style> 
+    user-card {
+      width: 300px;
+      height: 450px;
+      background: #fff;
+      object-fit: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .main {
+      width: 300px;
+      height: 450px;
+      background: #fff;
+      object-fit: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &__photo {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+      }
+      &__name {
+        line-height: 46px;
+        font-weight: 400;
+        font-size: 36px;
+        text-align: center;
+        color: #d3573c;
+      }
+      &__location {
+        font-size: 13px;
+        color: #901c1c;
+        line-height: 16px;
+        font-weight: 400;
+        margin-bottom: 5px;
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+      &__philosophy {
+        font-size: 10px;
+        line-height: 13px;
+        margin-bottom: 5px;
+        color: #000000;
+      }
+      &__tarif {
+        color: #757575;
+        font-family: DM Sans;
+        font-size: 9px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px;
+        letter-spacing: 0em;
+        text-align: center;
+      }
+    }
+    .tags {
+      // margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      button {
+        margin-top: 10px;
+      }
+    }
+</style>     
+        <a href="#" class="main__link">
+          <img alt="Photo portrait du photographe" class="main__photo">
+          <h2 class="main__name"></h2>
+        </a>
+        <p class="main__paragraph">
+          <p class="main__location"></p>
+          <p class="main__philosophy"></p>
+          <p class="main__tarif"> <span class="tarif"></span>€/ jour</p>
+        </p>
+        <div class="tags"> </div>`;
+  }
+  connectedCallback() {
+    this.render();
+  }
+  render() {
+    this.shadowRoot.querySelector('a').setAttribute('href', `photographer-page.html#` + this.name);
+    this.shadowRoot.querySelector('img').src =
+      './FishEyePhotos/Sample Photos/Photographers ID Photos/' + this.portrait;
+    this.shadowRoot.querySelector('img').alt = `Portrait du photographe ` + this.name;
+    this.shadowRoot.querySelector('h2').textContent = this.name;
+    this.shadowRoot.querySelector('.main__location').textContent = this.city + ', ' + this.country;
+    this.shadowRoot.querySelector('.main__philosophy').textContent = this.tagline;
+    this.shadowRoot.querySelector('.tarif').textContent = this.price;
+    this.shadowRoot.setAttribute('id', this.id);
+    let akakou = this.shadowRoot.querySelector('.tags');
+    for (let i = 0; i < this.tags.length; i++) {
       let tag = document.createElement('button');
       tag.setAttribute('type', 'button');
       tag.classList.add('nav--button');
-      tag.innerHTML = `#${element.tags[i]} <span class="sr-only">Tag</span>`;
-      btns.push(tag);
-      tagsDiv.appendChild(tag);
-    }
-    articlePhotographer.appendChild(tagsDiv);
-  });
-};
-createPhotographer(getPhotographer());
-const buttons = document.querySelectorAll('.nav--button');
-const buttonsArr = Array.from(buttons);
-buttonsArr.forEach((e) =>
-  e.addEventListener('click', () => {
-    if (e.classList.contains('buttonClicked')) {
-      document.getElementById('articles').innerHTML = '';
+      tag.innerHTML = `#${this.tags[i]} <span class="sr-only">Tag</span>`;
 
-      console.log(sortedPhotographer());
-      e.classList.remove('buttonClicked');
-      // createPhotographer(sortedPhotographer());
-    } else {
-      document.getElementById('articles').innerHTML = '';
-      e.classList.add('buttonClicked');
-      console.log(sortedPhotographer());
-      // createPhotographer(sortedPhotographer());
-    }
-  })
-);
-// quand je clique sur un bouton, si le bouton correspond a un tag alors cela incrémente le count de 1 sur l'article en question
-// doit return la nouvelle array crée à passer en
-const sortedPhotographer = async () => {
-  let { photographers } = await getRequest();
-  photographers.map((x) => (x.count = 0));
-
-  // photographers.map((x) => ({
-  //   x.count = 0;
-  //   if(x.tags.includes(e.id)){
-  //     x.count += 1;
-  //   }else {
-  //     x.count = 0;
-  //   }
-
-  // }))
-  // photographers.forEach((el) => {
-  //   if (el.tags.includes(e.id)) {
-  //     el.count = 0;
-  //     if (el.tags.includes(e.id)) {
-  //       el.count += 1;
-  //     } else {
-  //       el.count = 0;
-  //     }
-  //   }
-  // });
-  // pour tous les boutons coché, j'ajoute 1 a count
-  for (let i = 0; i < buttonsArr.length; i++) {
-    for (let i = 0; i < photographers.length; i++) {
-      // console.log(document.querySelector('.buttonClicked').id);
-      if (photographers[i].tags.includes(document.querySelector('.buttonClicked').id)) {
-        photographers[i].count += 1;
-      } else if (
-        !photographers[i].tags.includes(document.querySelector('.buttonClicked').id) &&
-        photographers[i].count > 0
-      ) {
-        photographers[i].count -= 1;
-      } else {
-        photographers[i].count = 0;
-      }
+      akakou.appendChild(tag);
     }
   }
+  static get observedAttributes() {
+    return ['id', 'class'];
+  }
+  attributeChangedCallback(name, oldVal, newVal) {
+    if (name === 'id') {
+      this.id = newVal;
+    }
+  }
+}
+window.customElements.define('user-card', UserCard);
 
-  photographers.sort((a, b) => {
-    return b.count - a.count;
-  });
-  return console.log(photographers);
-  // return photographers;
-};
-// function getSortedPhotographer() {
-//   for (let i = 0; i < arrayPhotographers.length; i++) {
-//     if (arrayPhotographers[i].tags.includes('portrait')) {
-//       return 1;
-//     } else {
-//       return 0;
-//     }
-//   }
-// }
-// arrayPhotographers.sort(function getSortedPhotographer() {
-//   for (let i = 0; i < arrayPhotographers.length; i++) {
-//     if (arrayPhotographers[i].tags.includes('portrait')) {
-//       return console.log(arrayPhotographers[i] + arrayPhotographers[i].tags.includes('portrait'));
-//     } else {
-//       return console.log(arrayPhotographers[i] + arrayPhotographers[i].tags.includes('portrait'));
-//     }
-//   }
+// // const newP = new Photographer();
+// arrayPhotographers.forEach((el) => {
+//   document
+//     .getElementById('articles')
+//     .appendChild(
+//       new UserCard(el.name, el.id, el.city, el.country, el.tags, el.tagline, el.price, el.portrait)
+//     );
 // });
 
-// p.sort();
-// const search = function (list, search) {
-//   // if (
-//   return list.filter((el) => el.tags.includes(search));
-// ) {
-//   return 1;
-// } else {
-//   return 0;
-// }
-// };
-// search(p, 'portrait');
-// const sorted = p.sort((a, b) => {
-//   if (a.tags.includes('portrait')) {
-//     return 1;
-//   } else {
-//     return -1;
-//   }
-// });
-// console.log(sorted);
-// const comparator = (a, b) => {
-//   return a.name.length - b.name.length;
-// };
-// console.log(p.sort(comparator));
-// function sort() {
-//   p.map((x) => {
-//     if (x.tags.includes('portrait')) {
-//       x.push('count');
+//
+//    ANCIENNE METHODE
+//
+// const createPhotographer = async (method) => {
+//   loaded = 1;
+//   const articlesContainer = document.getElementById('articles');
+//   let photographers = await method;
+//   photographers.forEach((element) => {
+//     let articlePhotographer = document.createElement('article');
+//     articlePhotographer.classList.add('main');
+//     articlePhotographer.innerHTML = `
+//     <a href="#" class="main__link">
+//       <img src="./FishEyePhotos/Sample Photos/Photographers ID Photos/${element.portrait}" alt="Photo portrait du photographe" class="main__photo">
+//       <h2 class="main__name">${element.name}</h2>
+//     </a>
+//     <p class="main__paragraph">
+//       <p class="main__location">${element.city}, ${element.country}</p>
+//       <p class="main__philosophy">${element.tagline}</p>
+//       <p class="main__tarif"> <span class="tarif">${element.price}</span>€/ jour</p>
+//     </p>`;
+//     articlesContainer.appendChild(articlePhotographer);
+//     let tagsDiv = document.createElement('div');
+//     tagsDiv.classList.add('tags');
+//     for (let i = 0; i < element.tags.length; i++) {
+//       let btns = [];
+//       let tag = document.createElement('button');
+//       tag.setAttribute('type', 'button');
+//       tag.classList.add('nav--button');
+//       tag.innerHTML = `#${element.tags[i]} <span class="sr-only">Tag</span>`;
+//       btns.push(tag);
+//       tagsDiv.appendChild(tag);
 //     }
+//     articlePhotographer.appendChild(tagsDiv);
 //   });
-// }
+// };
+// createPhotographer(getPhotographer());
+// const buttons = document.querySelectorAll('.nav--button');
+// const buttonsArr = Array.from(buttons);
+// buttonsArr.forEach((e) =>
+//   e.addEventListener('click', () => {
+//     if (e.classList.contains('buttonClicked')) {
+//       document.getElementById('articles').innerHTML = '';
 
-// for (let i = 0; i < arrayPhotographers.length; i++) {
-//   console.log(arrayPhotographers[i].tags);
-// }
-
-// let count = 'count';
-// function sort() {
-//   arrayPhotographers.forEach((element) => {
-//     if (element.tags.includes(buttonId)) {
-//       count += 1;
+//       console.log(sortedPhotographer());
+//       e.classList.remove('buttonClicked');
+//       // createPhotographer(sortedPhotographer());
+//     } else {
+//       document.getElementById('articles').innerHTML = '';
+//       e.classList.add('buttonClicked');
+//       console.log(sortedPhotographer());
+//       createPhotographer(sortedPhotographer());
 //     }
-//   });
-// }
+//   })
+// );
