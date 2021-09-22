@@ -74,9 +74,3 @@ buttonsArr.forEach((e) =>
     }
   })
 );
-
-const hash = window.location.hash;
-
-// const createPhotographerPage = () => {
-//   const profilTagged = photographers.filter((t) => t.tags.includes(hash));
-// };
