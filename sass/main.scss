@@ -1,20 +1,19 @@
-@import "./utils/variables";
-@import "./utils/functions";
-@import "./utils/mixins";
-@import "./utils/extensions";
+@import './utils/variables';
+@import './utils/functions';
+@import './utils/mixins';
+@import './utils/extensions';
 
-@import "./base/base";
-@import "./base/typography";
+@import './base/base';
+@import './base/typography';
 
-@import "./components/buttons";
+@import './components/buttons';
 
-@import "./layout/container";
-@import "./layout/header";
-@import "./layout/articles";
+@import './layout/container';
+@import './layout/header';
+@import './layout/articles';
 
-@import "./layout/form";
+@import './layout/form';
 
-
-@import "./pages/work";
-@import "./pages/about";
-@import "./pages/project";
+@import './pages/lightbox';
+@import './pages/about';
+@import './pages/project';

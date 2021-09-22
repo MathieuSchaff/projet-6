@@ -82,20 +82,6 @@ class Photographer {
     this.portrait = portrait;
     this.id = id;
     this.count = 0;
-    // this.tag = 'user-card2';
-    // this.props = {
-    //   id: id,
-    // };
-    // this.children = [
-    //   (this.name = name),
-    //   (this.city = city),
-    //   (this.country = country),
-    //   (this.tags = tags),
-    //   (this.tagline = tagline),
-    //   (this.price = price),
-    //   (this.portrait = portrait),
-    //   (this.count = 0),
-    // ];
   }
   createCard() {
     const articlesContainer = document.getElementById('articles');
@@ -139,53 +125,6 @@ createPhotographers().then(function (res) {
   });
 });
 
-//
-//        TEST DE CLASSE CREATEPAGE
-//
-// class CreatePage {
-//   constructor() {
-//     this.loc = window.location;
-//   }
-//   async GetData() {
-//     let reponse = await fetch(myRequest);
-//     let data = await reponse.json();
-//     return data;
-//   }
-//   async getPhotographers() {
-//     let { photographers } = await this.GetData();
-//     return photographers;
-//   }
-//   async getMedia() {
-//     let { media } = await this.GetData();
-//     return media;
-//   }
-//   async createPage1() {
-//     let photographers = await this.getPhotographers();
-//     photographers.forEach((element) => {
-//       arrayPhotographers.push(
-//         new Photographer(
-//           element.name,
-//           element.city,
-//           element.country,
-//           element.tags,
-//           element.tagline,
-//           element.price,
-//           element.portrait,
-//           element.id
-//         )
-//       );
-//     });
-//   }
-// }
-
-// // TEST VIRTUAL DOM
-// class UserCard2 extends HTMLElement {
-//   constructor() {
-//     super();
-//   }
-// }
-// window.customElements.define('user-card2', UserCard2);
-
 // const createElement = (vnode) => {
 //   if (typeof vnode === 'string') {
 //     return document.createTextNode(vnode);
@@ -210,22 +149,6 @@ createPhotographers().then(function (res) {
 
 //   return el;
 // };
-
-// class City extends HTMLElement {}
-// class Country extends HTMLElement {}
-// class Name extends HTMLElement {}
-// class Portrait extends HTMLElement {}
-// class Price extends HTMLElement {}
-// class Tagline extends HTMLElement {}
-// class Tag extends HTMLElement {}
-// class City extends HTMLElement {}
-// window.customElements.define('city', City);
-// window.customElements.define('country', Country);
-// window.customElements.define('name', Name);
-// window.customElements.define('price', Price);
-// window.customElements.define('tagline', Tagline);
-// window.customElements.define('user-card', Tag);
-// window.customElements.define('user-card', City);
 
 // const el = (tag, props, children) => ({
 //   tag,

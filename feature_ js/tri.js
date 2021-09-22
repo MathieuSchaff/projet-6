@@ -43,8 +43,8 @@ const sortedPhotographer = async () => {
   photographers.sort((a, b) => {
     return b.count - a.count;
   });
-  return console.log(photographers);
-  // return photographers;
+  // return console.log(photographers);
+  return photographers;
 };
 // getTaggedPhotographers(tag) {
 

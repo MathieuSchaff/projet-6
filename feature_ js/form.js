@@ -36,6 +36,8 @@ const closeModal = function (e) {
 
 contactMe.addEventListener('click', openModal);
 
+
+
 const focusModal = function (e) {
   e.preventDefault();
 

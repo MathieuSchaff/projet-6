@@ -1,46 +1,40 @@
-// .about {
-//     width: 100%;
-//     display: grid;
-//     grid-template-columns: 2fr 5fr; 
-//     grid-template-rows: repeat(3, auto);
-//     padding: $grid-gutter;
-//     grid-template-areas:
-//         "imagery heading"
-//         "imagery copy"
-//         "imagery btn";
-//     margin-bottom: $grid-gutter;
-//     &__heading {
-//         grid-area: heading;
-//         color: $colour-white;
-//         @include heading-shadow;
-//         text-align: right;
-//         padding-right: $grid-gutter;
-//     }
-//     &__imagery {
-//         grid-area: imagery;
-//     }
-//     &__pic {
-//         overflow:hidden;
-//         width: 80%;
-//         border-radius: 1000rem;
-//         border: 1.5rem solid $colour-primary;
-//         & img {
-//             display: block;
-//             width: 100%;
-//         }
-//     }
-//     &__copy {
-//         grid-area: copy;
-//         & p{
-//             line-height: 2rem*1.2;
-//             margin-bottom: $grid-gutter*2.25;
-//         } 
-//     }
-//     &__btn{
-//         @include btn;
-//         grid-area: btn;
-//         & a {
-//             text-decoration: none;
-//         }
-//     }
-// }
+.photographer-header {
+  width: 100%;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  height: 313px;
+  margin-top: 50px;
+}
+.photographer-main {
+  display: flex;
+}
+.photographer-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contact-me {
+  height: 69px;
+  width: 170px;
+  left: 0px;
+  top: 0px;
+  border-radius: 5px;
+  background: #901c1c;
+  color: white;
+  font-family: DM Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  margin-left: 30px;
+}
+.mediaPage {
+  height: 250px;
+  width: 200px;
+}

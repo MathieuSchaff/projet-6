@@ -27,23 +27,6 @@ const getPhotographer = async () => {
   return photographers;
 };
 getPhotographer();
-// class Photographer {
-//   constructor(name, id, city, country, tags, tagline, price, portrait) {
-//     this.name = name;
-//     this.id = id;
-//     this.city = city;
-//     this.country = country;
-//     this.tags = tags;
-//     this.tagline = tagline;
-//     this.price = price;
-//     this.portait = portrait;
-//     this.count = Number;
-//   }
-//   createCard() {
-//     let userCard = document.createElement('user-card');
-//     document.getElementById('articles').appendChild(userCard);
-//   }
-// }
 
 class UserCard extends HTMLElement {
   constructor(name, city, country, tags, tagline, price, portrait, id) {
@@ -179,67 +162,3 @@ class UserCard extends HTMLElement {
   }
 }
 window.customElements.define('user-card', UserCard);
-
-// // const newP = new Photographer();
-// arrayPhotographers.forEach((el) => {
-//   document
-//     .getElementById('articles')
-//     .appendChild(
-//       new UserCard(el.name, el.id, el.city, el.country, el.tags, el.tagline, el.price, el.portrait)
-//     );
-// });
-
-//
-//    ANCIENNE METHODE
-//
-// const createPhotographer = async (method) => {
-//   loaded = 1;
-//   const articlesContainer = document.getElementById('articles');
-//   let photographers = await method;
-//   photographers.forEach((element) => {
-//     let articlePhotographer = document.createElement('article');
-//     articlePhotographer.classList.add('main');
-//     articlePhotographer.innerHTML = `
-//     <a href="#" class="main__link">
-//       <img src="./FishEyePhotos/Sample Photos/Photographers ID Photos/${element.portrait}" alt="Photo portrait du photographe" class="main__photo">
-//       <h2 class="main__name">${element.name}</h2>
-//     </a>
-//     <p class="main__paragraph">
-//       <p class="main__location">${element.city}, ${element.country}</p>
-//       <p class="main__philosophy">${element.tagline}</p>
-//       <p class="main__tarif"> <span class="tarif">${element.price}</span>€/ jour</p>
-//     </p>`;
-//     articlesContainer.appendChild(articlePhotographer);
-//     let tagsDiv = document.createElement('div');
-//     tagsDiv.classList.add('tags');
-//     for (let i = 0; i < element.tags.length; i++) {
-//       let btns = [];
-//       let tag = document.createElement('button');
-//       tag.setAttribute('type', 'button');
-//       tag.classList.add('nav--button');
-//       tag.innerHTML = `#${element.tags[i]} <span class="sr-only">Tag</span>`;
-//       btns.push(tag);
-//       tagsDiv.appendChild(tag);
-//     }
-//     articlePhotographer.appendChild(tagsDiv);
-//   });
-// };
-// createPhotographer(getPhotographer());
-// const buttons = document.querySelectorAll('.nav--button');
-// const buttonsArr = Array.from(buttons);
-// buttonsArr.forEach((e) =>
-//   e.addEventListener('click', () => {
-//     if (e.classList.contains('buttonClicked')) {
-//       document.getElementById('articles').innerHTML = '';
-
-//       console.log(sortedPhotographer());
-//       e.classList.remove('buttonClicked');
-//       // createPhotographer(sortedPhotographer());
-//     } else {
-//       document.getElementById('articles').innerHTML = '';
-//       e.classList.add('buttonClicked');
-//       console.log(sortedPhotographer());
-//       createPhotographer(sortedPhotographer());
-//     }
-//   })
-// );
