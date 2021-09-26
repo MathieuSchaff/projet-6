@@ -1,14 +1,3 @@
-// buttonTri1.addEventListener('click', choosePage);
-// https://www.w3.org/TR/wai-aria-practices-1.1/examples/listbox/listbox-collapsible.html
-// active descend = id de l'option
-// mettre aria selected true
-// ajouter du style au focus
-// <select> class ( on dirait le button); multiple name='listbox'
-// option selected value
-
-// button:
-// aria-expanded="true" Set by the JavaScript when the listbox is displayed.
-// Otherwise, is not present.
 let separator = document.createElement('li');
 separator.setAttribute('role', 'separator');
 separator.setAttribute('tabindex', -1);

@@ -1,11 +1,17 @@
+.wrapper {
+  padding: 40px 20px;
+}
 .photographer-header {
   width: 100%;
   background-color: #fafafa;
   display: flex;
   justify-content: space-between;
   padding: 50px;
-  height: 313px;
   margin-top: 50px;
+  @include mobile {
+    padding: 0;
+    background-color: $colour-white;
+  }
 }
 .photographer-main {
   display: flex;
@@ -14,12 +20,43 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  &--name {
+    font-size: 4rem;
+    color: $colour-secondary;
+    font-weight: 400;
+    font-family: DM Sans;
+
+    @include mobile {
+      font-size: 2.1rem;
+    }
+  }
+  &--location {
+    font-size: 1.5rem;
+    color: $colour-primary;
+    line-height: 31px;
+    @include mobile {
+      font-size: 0.9rem;
+    }
+  }
+  &--philosophy {
+    font-size: 1.1rem;
+    color: $colour-grey;
+    line-height: 23px;
+    @include mobile {
+      font-size: 0.9rem;
+    }
+  }
+  &--photo {
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
 }
 .contact-me {
   height: 69px;
   width: 170px;
-  left: 0px;
-  top: 0px;
+
   border-radius: 5px;
   background: #901c1c;
   color: white;
@@ -32,7 +69,13 @@
   text-align: center;
   cursor: pointer;
   border: none;
-  margin-left: 30px;
+
+  @include mobile {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 .mediaPage {
   height: 250px;

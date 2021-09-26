@@ -9,135 +9,85 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="mainContent">
-      <header class="header">
-        <p class="header__logo">
-          <a href="index.html"
-            ><img src="./logo/logo.svg" alt="Fisheye Home page" tabindex="0"
-          /></a>
-        </p>
-      </header>
-      <main class="photographer"></main>
-    </div>
-    <section class="sectioncontainer">
-      <!-- <article class="photo-card">
-        <figure>
-          <a href="" class="">
-            <img
-              src="./FishEyePhotos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-              class="img-card"
-              alt=""
-            />
-          </a>
-          <figcaption>
-            <p class="textfig">An elephant at sunset</p>
-            <div class="heart">heart</div>
-          </figcaption>
-        </figure>
-      </article>
-      <article class="photo-card">
-        <a href="./FishEyePhotos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg">
-          <img
-            src="./FishEyePhotos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-            class="img-card"
-            alt=""
-          />
-        </a>
-      </article>
-      <article class="photo-card">
-        <img
-          src="./FishEyePhotos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-          class="img-card"
-          alt=""
-        />
-      </article>
-      <article class="photo-card">
-        <img
-          src="./FishEyePhotos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-          class="img-card"
-          alt=""
-        />
-      </article>
-      <article class="photo-card">
-        <img
-          src="./FishEyePhotos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-          class="img-card"
-          alt=""
-        />
-      </article>
-      <article class="photo-card">
-        <img
-          src="./FishEyePhotos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-          class="img-card"
-          alt=""
-        />
-      </article> -->
-    </section>
-    <aside
-      class="contact-modal"
-      role="dialog"
-      aria-modal="false"
-      aria-hidden="true"
-      aria-labelledby="contact__title"
-      style="display: none"
-    >
-      <div class="modal--wrapper">
-        <header id="form-header">
-          <h1 id="contact__title">Contactez moi <span class="contact-name"> Mimi Keel</span></h1>
-          <a href="" id="closeButton" class="close" aria-label="Close Contact Form">
-            <img src="logo/Vector (2).svg" alt="cross" />
-          </a>
+    <div class="wrapper">
+      <div class="mainContent">
+        <header>
+          <p class="header__logo">
+            <a href="index.html"
+              ><img src="./logo/logo.svg" alt="Fisheye Home page" tabindex="0"
+            /></a>
+          </p>
         </header>
-
-        <form id="form" name="fisheye">
-          <div class="formData">
-            <label for="first">Prénom</label>
-            <input
-              class="text-control"
-              type="text"
-              id="first"
-              name="first"
-              aria-label="firstname"
-              required
-            />
-          </div>
-          <div class="formData">
-            <label for="last">Nom</label>
-            <input
-              class="text-control"
-              type="text"
-              id="last"
-              name="last"
-              aria-label="lastname"
-              required
-            />
-          </div>
-          <div class="formData">
-            <label for="email">E-mail</label>
-            <input
-              class="text-control"
-              type="email"
-              id="email"
-              name="email"
-              aria-label="email"
-              required
-            />
-          </div>
-          <div class="formData">
-            <label for="comment">Votre message</label>
-            <input
-              class="text-control comment"
-              type="text"
-              id="comment"
-              name="birthdate"
-              aria-label="comment"
-              required
-            />
-          </div>
-          <input type="submit" class="submit" value="Envoyer" />
-        </form>
+        <main class="photographer"></main>
       </div>
-    </aside>
+      <section class="sectioncontainer"></section>
+      <aside
+        class="contact-modal"
+        role="dialog"
+        aria-modal="false"
+        aria-hidden="true"
+        aria-labelledby="contact__title"
+        style="display: none"
+      >
+        <div class="modal--wrapper">
+          <header id="form-header">
+            <h1 id="contact__title">Contactez moi <span class="contact-name"> Mimi Keel</span></h1>
+            <a href="" id="closeButton" class="close" aria-label="Close Contact Form">
+              <img src="logo/Vector (2).svg" alt="cross" />
+            </a>
+          </header>
+
+          <form id="form" name="fisheye">
+            <div class="formData">
+              <label for="first">Prénom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="first"
+                name="first"
+                aria-label="firstname"
+                required
+              />
+            </div>
+            <div class="formData">
+              <label for="last">Nom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
+                aria-label="lastname"
+                required
+              />
+            </div>
+            <div class="formData">
+              <label for="email">E-mail</label>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+                aria-label="email"
+                required
+              />
+            </div>
+            <div class="formData">
+              <label for="comment">Votre message</label>
+              <input
+                class="text-control comment"
+                type="text"
+                id="comment"
+                name="birthdate"
+                aria-label="comment"
+                required
+              />
+            </div>
+            <input type="submit" class="submit" value="Envoyer" />
+          </form>
+        </div>
+      </aside>
+    </div>
+    <div class="sectioncontainer"></div>
     <!-- <div class="lightbox">
       <button class="lightbox__close">Fermer</button>
       <button class="lightbox__next">Suivant</button>
@@ -145,6 +95,7 @@
       <div class="lightbox__container"></div>
     </div> -->
     <script src="photographerPage.js"></script>
+    <script src="factorymethod.js"></script>
     <!-- <script src="test.js"></script> -->
     <!-- <script src="/feature_ js/carroussel.js"></script> -->
     <!-- <script src="./feature_ js/form.js"></script>

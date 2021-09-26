@@ -2,13 +2,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
   height: 100%;
   background-color: rgba(196, 196, 196, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   animation: modalCome 0.3s both;
+  @include mobile-only {
+    align-items: inherit;
+    justify-content: inherit;
+  }
 }
 .contact-modal[aria-hidden='true'] {
   animation: modalOut 0.3s both;
@@ -25,23 +31,22 @@
   flex-direction: column;
   border-radius: 5px;
   @include mobile {
-    padding: 25px 17px 75px 17px;
     margin: 0;
   }
   @include mobile-only {
     width: 100%;
-    height: 100vh;
   }
 }
 #form-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 64px;
+  font-size: 2rem;
+  padding-bottom: 26px;
 }
 #contact__title {
   font-family: DM Sans;
-  font-size: 64px;
+  font-size: 3rem;
   font-style: normal;
   font-weight: 400;
   line-height: 80px;
@@ -57,10 +62,14 @@
 }
 #closeButton {
   align-self: start;
-  margin-top: 25px;
+  margin-top: 20px;
   @include mobile-only {
-    width: 19px;
-    height: 19px;
+    margin-top: 0;
+    margin-right: 20px;
+    img {
+      width: 25px;
+      height: 25px;
+    }
   }
 }
 .formData {

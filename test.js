@@ -8,7 +8,7 @@ let myInit = {
   cache: 'default',
 };
 let myRequest = new Request('data.json', myInit);
-let loaded = 0;
+
 // recupère données
 const getRequest = async () => {
   let reponse = await fetch(myRequest);
@@ -30,13 +30,13 @@ buttonsArr.forEach((btn) =>
 
       btn.classList.remove('buttonClicked');
       loaded -= 1;
-      photographersDisplay(sortedPhotographer());
+      createPage2(sortedPhotographer());
     } else {
       document.getElementById('articles').innerHTML = '';
       btn.classList.add('buttonClicked');
 
       loaded += 1;
-      photographersDisplay(sortedPhotographer());
+      createPage2(sortedPhotographer());
     }
   })
 );
@@ -87,9 +87,9 @@ const photographersDisplay = async (request) => {
 
       console.log(btns);
       return `
-        <article class="main"
-          <a href="http://127.0.0.1:5500/photographer.html#${photographer.id}" class="main__link">
-            <img src="./FishEyePhotos/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="Photo portrait du photographe" class="main__photo">
+        <article class="main"><a href="http://127.0.0.1:5500/photographer.html#${photographer.id}"
+           class="main__link">
+            <img src="./FishEyePhotos/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="Photo portrait du photographe ${photographer.name}" class="main__photo">
             <h2 class="main__name">${photographer.name}</h2>
           </a>
           <p class="main__paragraph">

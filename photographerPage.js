@@ -79,9 +79,9 @@ const createPhotographerPage = async () => {
   
   <div class="photographer-main">
     <div class="photographer-profile">
-      <h1 class="main__name">${photographer.name}</h1>
-      <p class="main__location">${photographer.city}, ${photographer.country}</p>
-      <p class="main__philosophy">${photographer.tagline}</p>
+      <h1 class="photographer-profile--name">${photographer.name}</h1>
+      <p class="photographer-profile--location">${photographer.city}, ${photographer.country}</p>
+      <p class="photographer-profile--philosophy">${photographer.tagline}</p>
     </div>
     <button class="contact-me">Contactez-moi</button>
   </div>
@@ -89,14 +89,14 @@ const createPhotographerPage = async () => {
     <img
       src="./FishEyePhotos/Sample Photos/Photographers ID Photos/${photographer.portrait}"
       alt="Photo portrait du photographe"
-      class="main__photo"
+      class="photographer-profile--photo"
     />
   </div>
 `;
   articleContainer.appendChild(articlePhotographer);
 
   let tagsDiv = document.createElement('div');
-  //   tagsDiv.classList.add('tags');
+
   for (let i = 0; i < photographer.tags.length; i++) {
     let btns = [];
     let tag = document.createElement('button');
@@ -334,77 +334,77 @@ const createPhotographerPage = async () => {
    * CREER LES IMAGES
    */
 
-  let imageContainer = document.querySelector('.sectioncontainer');
-  let mediaSorted = await sortMedia();
-  mediaSorted.forEach((med) => {
-    let cont = document.createElement('figure');
-    cont.classList.add('photo-card');
-    if (Object.keys(med).includes('image')) {
-      cont.innerHTML = `
+  //   let imageContainer = document.querySelector('.sectioncontainer');
+  //   let mediaSorted = await sortMedia();
+  //   mediaSorted.forEach((med) => {
+  //     let cont = document.createElement('figure');
+  //     cont.classList.add('photo-card');
+  //     if (Object.keys(med).includes('image')) {
+  //       cont.innerHTML = `
 
-            <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${med.image}" class="  ">
-              <img
-                src="./FishEyePhotos/Sample Photos/${photographer.name}/${med.image}"
-                class="img-card"
-                alt=""
-              />
-            </a>
-            <figcaption>
-              <p class="textfig">${med.title}</p>
-              <div class="heart">${med.likes} <i class="fas fa-heart"></i></div>
-      `;
-    } else {
-      cont.innerHTML = `
+  //             <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${med.image}" class="  ">
+  //               <img
+  //                 src="./FishEyePhotos/Sample Photos/${photographer.name}/${med.image}"
+  //                 class="img-card"
+  //                 alt=""
+  //               />
+  //             </a>
+  //             <figcaption>
+  //               <p class="textfig">${med.title}</p>
+  //               <div class="heart">${med.likes} <i class="fas fa-heart"></i></div>
+  //       `;
+  //     } else {
+  //       cont.innerHTML = `
 
-          <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${med.video}" class="  ">
-          <video class="img-card" muted  controls>
-          <source src="./FishEyePhotos/Sample Photos/${photographer.name}/${med.video}" type="video/mp4">
+  //           <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${med.video}" class="  ">
+  //           <video class="img-card" muted  controls>
+  //           <source src="./FishEyePhotos/Sample Photos/${photographer.name}/${med.video}" type="video/mp4">
 
-        </video>
-          </a>
-          <figcaption>
-            <p class="textfig">${med.title}</p>
-            <div class="heart">${med.likes}<i class="fas fa-heart"></i> </div>
-    `;
-    }
+  //         </video>
+  //           </a>
+  //           <figcaption>
+  //             <p class="textfig">${med.title}</p>
+  //             <div class="heart">${med.likes}<i class="fas fa-heart"></i> </div>
+  //     `;
+  //     }
 
-    console.log(`./FishEyePhotos/Sample Photos/${photographer.name}/${med.image}`);
-    imageContainer.appendChild(cont);
-  });
-  links = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
-  links.forEach((link) =>
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      new lightBox(e.currentTarget.getAttribute('href'));
-    })
-  );
+  //     console.log(`./FishEyePhotos/Sample Photos/${photographer.name}/${med.image}`);
+  //     imageContainer.appendChild(cont);
+  //   });
+  //   links = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
+  //   links.forEach((link) =>
+  //     link.addEventListener('click', (e) => {
+  //       e.preventDefault();
+  //       new lightBox(e.currentTarget.getAttribute('href'));
+  //     })
+  //   );
+  // };
+
+  // class lightBox {
+  //   constructor(url) {
+  //     this.element = this.buildDOM(url);
+  //     this.loadImage(url);
+  //     document.body.appendChild(this.element);
+  //   }
+  //   loadImage(url) {
+  //     const image = new Image();
+  //     image.src = url;
+  //     const container = this.element.querySelector('.lightbox__container');
+  //     container.appendChild(image);
+  //   }
+  //   buildDOM(url) {
+  //     const dom = document.createElement('div');
+  //     dom.classList.add('lightbox');
+  //     dom.innerHTML = `
+  //     <button class="lightbox__close">Fermer</button>
+  //       <button class="lightbox__next">Suivant</button>
+  //       <button class="lightbox__prev">Précédent</button>
+
+  //       <div class="lightbox__container">
+
+  //       </div>
+  //     `;
+  //     return dom;
+  //   }
 };
-
-class lightBox {
-  constructor(url) {
-    this.element = this.buildDOM(url);
-    this.loadImage(url);
-    document.body.appendChild(this.element);
-  }
-  loadImage(url) {
-    const image = new Image();
-    image.src = url;
-    const container = this.element.querySelector('.lightbox__container');
-    container.appendChild(image);
-  }
-  buildDOM(url) {
-    const dom = document.createElement('div');
-    dom.classList.add('lightbox');
-    dom.innerHTML = `
-    <button class="lightbox__close">Fermer</button>
-      <button class="lightbox__next">Suivant</button>
-      <button class="lightbox__prev">Précédent</button>
-
-      <div class="lightbox__container">
-
-      </div>
-    `;
-    return dom;
-  }
-}
 createPhotographerPage();
