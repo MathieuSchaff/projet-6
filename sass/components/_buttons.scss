@@ -5,6 +5,11 @@
   margin-top: 30px;
   display: flex;
   align-items: center;
+  position: relative;
+  width: 100%;
+  @include mobile {
+    display: none;
+  }
 }
 // #date{
 //     display: none;
@@ -17,6 +22,16 @@
   border-radius: 5px;
   width: 170px;
   margin-left: 20px;
+  position: absolute;
+  top: 0;
+  z-index: 20;
+  left: 80px;
+}
+#Order_by {
+  position: absolute;
+  top: 20px;
+  font-size: 1.12rem;
+  font-weight: bold;
 }
 .fa-chevron-down {
   display: none;
@@ -24,29 +39,11 @@
 button:focus {
   outline: none;
 }
-.choose {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  width: 170px;
-  background-color: #901c1c;
-  font-size: 18px;
-  line-height: 23px;
-  color: #ffffff;
-  padding-left: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border: none;
-  color: white;
-  i {
-    margin-left: 15px;
-    transition: all 0.4ms;
-  }
-}
+
 .dropdown-divider {
   height: 1px;
   width: 150px;
-
+  margin-left: 10px;
   border-radius: 0px;
   background: #ffffff;
   list-style-type: none;
@@ -54,11 +51,23 @@ button:focus {
 .rotate {
   transform: rotate(180deg);
 }
-
-.tri {
+#sort_button {
+  position: absolute;
+  top: 0;
+}
+#tri {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  background-color: #901c1c;
+  border-radius: 5px;
+}
+.choose {
   display: flex;
   align-items: center;
   font-weight: bold;
+  border: none;
+  border-radius: 5px;
   width: 170px;
   background-color: #901c1c;
   font-size: 18px;
@@ -67,6 +76,12 @@ button:focus {
   padding-left: 20px;
   padding-top: 15px;
   padding-bottom: 15px;
-  border: none;
   color: white;
+  i {
+    margin-left: 15px;
+    transition: all 0.4ms;
+  }
+}
+.focused {
+  background-color: blueviolet;
 }

@@ -45,7 +45,6 @@ async function pickPhotographer() {
   let photographers = await getPhotographer();
   for (let i = 0; i < photographers.length; i++) {
     if (photographers[i].id == hash.slice(1)) {
-      console.log(photographers[i]);
       return photographers[i];
     }
   }
@@ -63,7 +62,6 @@ async function sortMedia() {
       mediaSorted.push(med);
     }
   });
-  console.log(mediaSorted);
   return mediaSorted;
 }
 
@@ -96,12 +94,12 @@ const createPhotographerPage = async () => {
   articleContainer.appendChild(articlePhotographer);
 
   let tagsDiv = document.createElement('div');
-
+  tagsDiv.classList.add('containerTags');
   for (let i = 0; i < photographer.tags.length; i++) {
     let btns = [];
     let tag = document.createElement('button');
     tag.setAttribute('type', 'button');
-    tag.classList.add('nav--button');
+    tag.classList.add('nav--button', 'button--photographer');
     tag.innerHTML = `#${photographer.tags[i]} <span class="sr-only">Tag</span>`;
     btns.push(tag);
     tagsDiv.appendChild(tag);
@@ -133,6 +131,10 @@ const createPhotographerPage = async () => {
     modal.addEventListener('click', closeModal);
     let wrapper = document.querySelector('.modal--wrapper');
     wrapper.addEventListener('click', stopPropagation);
+    console.log(document.querySelector('.contact-me').style.zIndex);
+    document.querySelector('.contact-me').style.zIndex = '-1';
+    console.log(document.querySelector('.Order-wrapper'));
+    document.querySelector(' #Order-wrapper').style.zIndex = '0';
   };
 
   const closeModal = function (e) {
@@ -146,6 +148,8 @@ const createPhotographerPage = async () => {
     modal.removeEventListener('click', closeModal);
     let wrapper = document.querySelector('.modal--wrapper');
     wrapper.removeEventListener('click', stopPropagation);
+    document.querySelector('.contact-me').style.zIndex = '1';
+    document.querySelector(' #Order-wrapper').style.zIndex = '20';
     contactMe.focus();
     modal == null;
   };
@@ -175,7 +179,8 @@ const createPhotographerPage = async () => {
     e.stopPropagation();
   };
   window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' || e.key === 'Esc') {
+    if ((e.key === 'Escape' || e.key === 'Esc') && modal !== null) {
+      console.log('close modal');
       closeModal(e);
     }
     if ((e.key === 'Tab' || e.key === 'ArrowDown' || e.key === 'ArrowUp') && modal !== null) {
@@ -205,53 +210,50 @@ const createPhotographerPage = async () => {
           ><i class="fas fa-chevron-down"></i>
         </button>
 
-        <ul id="tri" aria-labelledby="Order_by" role="listbox" style="display: none">
-          <li id="pop" class="tri choose" role="option">Popularité</li>
-
-          <li id="date" role="option" class="tri choose">Date</li>
-
-          <li id="titre" class="tri choose" role="option">Titre</li>
+        <ul id="tri" aria-labelledby="Order_by" role="listbox" tabindex="-1" style="display: none">
+        
+          <li id="pop" class="choose" role="option">Popularité</li>
+          <li role="separator" tabindex="-1" class="dropdown-divider"></li>
+          <li id="date" role="option" class="choose">Date</li>
+          <li role="separator" tabindex="-1" class="dropdown-divider"></li>
+          <li id="titre" class="choose" role="option">Titre</li>
         </ul>
       </div>
   `;
   articleContainer.appendChild(divSort);
-  let separator = document.createElement('li');
-  separator.setAttribute('role', 'separator');
-  separator.setAttribute('tabindex', -1);
-  separator.classList.add('dropdown-divider');
-  let separator2 = separator.cloneNode(false);
+
   const button = document.getElementById('sort_button');
   let indexTri = 0;
   let ul = null;
   let tri = [];
   let triLi = [];
-  let sortable = '.choose';
+
   const openMenu = function (e) {
+    // si ul est déjà ouverte, pas besoin de l'ouvrir
     if (ul !== null) {
       return;
     }
+    // UL n'est plus nul.
     ul = document.getElementById('tri');
     button.setAttribute('aria-expanded', true);
-    triLi = Array.from(document.querySelectorAll('.tri'));
-    tri = Array.from(document.querySelectorAll('.tri, #sort_button'));
-    tri[0].focus();
-    // tri[2].insertAdjacentElement('beforebegin', separator);
-    // tri[2].insertAdjacentElement('afterend', separator2);
+    // TRILI ET TRI  = même chose / TEST
+    triLi = Array.from(document.querySelectorAll('li.choose'));
+    console.log(triLi);
+    // VA FOCUS SUR LE PREMIER ELEMENT = > LE BOUTON
+    triLi[0].focus();
+    triLi[0].classList.add('focused');
+    triLi[0].setAttribute('aria-selected', true);
+    //UL ETAIT DISPLAY : NONE => va donc montrer la liste
     ul.style.display = null;
+    // va permettre que lorsqu'on clique sur le le block élément , UL ne se ferme pas ( c'est un détail)
     let orderWrapper = document.getElementById('Order-wrapper');
     orderWrapper.addEventListener('click', stopPropagationClose);
-    for (let i = 0; i < triLi.length; i++) {
-      if (button.value === triLi[i].innerText.trim()) {
-        triLi[i].style.display = 'none';
-        triLi[i].setAttribute('tabindex', -1);
-      } else {
-        triLi[i].style.display = null;
-        triLi[i].removeAttribute('tabindex');
-      }
-    }
-
+    // ariaselected = true sur le choisit / focus
+    // ariaactivedescendant sur ul qui doit etre l'id du focus / choisit
     triLi.forEach((el) =>
       el.addEventListener('click', function () {
+        // ul.setAttribute('aria-activedescendant', el.id);
+        el.setAttribute('aria-selected', true);
         button.value = el.innerText.trim();
         button.querySelector('span').innerText = el.innerText.trim();
         closeMenu();
@@ -259,6 +261,7 @@ const createPhotographerPage = async () => {
     );
     document.addEventListener('click', closeMenu);
     button.addEventListener('click', closeMenu);
+    console.log('ouvert');
   };
 
   const closeMenu = function () {
@@ -270,13 +273,13 @@ const createPhotographerPage = async () => {
     orderWrapper.removeEventListener('click', stopPropagationClose);
     document.removeEventListener('click', closeMenu);
     button.setAttribute('aria-expanded', false);
-    separator.remove();
-    separator2.remove();
-    triLi = [];
-    tri = [];
     ul.style.display = 'none';
     button.focus();
+
+    triLi[indexTri].classList.remove('focused');
     ul = null;
+    displayImage(button.value);
+    console.log('fermé');
   };
 
   button.addEventListener('click', () => {
@@ -285,38 +288,48 @@ const createPhotographerPage = async () => {
 
   const focusMenu = function (e) {
     e.preventDefault();
-
+    triLi[0].classList.remove('focused');
+    triLi[indexTri].setAttribute('aria-selected', false);
+    triLi[indexTri].classList.remove('focused');
     console.log(indexTri);
-    tri[indexTri].style.border = 'none';
+    // tri[indexTri].style.border = 'none';
     if (e.shiftKey === true || e.key === 'ArrowUp') {
       indexTri--;
     } else {
       indexTri++;
     }
 
-    if (indexTri >= tri.length) {
+    if (indexTri >= triLi.length) {
       indexTri = 0;
     }
     if (indexTri < 0) {
-      indexTri = tri.length - 1;
+      indexTri = triLi.length - 1;
     }
     console.log(indexTri);
-    console.log(tri[indexTri]);
+    console.log(triLi[indexTri]);
+    triLi[indexTri].focus();
+    triLi[indexTri].setAttribute('aria-selected', true);
+    button.setAttribute('value', triLi[indexTri].innerText.trim());
+    button.querySelector('span').innerText = triLi[indexTri].innerText.trim();
+    ul.setAttribute('aria-activedescendant', triLi[indexTri].id);
 
-    //si tri[indexTri] a le même texte que le button alors ça passe directement au next
-    if (tri[indexTri].hasAttribute('tabindex')) {
-      focusMenu(e);
-    } else {
-      ul.setAttribute('aria-activedescendant', tri[indexTri].id);
-      tri[indexTri].focus();
-
-      tri[indexTri].style.border = '1px solid black';
-    }
+    triLi[indexTri].classList.add('focused');
   };
+
   const stopPropagationClose = function (e) {
     e.stopPropagation();
   };
+
   window.addEventListener('keydown', function (e) {
+    // if (e.key === 'Enter' && ul !== null) {
+    //   console.log('test');
+    //   closeMenu();
+    // }
+    console.log(e);
+
+    if (e.key === 'Tab' && ul !== null) {
+      closeMenu();
+    }
     if (e.key === 'Escape' || e.key === 'Esc') {
       closeMenu();
     }
@@ -324,87 +337,15 @@ const createPhotographerPage = async () => {
       focusMenu(e);
     }
   });
+  window.addEventListener('keyup', function (e) {
+    if (e.key === 'Enter' && ul !== null) {
+      closeMenu();
+    }
+  });
   button.addEventListener('keydown', function (e) {
     if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && ul == null) {
       openMenu(e);
     }
   });
-
-  /**
-   * CREER LES IMAGES
-   */
-
-  //   let imageContainer = document.querySelector('.sectioncontainer');
-  //   let mediaSorted = await sortMedia();
-  //   mediaSorted.forEach((med) => {
-  //     let cont = document.createElement('figure');
-  //     cont.classList.add('photo-card');
-  //     if (Object.keys(med).includes('image')) {
-  //       cont.innerHTML = `
-
-  //             <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${med.image}" class="  ">
-  //               <img
-  //                 src="./FishEyePhotos/Sample Photos/${photographer.name}/${med.image}"
-  //                 class="img-card"
-  //                 alt=""
-  //               />
-  //             </a>
-  //             <figcaption>
-  //               <p class="textfig">${med.title}</p>
-  //               <div class="heart">${med.likes} <i class="fas fa-heart"></i></div>
-  //       `;
-  //     } else {
-  //       cont.innerHTML = `
-
-  //           <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${med.video}" class="  ">
-  //           <video class="img-card" muted  controls>
-  //           <source src="./FishEyePhotos/Sample Photos/${photographer.name}/${med.video}" type="video/mp4">
-
-  //         </video>
-  //           </a>
-  //           <figcaption>
-  //             <p class="textfig">${med.title}</p>
-  //             <div class="heart">${med.likes}<i class="fas fa-heart"></i> </div>
-  //     `;
-  //     }
-
-  //     console.log(`./FishEyePhotos/Sample Photos/${photographer.name}/${med.image}`);
-  //     imageContainer.appendChild(cont);
-  //   });
-  //   links = Array.from(document.querySelectorAll('a[href$=".jpg"]'));
-  //   links.forEach((link) =>
-  //     link.addEventListener('click', (e) => {
-  //       e.preventDefault();
-  //       new lightBox(e.currentTarget.getAttribute('href'));
-  //     })
-  //   );
-  // };
-
-  // class lightBox {
-  //   constructor(url) {
-  //     this.element = this.buildDOM(url);
-  //     this.loadImage(url);
-  //     document.body.appendChild(this.element);
-  //   }
-  //   loadImage(url) {
-  //     const image = new Image();
-  //     image.src = url;
-  //     const container = this.element.querySelector('.lightbox__container');
-  //     container.appendChild(image);
-  //   }
-  //   buildDOM(url) {
-  //     const dom = document.createElement('div');
-  //     dom.classList.add('lightbox');
-  //     dom.innerHTML = `
-  //     <button class="lightbox__close">Fermer</button>
-  //       <button class="lightbox__next">Suivant</button>
-  //       <button class="lightbox__prev">Précédent</button>
-
-  //       <div class="lightbox__container">
-
-  //       </div>
-  //     `;
-  //     return dom;
-  //   }
 };
 createPhotographerPage();

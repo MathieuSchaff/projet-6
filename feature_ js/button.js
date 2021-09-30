@@ -19,6 +19,7 @@ const openMenu = function (e) {
   button.setAttribute('aria-expanded', true);
   triLi = Array.from(document.querySelectorAll('.tri'));
   tri = Array.from(document.querySelectorAll('.tri, #sort_button'));
+
   tri[0].focus();
   // tri[2].insertAdjacentElement('beforebegin', separator);
   // tri[2].insertAdjacentElement('afterend', separator2);
@@ -75,7 +76,7 @@ const focusMenu = function (e) {
   e.preventDefault();
 
   console.log(indexTri);
-  tri[indexTri].style.border = 'none';
+  // tri[indexTri].style.border = 'none';
   if (e.shiftKey === true || e.key === 'ArrowUp') {
     indexTri--;
   } else {
@@ -98,7 +99,7 @@ const focusMenu = function (e) {
     ul.setAttribute('aria-activedescendant', tri[indexTri].id);
     tri[indexTri].focus();
 
-    tri[indexTri].style.border = '1px solid black';
+    tri[indexTri].style.borderColor = 'black';
   }
 };
 const stopPropagationClose = function (e) {

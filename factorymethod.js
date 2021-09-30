@@ -129,26 +129,66 @@ function createImage(image) {
 //   console.log(imageTest);
 //   return imageTest.buildImage();)
 // });
-
-const displayImage = async () => {
-  let photographer = await pickPhotographer();
+const sortimages = async (buttonValue) => {
   let mediasorted = await sortMedia();
+
+  switch (buttonValue) {
+    case 'Date':
+      mediasorted.forEach((x) => {
+        let date = x.date.split('-');
+        let date1 = date.join(' ');
+        let date2 = new Date(date1);
+        x.date = date2;
+      });
+      mediasorted.sort((a, b) => {
+        return b.date - a.date;
+      });
+
+      break;
+    case 'Popularité':
+      mediasorted.sort((a, b) => {
+        return b.likes - a.likes;
+      });
+      break;
+    case 'Titre':
+      mediasorted.sort(function (a, b) {
+        return a.title.localeCompare(b.title);
+      });
+      break;
+    default:
+      mediasorted.sort((a, b) => {
+        return b.likes - a.likes;
+      });
+  }
+  console.log(mediasorted);
+  return mediasorted;
+};
+
+const displayImage = async (buttonValue) => {
+  let photographer = await pickPhotographer();
+  let mediasorted = await sortimages(buttonValue);
+
   document.querySelector('.sectioncontainer').innerHTML = mediasorted
     .map((mediasDuPhotographe) => {
-      console.log('ok');
       if (Object.keys(mediasDuPhotographe).includes('image')) {
         return `
               <figure>
-                        <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.image}" class="  ">
+                        <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${
+          mediasDuPhotographe.image
+        }" class="  ">
                           <img
-                            src="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.image}"
+                            src="./FishEyePhotos/Sample Photos/${
+                              photographer.name
+                            }/${mediasDuPhotographe.image.replace('.jpg', '')}_resultat.jpg"
                             class="img-card"
-                            alt=""
+                            alt="${mediasDuPhotographe.altTextMedia}"
                           />
                         </a>
                         <figcaption>
                           <p class="textfig">${mediasDuPhotographe.title}</p>
-                          <div class="heart">${mediasDuPhotographe.likes} <i class="fas fa-heart"></i></div>
+                          <div class="heart">${
+                            mediasDuPhotographe.likes
+                          } <i class="fas fa-heart"></i></div>
                           </figure>
                   `;
       } else {
@@ -156,7 +196,7 @@ const displayImage = async () => {
                 <figure>
                   <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" class="  ">
                       <video class="img-card" muted  controls>
-                      <source src="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" type="video/mp4">
+                      <source src="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" type="video/mp4" alt="${mediasDuPhotographe.altTextMedia}">
 
                     </video>
        </a>

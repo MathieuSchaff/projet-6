@@ -85,7 +85,7 @@ function createPortrait(portrait, name) {
   );
   return vnode;
 }
-function createLink(link, portrait, name) {
+function createLink(link) {
   const vnode = m(
     'a',
     {
@@ -204,6 +204,7 @@ const createPage2 = async (request) => {
 // );
 const sortDisplayPhotographer = async () => {
   let { photographers } = await getRequest();
+  console.log(photographers);
   if (!window.location.hash) {
     return photographers;
   }

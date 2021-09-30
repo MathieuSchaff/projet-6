@@ -1,5 +1,11 @@
 .wrapper {
-  padding: 40px 20px;
+  padding: 40px 100px;
+  margin: 0 !important;
+  // width: calc(100vw - 40px);
+  width: 100%;
+  @include mobile {
+    padding: 40px 20px;
+  }
 }
 .photographer-header {
   width: 100%;
@@ -19,7 +25,7 @@
 .photographer-profile {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
   &--name {
     font-size: 4rem;
     color: $colour-secondary;
@@ -31,14 +37,19 @@
     }
   }
   &--location {
+    margin-top: 10px;
     font-size: 1.5rem;
     color: $colour-primary;
     line-height: 31px;
+    font-family: DM Sans;
+    font-weight: 400;
+
     @include mobile {
       font-size: 0.9rem;
     }
   }
   &--philosophy {
+    margin-top: 10px;
     font-size: 1.1rem;
     color: $colour-grey;
     line-height: 23px;
@@ -48,20 +59,27 @@
   }
   &--photo {
     object-fit: cover;
-    height: 100px;
-    width: 100px;
+    height: calc(100vw - 40px - 175px);
+    width: calc(100vw - 40px - 175px);
+    max-width: 160px;
+    max-height: 160px;
     border-radius: 50%;
   }
+}
+.containerTags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  min-width: 175px;
 }
 .contact-me {
   height: 69px;
   width: 170px;
-
   border-radius: 5px;
   background: #901c1c;
   color: white;
   font-family: DM Sans;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-style: normal;
   font-weight: 700;
   line-height: 26px;
@@ -69,15 +87,32 @@
   text-align: center;
   cursor: pointer;
   border: none;
-
-  @include mobile {
+  margin-left: 20px;
+  @include pad {
+    margin-left: 0px;
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    height: 35px;
+    font-size: 1.1rem;
+    z-index: 20;
   }
 }
 .mediaPage {
   height: 250px;
   width: 200px;
+}
+.button--photographer {
+  border-radius: 14px;
+  background-color: #fff;
+  cursor: pointer;
+  border: 0.5px solid #c4c4c4;
+  box-sizing: border-box;
+  color: #901c1c;
+  padding: 4px 7px;
+  margin: 5px 6px 5px 2px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 16px;
 }
