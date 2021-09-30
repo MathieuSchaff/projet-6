@@ -1,3 +1,111 @@
+const sortimages = async (buttonValue) => {
+  let mediasorted = await sortMedia();
+
+  switch (buttonValue) {
+    case 'Date':
+      mediasorted.forEach((x) => {
+        let date = x.date.split('-');
+        let date1 = date.join(' ');
+        let date2 = new Date(date1);
+        x.date = date2;
+      });
+      mediasorted.sort((a, b) => {
+        return b.date - a.date;
+      });
+
+      break;
+    case 'Popularité':
+      mediasorted.sort((a, b) => {
+        return b.likes - a.likes;
+      });
+      break;
+    case 'Titre':
+      mediasorted.sort(function (a, b) {
+        return a.title.localeCompare(b.title);
+      });
+      break;
+    default:
+      mediasorted.sort((a, b) => {
+        return b.likes - a.likes;
+      });
+  }
+  console.log(mediasorted);
+  return mediasorted;
+};
+
+const displayImage = async (buttonValue) => {
+  let photographer = await pickPhotographer();
+  let mediasorted = await sortimages(buttonValue);
+
+  document.querySelector('.sectioncontainer').innerHTML = mediasorted
+    .map((mediasDuPhotographe) => {
+      if (Object.keys(mediasDuPhotographe).includes('image')) {
+        return `
+              <figure>
+                        <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${
+          mediasDuPhotographe.image
+        }" class="  ">
+                          <img
+                            src="./FishEyePhotos/Sample Photos/${
+                              photographer.name
+                            }/${mediasDuPhotographe.image.replace('.jpg', '')}_resultat.jpg"
+                            class="img-card"
+                            alt="${mediasDuPhotographe.altTextMedia}"
+                          />
+                        </a>
+                        <figcaption>
+                          <p class="textfig">${mediasDuPhotographe.title}</p>
+                          <div class="heart">${
+                            mediasDuPhotographe.likes
+                          } <i class="fas fa-heart"></i></div>
+                          </figure>
+                  `;
+      } else {
+        return `
+                <figure>
+                  <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" class="  ">
+                      <video class="img-card" muted  controls>
+                      <source src="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" type="video/mp4" alt="${mediasDuPhotographe.altTextMedia}">
+
+                    </video>
+       </a>
+                      <figcaption>
+           <p class="textfig">${mediasDuPhotographe.title}</p>
+                        <div class="heart">${mediasDuPhotographe.likes}<i class="fas fa-heart"></i> </div>
+                        </figure>
+                `;
+      }
+    })
+    .join('');
+};
+displayImage();
+
+//   class lightBox {
+//     constructor(url) {
+//       this.element = this.buildDOM(url);
+//       this.loadImage(url);
+//       document.body.appendChild(this.element);
+//     }
+//     loadImage(url) {
+//       const image = new Image();
+//       image.src = url;
+//       const container = this.element.querySelector('.lightbox__container');
+//       container.appendChild(image);
+//     }
+//     buildDOM(url) {
+//       const dom = document.createElement('div');
+//       dom.classList.add('lightbox');
+//       dom.innerHTML = `
+//       <button class="lightbox__close">Fermer</button>
+//         <button class="lightbox__next">Suivant</button>
+//         <button class="lightbox__prev">Précédent</button>
+
+//         <div class="lightbox__container">
+
+//         </div>
+//       `;
+//       return dom;
+//     }
 // function that return an object without using the keyword 'new'
 
 function createImage(image) {
@@ -129,111 +237,3 @@ function createImage(image) {
 //   console.log(imageTest);
 //   return imageTest.buildImage();)
 // });
-const sortimages = async (buttonValue) => {
-  let mediasorted = await sortMedia();
-
-  switch (buttonValue) {
-    case 'Date':
-      mediasorted.forEach((x) => {
-        let date = x.date.split('-');
-        let date1 = date.join(' ');
-        let date2 = new Date(date1);
-        x.date = date2;
-      });
-      mediasorted.sort((a, b) => {
-        return b.date - a.date;
-      });
-
-      break;
-    case 'Popularité':
-      mediasorted.sort((a, b) => {
-        return b.likes - a.likes;
-      });
-      break;
-    case 'Titre':
-      mediasorted.sort(function (a, b) {
-        return a.title.localeCompare(b.title);
-      });
-      break;
-    default:
-      mediasorted.sort((a, b) => {
-        return b.likes - a.likes;
-      });
-  }
-  console.log(mediasorted);
-  return mediasorted;
-};
-
-const displayImage = async (buttonValue) => {
-  let photographer = await pickPhotographer();
-  let mediasorted = await sortimages(buttonValue);
-
-  document.querySelector('.sectioncontainer').innerHTML = mediasorted
-    .map((mediasDuPhotographe) => {
-      if (Object.keys(mediasDuPhotographe).includes('image')) {
-        return `
-              <figure>
-                        <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${
-          mediasDuPhotographe.image
-        }" class="  ">
-                          <img
-                            src="./FishEyePhotos/Sample Photos/${
-                              photographer.name
-                            }/${mediasDuPhotographe.image.replace('.jpg', '')}_resultat.jpg"
-                            class="img-card"
-                            alt="${mediasDuPhotographe.altTextMedia}"
-                          />
-                        </a>
-                        <figcaption>
-                          <p class="textfig">${mediasDuPhotographe.title}</p>
-                          <div class="heart">${
-                            mediasDuPhotographe.likes
-                          } <i class="fas fa-heart"></i></div>
-                          </figure>
-                  `;
-      } else {
-        return `
-                <figure>
-                  <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" class="  ">
-                      <video class="img-card" muted  controls>
-                      <source src="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" type="video/mp4" alt="${mediasDuPhotographe.altTextMedia}">
-
-                    </video>
-       </a>
-                      <figcaption>
-           <p class="textfig">${mediasDuPhotographe.title}</p>
-                        <div class="heart">${mediasDuPhotographe.likes}<i class="fas fa-heart"></i> </div>
-                        </figure>
-                `;
-      }
-    })
-    .join('');
-};
-displayImage();
-
-//   class lightBox {
-//     constructor(url) {
-//       this.element = this.buildDOM(url);
-//       this.loadImage(url);
-//       document.body.appendChild(this.element);
-//     }
-//     loadImage(url) {
-//       const image = new Image();
-//       image.src = url;
-//       const container = this.element.querySelector('.lightbox__container');
-//       container.appendChild(image);
-//     }
-//     buildDOM(url) {
-//       const dom = document.createElement('div');
-//       dom.classList.add('lightbox');
-//       dom.innerHTML = `
-//       <button class="lightbox__close">Fermer</button>
-//         <button class="lightbox__next">Suivant</button>
-//         <button class="lightbox__prev">Précédent</button>
-
-//         <div class="lightbox__container">
-
-//         </div>
-//       `;
-//       return dom;
-//     }

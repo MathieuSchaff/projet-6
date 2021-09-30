@@ -153,55 +153,6 @@ const createPage2 = async (request) => {
   document.querySelector('.mainContent').appendChild(page);
 };
 
-// const sortedPhotographer = async () => {
-//   let { photographers } = await getRequest();
-//   if (loaded == 0) {
-//     return photographers;
-//   } else {
-//     photographers.map((x) => (x.count = 0));
-
-//     // pour tous les boutons coché, j'ajoute 1 a count
-
-//     for (let i = 0; i < buttonsArr.length; i++) {
-//       for (let i = 0; i < photographers.length; i++) {
-//         // console.log(document.querySelector('.buttonClicked').id);
-//         if (photographers[i].tags.includes(document.querySelector('.buttonClicked').id)) {
-//           photographers[i].count += 1;
-//         } else if (
-//           !photographers[i].tags.includes(document.querySelector('.buttonClicked').id) &&
-//           photographers[i].count > 0
-//         ) {
-//           photographers[i].count -= 1;
-//         } else {
-//           photographers[i].count = 0;
-//         }
-//       }
-//     }
-
-//     photographers.sort((a, b) => {
-//       return b.count - a.count;
-//     });
-
-//     return photographers;
-//   }
-// };
-// const buttonsArr = Array.from(document.querySelectorAll('.nav--button'));
-
-// buttonsArr.forEach((btn) =>
-//   btn.addEventListener('click', () => {
-//     document.getElementById('articles').remove();
-//     if (btn.classList.contains('buttonClicked')) {
-//       btn.classList.remove('buttonClicked');
-//       loaded -= 1;
-//       createPage2(sortedPhotographer());
-//     } else {
-//       btn.classList.add('buttonClicked');
-
-//       loaded += 1;
-//       createPage2(sortedPhotographer());
-//     }
-//   })
-// );
 const sortDisplayPhotographer = async () => {
   let { photographers } = await getRequest();
   console.log(photographers);
