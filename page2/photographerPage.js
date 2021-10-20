@@ -277,9 +277,10 @@ const createPhotographerPage = async () => {
     button.focus();
 
     triLi[indexTri].classList.remove('focused');
-    ul = null;
+
     displayImage(button.value);
     console.log('fermé');
+    ul = null;
   };
 
   button.addEventListener('click', () => {
@@ -321,10 +322,6 @@ const createPhotographerPage = async () => {
   };
 
   window.addEventListener('keydown', function (e) {
-    // if (e.key === 'Enter' && ul !== null) {
-    //   console.log('test');
-    //   closeMenu();
-    // }
     console.log(e);
 
     if (e.key === 'Tab' && ul !== null) {
@@ -337,11 +334,11 @@ const createPhotographerPage = async () => {
       focusMenu(e);
     }
   });
-  window.addEventListener('keyup', function (e) {
-    if (e.key === 'Enter' && ul !== null) {
-      closeMenu();
-    }
-  });
+  // window.addEventListener('keyup', function (e) {
+  //   if (e.key === 'Enter' && ul !== null) {
+  //     closeMenu();
+  //   }
+  // });
   button.addEventListener('keydown', function (e) {
     if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && ul == null) {
       openMenu(e);

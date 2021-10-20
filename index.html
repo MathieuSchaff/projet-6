@@ -7,18 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fisheye</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
-    <script src="app.js" defer type="text/babel"></script>
-    <!-- <script type="module">
-      import {
-        m,
-        patch,
-        createElement,
-        /* or any other exports you want to access */
-      } from 'https://unpkg.com/million?module';
-
-      // Your code here
-    </script> -->
   </head>
   <body>
     <div class="mainContent">
@@ -41,89 +29,104 @@
         </p>
         <nav class="header__nav" aria-label="photographer-categories" tabindex="0" role="menubar">
           <!-- buttonst of eight items in nav -->
-          <a
+          <button
             id="portait"
-            href="#portrait"
+            href="javascript:;"
             class="nav--button"
             type="button"
             tabindex="0"
             role="menuitem"
+            value="portrait"
           >
             #Portrait
             <span class="sr-only">Click here to sort photographers by the tag Portrait </span>
-          </a>
-          <a id="art" href="#art" class="nav--button" type="button" tabindex="0" role="menuitem">
-            #Art<span class="sr-only">Click here to sort photographers by the tag Art</span>
-          </a>
-          <a
-            id="fashion"
-            href="#fashion"
+          </button>
+          <button
+            id="art"
+            href="javascript:;"
             class="nav--button"
             type="button"
             tabindex="0"
             role="menuitem"
+            value="art"
+          >
+            #Art<span class="sr-only">Click here to sort photographers by the tag Art</span>
+          </button>
+          <button
+            id="fashion"
+            href="javascript:;"
+            class="nav--button"
+            type="button"
+            tabindex="0"
+            role="menuitem"
+            value="fashion"
           >
             #Fashion<span class="sr-only">Click here to sort photographers by the tag Fashion</span>
-          </a>
-          <a
+          </button>
+          <button
             id="architecture"
-            href="#architecture"
+            href="javascript:;"
             class="nav--button"
             type="button"
             tabindex="0"
             role="menuitem"
+            value="architecture"
           >
             #Architecture<span class="sr-only"
               >Click here to sort photographers by the tag Architecture</span
             >
-          </a>
-          <a
+          </button>
+          <button
             id="travel"
-            href="#travel"
+            href="javascript:;"
             class="nav--button"
             type="button"
             tabindex="0"
             role="menuitem"
+            value="travel"
           >
             #Travel<span class="sr-only">Click here to sort photographers by the tag Travel</span>
-          </a>
-          <a
+          </button>
+          <button
             id="sport"
-            href="#sport"
+            href="javascript:;"
             class="nav--button"
             type="button"
             tabindex="0"
             role="menuitem"
+            value="sport"
           >
             #Sport<span class="sr-only">Click here to sort photographers by the tag Sport</span>
-          </a>
-          <a
+          </button>
+          <button
             id="animals"
-            href="#animals"
+            href="javascript:;"
             class="nav--button"
             type="button"
             tabindex="0"
             role="menuitem"
+            value="animals"
           >
             #Animals<span class="sr-only">Click here to sort photographers by the tag Animals</span>
-          </a>
-          <a
+          </button>
+          <button
             id="events"
-            href="#events"
+            href="javascript:;"
             class="nav--button"
             type="button"
             tabindex="0"
             role="menuitem"
+            value="events"
           >
             #Events<span class="sr-only">Click here to sort photographers by the tag Events</span>
-          </a>
+          </button>
         </nav>
         <h1 class="header__title" tabindex="0">Nos photographes</h1>
       </header>
       <!-- <main id="articles"></main> -->
     </div>
-    <!-- <script src="test.js"></script> -->
+
     <script src="./page1/million.js"></script>
-    <!-- <script src="/page1/page1map.js"></script> -->
+    <script src="./page1/million2.js"></script>
   </body>
 </html>

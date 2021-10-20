@@ -2,7 +2,7 @@
   "name": "projet-6",
   "version": "1.0.0",
   "description": "projet6",
-  "main": "modal.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --watch ./sass/main.scss:./css/style.css --style compressed",
@@ -18,8 +18,9 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
-    "webpack": "^5.53.0",
-    "webpack-cli": "^4.8.0"
+    "postcss": "^8.3.9",
+    "webpack": "^5.59.0",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
     "million": "^0.5.1",

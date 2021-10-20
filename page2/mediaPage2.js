@@ -29,12 +29,13 @@ const sortimages = async (buttonValue) => {
         return b.likes - a.likes;
       });
   }
-  console.log(mediasorted);
   return mediasorted;
 };
 
 const displayImage = async (buttonValue) => {
+  // Les données du photographer choisit
   let photographer = await pickPhotographer();
+  // les medias correspondant au photographer choisit
   let mediasorted = await sortimages(buttonValue);
 
   document.querySelector('.sectioncontainer').innerHTML = mediasorted
@@ -42,9 +43,7 @@ const displayImage = async (buttonValue) => {
       if (Object.keys(mediasDuPhotographe).includes('image')) {
         return `
               <figure>
-                        <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${
-          mediasDuPhotographe.image
-        }" class="  ">
+                        
                           <img
                             src="./FishEyePhotos/Sample Photos/${
                               photographer.name
@@ -52,7 +51,7 @@ const displayImage = async (buttonValue) => {
                             class="img-card"
                             alt="${mediasDuPhotographe.altTextMedia}"
                           />
-                        </a>
+                        
                         <figcaption>
                           <p class="textfig">${mediasDuPhotographe.title}</p>
                           <div class="heart">${
@@ -63,12 +62,12 @@ const displayImage = async (buttonValue) => {
       } else {
         return `
                 <figure>
-                  <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" class="  ">
+                  
                       <video class="img-card" muted  controls>
                       <source src="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" type="video/mp4" alt="${mediasDuPhotographe.altTextMedia}">
 
                     </video>
-       </a>
+      
                       <figcaption>
            <p class="textfig">${mediasDuPhotographe.title}</p>
                         <div class="heart">${mediasDuPhotographe.likes}<i class="fas fa-heart"></i> </div>
@@ -78,162 +77,120 @@ const displayImage = async (buttonValue) => {
     })
     .join('');
 };
-displayImage();
+displayImage().then(async () => {
+  const images = [...document.querySelectorAll('.img-card')];
+  const images1 = [...document.querySelectorAll('img.img-card, source')];
+  const gallery = images1.map((image) => {
+    return `${image.src}`;
+    // if (image.nodeName == 'IMG') {
+    //   return `${image.src}`;
+    // }
+    // if (image.nodeName == 'VIDEO') {
+    //   return `${image.currentSrc}`;
+    // }
+  });
+  console.log(gallery);
+  console.log(images);
+  images.forEach((image) => {
+    image.addEventListener('click', (e) => {
+      e.preventDefault();
+      const dom = document.createElement('div');
+      dom.classList.add('lightbox');
+      if (image.nodeName == 'IMG') {
+        dom.innerHTML = `
+        <button class="lightbox__close">Fermer</button>
+          <button class="lightbox__next">Suivant</button>
+          <button class="lightbox__prev">Précédent</button>
+  
+          <div class="lightbox__container">
+           <img src="${image.src}" alt="${image.alt}">
+          </div>
+        `;
+      } else {
+        image.pause();
+        dom.innerHTML = `
+          <button class="lightbox__close">Fermer</button>
+          <button class="lightbox__next">Suivant</button>
+          <button class="lightbox__prev">Précédent</button>
+  
+          <div class="lightbox__container">
+          <video class="img-card" muted  controls>
+          <source src="${image.currentSrc}" type="video/mp4" alt="${image.alt}">
 
-//   class lightBox {
-//     constructor(url) {
-//       this.element = this.buildDOM(url);
-//       this.loadImage(url);
-//       document.body.appendChild(this.element);
-//     }
-//     loadImage(url) {
-//       const image = new Image();
-//       image.src = url;
-//       const container = this.element.querySelector('.lightbox__container');
-//       container.appendChild(image);
-//     }
-//     buildDOM(url) {
-//       const dom = document.createElement('div');
-//       dom.classList.add('lightbox');
-//       dom.innerHTML = `
-//       <button class="lightbox__close">Fermer</button>
-//         <button class="lightbox__next">Suivant</button>
-//         <button class="lightbox__prev">Précédent</button>
+          </video>
+          </div>
+        `;
+      }
+      function closeLightbox(element) {
+        console.log('clické sur close');
+        dom.classList.add('fadeOut');
+        window.setTimeout(() => {
+          dom.remove();
+        }, 500);
+        // dom.removeEventListener('click', closeLightbox);
+      }
+      function next() {
+        e.preventDefault();
+        let aka = dom.querySelector('img, video');
+        console.log(aka);
+        let i = gallery.findIndex((image) => image === aka.src);
+        i = i + 1;
+        if (i >= gallery.length) {
+          i = 0;
+        }
+        console.log(i);
+        dom.querySelector('.lightbox__container').innerHTML = `
+        <img src="${gallery[i]}" alt="${image.alt}">
+        `;
 
-//         <div class="lightbox__container">
+        console.log(i + 1);
+      }
+      function prev() {
+        e.preventDefault();
+        let aka = dom.querySelector('img' || 'video');
+        let i = gallery.findIndex((image) => image === aka.src);
+        i = i - 1;
+        if (i < 0) {
+          i = gallery.length - 1;
+        }
+        console.log(i);
+        dom.querySelector('.lightbox__container').innerHTML = `
+        <img src="${gallery[i]}" alt="${image.alt}">
+        `;
 
-//         </div>
-//       `;
-//       return dom;
-//     }
-// function that return an object without using the keyword 'new'
-
-function createImage(image) {
-  return {
-    image,
-    lightbox() {},
-  };
-}
-
-// function createImage(media) {
-//   let imageContainer = document.querySelector('.sectioncontainer');
-//   let mediaSorted = await sortMedia();
-//   mediaSorted.forEach((med) => {
-//     let cont = document.createElement('figure');
-//     cont.classList.add('photo-card');
-
-//     imageContainer.appendChild(cont);
-//   });
-// }
-// class photographerCard {
-//   constructor(photographer) {
-//     this.name = photographer.name;
-//     this.id = photographer.id;
-//     this.photographerId = photographer.photographerId;
-//     this.city = photographer.city;
-//     this.country = photographer.country;
-//     this.tags = photographer.tags;
-//     this.tagline = photographer.tagline;
-//     this.pricePhotographer = photographer.price;
-//     this.portrait = photographer.portrait;
-//   }
-
-//   createCard() {
-//     document.querySelector('.photographer').innerHTML = `
-//     <div class="photographer-main">
-//     <div class="photographer-profile">
-//       <h1 class="photographer-profile--name">${photographer.name}</h1>
-//       <p class="photographer-profile--location">${photographer.city}, ${photographer.country}</p>
-//       <p class="photographer-profile--philosophy">${photographer.tagline}</p>
-//     </div>
-//     <button class="contact-me">Contactez-moi</button>
-//   </div>
-//   <div class="img">
-//     <img
-//       src="./FishEyePhotos/Sample Photos/Photographers ID Photos/${photographer.portrait}"
-//       alt="Photo portrait du photographe"
-//       class="photographer-profile--photo"
-//     />
-//   </div>
-//       `;
-//     //   articleContainer.appendChild(articlePhotographer);
-
-//     //   let tagsDiv = document.createElement('div');
-
-//     //   for (let i = 0; i < photographer.tags.length; i++) {
-//     //     let btns = [];
-//     //     let tag = document.createElement('button');
-//     //     tag.setAttribute('type', 'button');
-//     //     tag.classList.add('nav--button');
-//     //     tag.innerHTML = `#${photographer.tags[i]} <span class="sr-only">Tag</span>`;
-//     //     btns.push(tag);
-//     //     tagsDiv.appendChild(tag);
-//     //   }
-//     //   document.querySelector('.photographer-profile').appendChild(tagsDiv);
-//   }
-// }
-// class Page {
-//   constructor(id){
-// this.id = id;
-//   }
-//   recuperephotographe(){
-
-// }
-// class ImageMedia {
-//   constructor(photographer, media) {
-//     this.name = photographer.name;
-//     this.image = media.image;
-//     this.tagsImage = media.tags;
-//     this.likes = media.likes;
-//     this.date = media.date;
-//     this.priceMedia = media.price;
-//   }
-
-//   createMedias() {
-//     if (Object.keys(mediasDuPhotographe).includes('image')) {
-//       return `
-//               <figure>
-//                         <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.image}" class="  ">
-//                           <img
-//                             src="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.image}"
-//                             class="img-card"
-//                             alt=""
-//                           />
-//                         </a>
-//                         <figcaption>
-//                           <p class="textfig">${mediasDuPhotographe.title}</p>
-//                           <div class="heart">${mediasDuPhotographe.likes} <i class="fas fa-heart"></i></div>
-//                           </figure>
-//                   `;
-//     } else {
-//       return `
-//         <figure>
-//                       <a href="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" class="  ">
-//                       <video class="img-card" muted  controls>
-//                       <source src="./FishEyePhotos/Sample Photos/${photographer.name}/${mediasDuPhotographe.video}" type="video/mp4">
-
-//                     </video>
-//                       </a>
-//                       <figcaption>
-//                         <p class="textfig">${mediasDuPhotographe.title}</p>
-//                         <div class="heart">${mediasDuPhotographe.likes}<i class="fas fa-heart"></i> </div>
-//                         </figure>
-//                 `;
-//     }
-//   }
-//   buildImage() {
-//     document.querySelector('.sectioncontainer').innerHTML = this.createMedias();
-//   }
-//   lightbox(){
-
-//   }
-// }
-// let photographerTest = pickPhotographer();
-// let test = sortMedia();
-
-// sortMedia().then(mediaSorted =>
-//   mediaSorted.forEach((el) => {
-//   let imageTest = new ImageMedia(photographerTest, el);
-//   console.log(imageTest);
-//   return imageTest.buildImage();)
-// });
+        console.log(i + 1);
+      }
+      dom.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
+      dom.querySelector('.lightbox__prev').addEventListener('click', prev);
+      dom.querySelector('.lightbox__next').addEventListener('click', next);
+      window.addEventListener('keydown', function (e) {
+        if (dom !== null && e.key === 'Escape') {
+          closeLightbox();
+        }
+        if (dom !== null && e.key === 'ArrowLeft') {
+          prev();
+        }
+        if (dom !== null && e.key === 'ArrowRight') {
+          next();
+        }
+      });
+      document.body.appendChild(dom);
+      // const img = document.createElement('img');
+      // img.src = image.src;
+      // while (lightbox.firstChild) {
+      //   lightbox.removeChild(lightbox.firstChild);
+      // }
+      // lightbox.appendChild(img);
+    });
+  });
+  // const lightbox = document.createElement('div');
+  // lightbox.id = 'lightbox';
+  // document.body.appendChild(lightbox);
+  // const images = document.querySelectorAll('img');
+  // lightbox.addEventListener('click', (e) => {
+  //   if (e.target !== e.currentTarget) {
+  //     return;
+  //   }
+  //   lightbox.classList.remove('active');
+  // });
+});
