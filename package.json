@@ -2,7 +2,6 @@
   "name": "projet-6",
   "version": "1.0.0",
   "description": "projet6",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --watch ./sass/main.scss:./css/style.css --style compressed",
@@ -13,6 +12,10 @@
   "author": "Mathieu Schaff",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
     "eslint": "^7.30.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",

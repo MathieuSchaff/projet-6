@@ -8,7 +8,7 @@ let myInit = {
   cache: 'default',
 };
 let myRequest = new Request('data.json', myInit);
-let hash = window.location.hash;
+let searchParams = new URLSearchParams(window.location.search);
 
 /**
  * RECUPERE TOUTE LA DONNEE
@@ -44,8 +44,10 @@ const getMedia = async () => {
 async function pickPhotographer() {
   let photographers = await getPhotographer();
   for (let i = 0; i < photographers.length; i++) {
-    if (photographers[i].id == hash.slice(1)) {
+    if (photographers[i].id == searchParams.get('id')) {
       return photographers[i];
+    } else {
+      window.location = 'http://127.0.0.1:5500/index.html';
     }
   }
 }
@@ -58,7 +60,7 @@ async function sortMedia() {
   let photographerMedia = await getMedia();
   let mediaSorted = [];
   photographerMedia.forEach((med) => {
-    if (med.photographerId == hash.slice(1)) {
+    if (med.photographerId == searchParams.get('id')) {
       mediaSorted.push(med);
     }
   });
@@ -206,13 +208,14 @@ const createPhotographerPage = async () => {
           class="choose"
           value="Popularité"
         >
-          <span id="sortBy">Popularité</span> <i class="fas fa-chevron-up"></i
-          ><i class="fas fa-chevron-down"></i>
+          <span id="sortBy">Popularité</span> <i class="chevron fas fa-chevron-up"></i
+          >
         </button>
 
         <ul id="tri" aria-labelledby="Order_by" role="listbox" tabindex="-1" style="display: none">
         
-          <li id="pop" class="choose" role="option">Popularité</li>
+          <li id="pop" class="choose" role="option">Popularité </li>
+          <li class="chevronRotate"><i class="chevron fas fa-chevron-up"></i> </li>
           <li role="separator" tabindex="-1" class="dropdown-divider"></li>
           <li id="date" role="option" class="choose">Date</li>
           <li role="separator" tabindex="-1" class="dropdown-divider"></li>
@@ -245,6 +248,7 @@ const createPhotographerPage = async () => {
     triLi[0].setAttribute('aria-selected', true);
     //UL ETAIT DISPLAY : NONE => va donc montrer la liste
     ul.style.display = null;
+    ul.querySelector('.chevronRotate').classList.add('activateRotate');
     // va permettre que lorsqu'on clique sur le le block élément , UL ne se ferme pas ( c'est un détail)
     let orderWrapper = document.getElementById('Order-wrapper');
     orderWrapper.addEventListener('click', stopPropagationClose);
@@ -277,7 +281,7 @@ const createPhotographerPage = async () => {
     button.focus();
 
     triLi[indexTri].classList.remove('focused');
-
+    ul.querySelector('.chevronRotate').classList.remove('activateRotate');
     displayImage(button.value);
     console.log('fermé');
     ul = null;

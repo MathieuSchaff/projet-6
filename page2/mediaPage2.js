@@ -37,7 +37,6 @@ const displayImage = async (buttonValue) => {
   let photographer = await pickPhotographer();
   // les medias correspondant au photographer choisit
   let mediasorted = await sortimages(buttonValue);
-
   document.querySelector('.sectioncontainer').innerHTML = mediasorted
     .map((mediasDuPhotographe) => {
       if (Object.keys(mediasDuPhotographe).includes('image')) {
@@ -82,12 +81,6 @@ displayImage().then(async () => {
   const images1 = [...document.querySelectorAll('img.img-card, source')];
   const gallery = images1.map((image) => {
     return `${image.src}`;
-    // if (image.nodeName == 'IMG') {
-    //   return `${image.src}`;
-    // }
-    // if (image.nodeName == 'VIDEO') {
-    //   return `${image.currentSrc}`;
-    // }
   });
   console.log(gallery);
   console.log(images);
@@ -131,34 +124,55 @@ displayImage().then(async () => {
       }
       function next() {
         e.preventDefault();
-        let aka = dom.querySelector('img, video');
-        console.log(aka);
-        let i = gallery.findIndex((image) => image === aka.src);
+        // RECUPERE LE MEDIA DANS LA LIGHTBOX ACTUELLEMENT
+        let mediaInlightbox = dom.querySelector('img, video');
+        if (mediaInlightbox.currentSrc.endsWith('mp4')) {
+          mediaInlightbox = mediaInlightbox.querySelector('source');
+        }
+        let i = gallery.findIndex((urlMedia) => urlMedia === mediaInlightbox.src);
         i = i + 1;
         if (i >= gallery.length) {
           i = 0;
         }
-        console.log(i);
-        dom.querySelector('.lightbox__container').innerHTML = `
-        <img src="${gallery[i]}" alt="${image.alt}">
-        `;
+        if (gallery[i].endsWith('mp4')) {
+          console.log('ceci est une vidéo');
+          dom.querySelector('.lightbox__container').innerHTML = `
+          <video class="img-card" muted  controls>
+          <source src="${gallery[i]}" type="video/mp4" alt="${image.alt}">
 
-        console.log(i + 1);
+          </video>
+          `;
+        } else {
+          dom.querySelector('.lightbox__container').innerHTML = `
+          <img src="${gallery[i]}" alt="${image.alt}">
+          `;
+        }
       }
       function prev() {
         e.preventDefault();
-        let aka = dom.querySelector('img' || 'video');
-        let i = gallery.findIndex((image) => image === aka.src);
+        // RECUPERE LE MEDIA DANS LA LIGHTBOX ACTUELLEMENT
+        let mediaInlightbox = dom.querySelector('img, video');
+        if (mediaInlightbox.currentSrc.endsWith('mp4')) {
+          mediaInlightbox = mediaInlightbox.querySelector('source');
+        }
+        let i = gallery.findIndex((urlMedia) => urlMedia === mediaInlightbox.src);
         i = i - 1;
         if (i < 0) {
           i = gallery.length - 1;
         }
-        console.log(i);
-        dom.querySelector('.lightbox__container').innerHTML = `
-        <img src="${gallery[i]}" alt="${image.alt}">
-        `;
+        if (gallery[i].endsWith('mp4')) {
+          console.log('ceci est une vidéo');
+          dom.querySelector('.lightbox__container').innerHTML = `
+          <video class="img-card" muted  controls>
+          <source src="${gallery[i]}" type="video/mp4" alt="${image.alt}">
 
-        console.log(i + 1);
+          </video>
+          `;
+        } else {
+          dom.querySelector('.lightbox__container').innerHTML = `
+          <img src="${gallery[i]}" alt="${image.alt}">
+          `;
+        }
       }
       dom.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
       dom.querySelector('.lightbox__prev').addEventListener('click', prev);
@@ -175,22 +189,6 @@ displayImage().then(async () => {
         }
       });
       document.body.appendChild(dom);
-      // const img = document.createElement('img');
-      // img.src = image.src;
-      // while (lightbox.firstChild) {
-      //   lightbox.removeChild(lightbox.firstChild);
-      // }
-      // lightbox.appendChild(img);
     });
   });
-  // const lightbox = document.createElement('div');
-  // lightbox.id = 'lightbox';
-  // document.body.appendChild(lightbox);
-  // const images = document.querySelectorAll('img');
-  // lightbox.addEventListener('click', (e) => {
-  //   if (e.target !== e.currentTarget) {
-  //     return;
-  //   }
-  //   lightbox.classList.remove('active');
-  // });
 });

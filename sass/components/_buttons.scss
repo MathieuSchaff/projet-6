@@ -1,6 +1,3 @@
-// .btn {
-//     @include btn
-// }
 .sort {
   margin-top: 30px;
   display: flex;
@@ -11,12 +8,6 @@
     display: none;
   }
 }
-// #date{
-//     display: none;
-// }
-// #titre{
-//     display: none;
-// }
 #Order-wrapper {
   background-color: #901c1c;
   border-radius: 5px;
@@ -78,10 +69,24 @@ button:focus {
   padding-bottom: 15px;
   color: white;
   i {
+    position: absolute;
+    right: 15px;
     margin-left: 15px;
-    transition: all 0.4ms;
   }
 }
-.focused {
-  background-color: blueviolet;
+// .focused {
+//   background-color: blueviolet;
+// }
+.chevronRotate {
+  list-style-type: none;
+  position: absolute;
+  top: 17px;
+  right: 15px;
+  transition: transform 0.8s ease-in-out;
+  font-weight: bold;
+  font-size: 18px;
+  color: $colour-white;
+}
+.activateRotate {
+  transform: rotate(180deg);
 }

@@ -90,7 +90,7 @@ function createLink(link) {
     'a',
     {
       className: 'main__link',
-      href: `http://127.0.0.1:5500/photographer.html#${link}`,
+      href: `http://127.0.0.1:5500/photographer.html?id=${link}`,
     },
     undefined
   );
@@ -131,7 +131,7 @@ async function createPage1(request) {
         m(
           'a',
           {
-            href: `http://127.0.0.1:5500/photographer.html#${photographer.id}`,
+            href: `http://127.0.0.1:5500/photographer.html?id=${photographer.id}`,
             className: 'main__link',
             onclick: 'mafonction(this)',
           },
@@ -222,6 +222,19 @@ const updateParams = async (linkValue) => {
   let paramsToString = params.toString();
   history.pushState({}, null, `?${paramsToString}`);
 };
+createPage1(sortArrayPhotographer())
+  .then((res) => {
+    page = createElement(res);
+    document.querySelector('.mainContent').appendChild(page);
+  })
+  .then(() => {
+    const links = document.querySelectorAll('button.nav--button');
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        updateParams(link.value);
+      });
+    });
+  });
 
 // const oldV = m('div', { id: 'app' }, ['Hello World']);
 // const newV = m('div', { id: 'app' }, ['Goodbye World']);
