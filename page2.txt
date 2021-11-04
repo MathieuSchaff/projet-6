@@ -1,0 +1,46 @@
+PAGE 2 :
+
+init :
+
+initialise la variable page dans le contexte global. 
+
+1 ) Crée la card du photographe ( vnode puis into DOM).
+2) Initialise le formlaire. 
+
+
+3) crée le vnode des images ( displayImage2) 
+    displayImage2 renvoie un vnode. 
+    prends en paramètre le photographer choisit,
+    et aussi les medias triés.
+    Le tri s'effectue avec la fonction sortimages.
+    sortimages prends en paramètre la valeur du bouton de tri. 
+
+
+4) page = createElement du VNODE en question. 
+    page into DOM.
+    + Initialisation de la lightbox
+
+5) Initialise l'update des likes. 
+
+
+Problèmes : 
+
+la modif avec patch ne fonctionne pas sur le bouton tri. 
+
+fonction close menu doit modifier le DOM ! 
+
+patch n'est pas asynchrone
+const patch = (el, newVNode, oldVNode) 
+prends en paramètre page qui a été initialisé au début de l'init. 
+et displayImage2(button.value).
+displayImage2 est asynchrone et renvoie le vnode approprié a la place de l'ancien vnode.
+
+
+
+
+faire une fonction qui crée l'élement page, et que l'introduit dans le dom. 
+
+a chaque changement de du dom ( a chaque patch) => 
+je veux que l'événement lightbox soit initialisé à nouveau. 
+
+

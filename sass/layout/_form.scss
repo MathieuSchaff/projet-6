@@ -4,7 +4,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
   height: 100%;
   background-color: rgba(196, 196, 196, 0.4);
   display: flex;
@@ -25,7 +24,7 @@
   max-width: 599px;
   width: 70%;
   height: auto;
-  overflow: hidden;
+  overflow: auto;
   background-color: $colour-form;
   display: flex;
   flex-direction: column;
@@ -33,6 +32,7 @@
   z-index: 1000;
   @include mobile {
     margin: 0;
+    padding: 20px;
   }
   @include mobile-only {
     width: 100%;
@@ -44,6 +44,9 @@
   align-items: center;
   font-size: 2rem;
   padding-bottom: 26px;
+  @include mobile {
+    padding: 0;
+  }
 }
 #contact__title {
   font-family: DM Sans;
@@ -66,7 +69,7 @@
   margin-top: 20px;
   @include mobile-only {
     margin-top: 0;
-    margin-right: 20px;
+    margin-right: 10px;
     img {
       width: 25px;
       height: 25px;
@@ -97,7 +100,7 @@ input[type='submit'] {
   height: 69px;
   width: 170px;
   border-radius: 5px;
-  background-color: #901c1c;
+  background-color: $colour-primary;
   color: $colour-white;
   margin-top: 26px;
   margin-bottom: 3px;
@@ -110,7 +113,7 @@ input[type='submit'] {
   text-align: center;
   border: none;
   align-self: flex-start;
-  @include mobile-only {
+  @include mobile {
     height: 35px;
     align-self: center;
   }
@@ -119,6 +122,8 @@ input[type='submit'] {
   width: 100%;
   min-height: 52px;
   border-radius: 5px;
+  border: none;
+  outline: none;
 }
 #comment {
   line-height: 170px;

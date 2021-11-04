@@ -9,7 +9,7 @@
   }
 }
 #Order-wrapper {
-  background-color: #901c1c;
+  background-color: $colour-primary;
   border-radius: 5px;
   width: 170px;
   margin-left: 20px;
@@ -36,7 +36,7 @@ button:focus {
   width: 150px;
   margin-left: 10px;
   border-radius: 0px;
-  background: #ffffff;
+  background: $colour-white;
   list-style-type: none;
 }
 .rotate {
@@ -50,7 +50,7 @@ button:focus {
   position: absolute;
   top: 0;
   z-index: 2;
-  background-color: #901c1c;
+  background-color: $colour-primary;
   border-radius: 5px;
 }
 .choose {
@@ -60,10 +60,10 @@ button:focus {
   border: none;
   border-radius: 5px;
   width: 170px;
-  background-color: #901c1c;
+  background-color: $colour-primary;
   font-size: 18px;
   line-height: 23px;
-  color: #ffffff;
+  color: $colour-white;
   padding-left: 20px;
   padding-top: 15px;
   padding-bottom: 15px;

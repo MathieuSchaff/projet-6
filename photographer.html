@@ -17,7 +17,39 @@
         /></a>
       </header>
       <div class="mainContent">
-        <main class="photographer"></main>
+        <main class="photographer">
+          <div class="sort">
+            <span id="Order_by"> Trier par </span>
+            <div id="Order-wrapper">
+              <button
+                role="button"
+                aria-haspopup="listbox"
+                aria-labelledby="Order_by sort_button"
+                id="sort_button"
+                aria-expanded="false"
+                class="choose"
+                value="Popularité"
+              >
+                <span id="sortBy">Popularité</span> <i class="chevron fas fa-chevron-up"></i>
+              </button>
+
+              <ul
+                id="tri"
+                aria-labelledby="Order_by"
+                role="listbox"
+                tabindex="-1"
+                style="display: none"
+              >
+                <li id="pop" class="choose" role="option">Popularité</li>
+                <li class="chevronRotate"><i class="chevron fas fa-chevron-up"></i></li>
+                <li role="separator" tabindex="-1" class="dropdown-divider"></li>
+                <li id="date" role="option" class="choose">Date</li>
+                <li role="separator" tabindex="-1" class="dropdown-divider"></li>
+                <li id="titre" class="choose" role="option">Titre</li>
+              </ul>
+            </div>
+          </div>
+        </main>
       </div>
       <section class="sectioncontainer"></section>
       <aside
@@ -85,17 +117,28 @@
           </form>
         </div>
       </aside>
+      <div class="likesContainer">
+        <div class="totalLikes">
+          <p class="totalLikes--number"></p>
+          <p class="totalLikes--heart">
+            <img src="./images/heart.svg" alt="" />
+          </p>
+        </div>
+        <div class="salaire">
+          <p class="salaire--journalier"></p>
+        </div>
+      </div>
     </div>
 
-    <!-- <div class="lightbox">
-      <button class="lightbox__close">Fermer</button>
-      <button class="lightbox__next">Suivant</button>
-      <button class="lightbox__prev">Précédent</button>
-      <div class="lightbox__container"></div>
-    </div> -->
-
-    <script src="./page2/photographerPage.js"></script>
-    <script src="./page2/mediaPage2.js"></script>
-    <script src="./page2/lightbox.js"></script>
+    <script src="./testpage2/millionSeparated.js"></script>
+    <script src="./testpage2/dataPhotographer.js"></script>
+    <script src="./testpage2/createCard.js"></script>
+    <script src="./testpage2/formulaire.js"></script>
+    <script src="./testpage2/sortimages.js"></script>
+    <script src="./testpage2/updateLikes.js"></script>
+    <script src="./testpage2/createMedias.js"></script>
+    <script src="./testpage2/trimedia.js"></script>
+    <script src="./testpage2/lightbox.js"></script>
+    <script src="./testpage2/init.js"></script>
   </body>
 </html>

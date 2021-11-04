@@ -7,8 +7,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
   justify-content: center;
-  grid-gap: 100px;
-  @include mobile-only;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  @include pad {
+    justify-content: center;
+  }
+  @include mobile {
+    margin: 30px auto auto auto;
+  }
 }
 
 .photo-card {
@@ -24,6 +30,9 @@
   height: 300px;
   object-fit: cover;
   border-radius: 5px;
+  @include mobile {
+    height: 190px;
+  }
 }
 figcaption {
   display: flex;
@@ -32,4 +41,10 @@ figcaption {
   font-size: 1.3rem;
   font-weight: 400;
   margin-top: 10px;
+  .heart {
+    display: flex;
+  }
+  @include mobile {
+    font-size: 1.1rem;
+  }
 }

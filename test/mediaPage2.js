@@ -1,37 +1,3 @@
-const sortimages = async (buttonValue) => {
-  let mediasorted = await sortMedia();
-
-  switch (buttonValue) {
-    case 'Date':
-      mediasorted.forEach((x) => {
-        let date = x.date.split('-');
-        let date1 = date.join(' ');
-        let date2 = new Date(date1);
-        x.date = date2;
-      });
-      mediasorted.sort((a, b) => {
-        return b.date - a.date;
-      });
-
-      break;
-    case 'Popularité':
-      mediasorted.sort((a, b) => {
-        return b.likes - a.likes;
-      });
-      break;
-    case 'Titre':
-      mediasorted.sort(function (a, b) {
-        return a.title.localeCompare(b.title);
-      });
-      break;
-    default:
-      mediasorted.sort((a, b) => {
-        return b.likes - a.likes;
-      });
-  }
-  return mediasorted;
-};
-
 const displayImage = async (buttonValue) => {
   // Les données du photographer choisit
   let photographer = await pickPhotographer();
@@ -56,7 +22,7 @@ const displayImage = async (buttonValue) => {
                           <div class="heart">${
                             mediasDuPhotographe.likes
                           } <i class="fas fa-heart"></i></div>
-                          </figure>
+              </figure>
                   `;
       } else {
         return `

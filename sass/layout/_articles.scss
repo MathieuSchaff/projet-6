@@ -13,7 +13,7 @@
 .main {
   width: 300px;
   height: 450px;
-  background: #fff;
+  background: $colour-white;
   object-fit: cover;
   display: flex;
   flex-direction: column;
@@ -36,11 +36,11 @@
     font-weight: 400;
     font-size: 36px;
     text-align: center;
-    color: #d3573c;
+    color: $colour-secondary;
   }
   &__location {
     font-size: 13px;
-    color: #901c1c;
+    color: $colour-primary;
     line-height: 16px;
     font-weight: 400;
     margin-bottom: 5px;
@@ -55,7 +55,7 @@
     color: #000000;
   }
   &__tarif {
-    color: #757575;
+    color: $colour-grey;
     font-family: DM Sans;
     font-size: 9px;
     font-style: normal;

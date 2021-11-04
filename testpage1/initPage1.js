@@ -1,6 +1,7 @@
 createPage1(sortArrayPhotographer())
   .then((res) => {
     page = createElement(res);
+    console.log(page);
     document.querySelector('.mainContent').appendChild(page);
   })
   .then(() => {
