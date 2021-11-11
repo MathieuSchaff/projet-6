@@ -28,13 +28,21 @@ async function createPageDuPhotographe() {
         });
     })
     .then(() => {
-      displayImage2()
+      displayImage2().then((res) => {
+        console.log(res);
+        page = createElement(res);
+        document.querySelector('.wrapper').insertAdjacentElement('beforeEnd', page);
+        lightboxFunction();
+      });
+    })
+    .then(() => {
+      divLike()
         .then((res) => {
-          console.log(res);
-          page = createElement(res);
-          document.querySelector('.wrapper').insertAdjacentElement('beforeEnd', page);
-          lightboxFunction();
+          let divlike = createElement(res);
+          document.querySelector('.wrapper').insertAdjacentElement('beforeEnd', divlike);
         })
-        .then(async () => updateLikes());
+        .then(() => {
+          updateLikes();
+        });
     });
 }

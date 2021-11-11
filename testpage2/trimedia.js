@@ -74,6 +74,7 @@ const activateSortButton = async () => {
   }
 
   button.addEventListener('click', () => {
+    console.log('bouton openmenu');
     openMenu();
   });
 
@@ -125,7 +126,7 @@ const activateSortButton = async () => {
       focusMenu(e);
     }
   });
-  window.addEventListener('keyup', function (e) {
+  window.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && ul !== null) {
       closeMenu();
     }

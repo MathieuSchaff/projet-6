@@ -30,7 +30,14 @@
 button:focus {
   outline: none;
 }
-
+button.contact-me:focus {
+  background-color: $colour-form;
+  color: #000;
+}
+button.contact-me:hover {
+  background-color: $colour-form;
+  color: #000;
+}
 .dropdown-divider {
   height: 1px;
   width: 150px;
@@ -45,6 +52,14 @@ button:focus {
 #sort_button {
   position: absolute;
   top: 0;
+  &:focus {
+    background-color: $colour-form;
+    color: #000;
+  }
+  &:hover {
+    background-color: $colour-form;
+    color: #000;
+  }
 }
 #tri {
   position: absolute;
@@ -89,4 +104,8 @@ button:focus {
 }
 .activateRotate {
   transform: rotate(180deg);
+}
+.focused {
+  background-color: $colour-primary !important;
+  color: white !important;
 }

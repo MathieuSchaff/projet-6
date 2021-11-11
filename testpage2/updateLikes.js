@@ -11,13 +11,16 @@ async function updateLikes() {
   let totalLikes = document.querySelector('.totalLikes--number');
   totalLikes.innerHTML = `${sumLikes}`;
   document.querySelector('.salaire--journalier').innerHTML = `${photographer.price}€ / jour`;
-  document.querySelectorAll('.heart').forEach((element) => {
+  let allHeart = document.querySelectorAll('.heart');
+  console.log(allHeart);
+  allHeart.forEach((element) => {
     element.addEventListener('click', () => {
-      console.log(totalLikes.textContent);
-      let numberTotalLikes = new Number(totalLikes.textContent) + 1;
-      console.log(numberTotalLikes);
-      // document.querySelector('.likes').textContent = `${numberTotalLikes}`;
-      document.querySelector('.totalLikes--number').textContent = `${numberTotalLikes}`;
+      console.log();
+      console.log(typeof Number(totalLikes.textContent));
+      totalLikes.textContent = `${Number(totalLikes.textContent) + 1}`;
+      element.firstElementChild.textContent = `${
+        Number(element.firstElementChild.textContent) + 1
+      }`;
     });
   });
 }

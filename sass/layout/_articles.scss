@@ -1,13 +1,17 @@
 #articles {
   max-width: 1300px;
-  width: 80%;
+  // width: 80%;
   height: auto;
   margin: 100px auto auto auto;
   /* border: 1px solid #333; */
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
-  justify-content: center;
-  grid-gap: 15px;
+  justify-content: space-between;
+  row-gap: 15px;
+  column-gap: 70px;
+  @media screen and (max-width: 870px) {
+    justify-content: center;
+  }
 }
 
 .main {

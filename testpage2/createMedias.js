@@ -9,6 +9,7 @@ function createImagePhotographer(name, image, altText) {
       src: `./FishEyePhotos/Sample Photos/${name}/${image.replace('.jpg', '')}_resultat.jpg`,
       className: 'img-card',
       alt: `${altText}`,
+      tabIndex: '0',
     },
     undefined
   );
@@ -48,10 +49,11 @@ function createFigcaptionText(child) {
   return vnode;
 }
 function createFigcaptionLike(child1) {
-  const vnode = m('div', { className: 'heart' }, [
-    m('div', { className: 'likes' }, [`${child1}`]),
-    m('i', { className: 'fas fa-heart' }),
-  ]);
+  const vnode = m(
+    'button',
+    { className: 'heart', tabIndex: '0', ariaLabel: `Nombre de likes ${child1}` },
+    [m('div', { className: 'likes' }, [`${child1}`]), m('i', { className: 'fas fa-heart' })]
+  );
   return vnode;
 }
 const displayImage2 = async (buttonValue) => {

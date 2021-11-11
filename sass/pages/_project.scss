@@ -45,6 +45,18 @@ figcaption {
   margin-top: 10px;
   .heart {
     display: flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: $colour-white;
+    color: $colour-primary;
+    font-size: 1.3rem;
+    font-weight: 400;
+    &:focus {
+      border: 1px solid black;
+      border-radius: 3px;
+    }
   }
   @include mobile {
     font-size: 1.1rem;

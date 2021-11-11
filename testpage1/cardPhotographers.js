@@ -51,7 +51,7 @@ function createLink(link) {
   );
   return vnode;
 }
-function createButton(button) {
+function buttonPage1(button) {
   const vnode = m(
     'button',
     {
@@ -80,7 +80,7 @@ async function createPage1(request) {
     'main',
     { id: 'articles' },
     photographers.map((photographer) => {
-      let btns = photographer.tags.map((x) => createButton(x));
+      let btns = photographer.tags.map((x) => buttonPage1(x));
       return m('article', { className: 'main' }, [
         m(
           'a',
@@ -100,6 +100,5 @@ async function createPage1(request) {
       ]);
     })
   );
-  console.log(vnode);
   return vnode;
 }

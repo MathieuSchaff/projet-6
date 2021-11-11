@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   animation: modalCome 0.3s both;
+  z-index: 1000;
   @include mobile-only {
     align-items: inherit;
     justify-content: inherit;

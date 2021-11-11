@@ -2,15 +2,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 'logo nav title';
-  padding-top: 30px;
-  @include mobile {
-    padding-top: 20px;
+  @media screen and (max-width: 1400px) {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
       'logo title'
       'nav nav';
   }
+  // @include mobile {
+
+  // }
   &__logo {
     grid-area: logo;
     justify-self: center;
@@ -36,6 +37,7 @@
     justify-self: center;
     align-self: center;
     color: $colour-primary;
+    white-space: nowrap;
     @include mobile {
       font-size: 1rem;
       padding-bottom: 5px;
@@ -54,7 +56,9 @@
   font-weight: 600;
   font-size: 0.9rem;
   line-height: 16px;
-  &:active {
+  @include mobile {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   &:focus {
     outline: none;
@@ -90,4 +94,12 @@
   text-decoration: none;
   font-weight: bold;
   z-index: 1000;
+}
+button.nav--button.tagTri {
+  border-radius: 11px;
+  font-family: DM Sans;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+  text-align: center;
 }
