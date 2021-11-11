@@ -25,7 +25,7 @@ const formulaire = async () => {
     console.log(document.querySelector('.contact-me').style.zIndex);
     document.querySelector('.contact-me').style.zIndex = '-1';
     console.log(document.querySelector('.Order-wrapper'));
-    document.querySelector(' #Order-wrapper').style.zIndex = '0';
+    document.querySelector('#Order-wrapper').style.zIndex = '0';
   };
 
   const closeModal = function (e) {
@@ -40,7 +40,7 @@ const formulaire = async () => {
     let wrapper = document.querySelector('.modal--wrapper');
     wrapper.removeEventListener('click', stopPropagation);
     document.querySelector('.contact-me').style.zIndex = '1';
-    document.querySelector(' #Order-wrapper').style.zIndex = '20';
+    document.querySelector('#Order-wrapper').style.zIndex = '20';
     contactMe.focus();
     modal == null;
   };

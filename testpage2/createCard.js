@@ -92,13 +92,13 @@ function photographerImage(portrait) {
 }
 function createButton(button) {
   const vnode = m(
-    'button',
+    'a',
     {
       className: 'nav--button button--photographer',
-      type: 'button',
+      href: `index.html?${button}=true`,
       value: `${button}`,
     },
-    [`#${button}`, m('span', { className: 'sr-only' }, ['tag'])]
+    [`#${button}`, m('span', { className: 'sr-only' }, [`#${button}`])]
   );
   return vnode;
 }

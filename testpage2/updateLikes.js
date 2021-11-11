@@ -8,6 +8,16 @@ async function updateLikes() {
     return (sum += currentvalue);
   }, 0);
 
-  document.querySelector('.totalLikes--number').innerHTML = `${sumLikes}`;
+  let totalLikes = document.querySelector('.totalLikes--number');
+  totalLikes.innerHTML = `${sumLikes}`;
   document.querySelector('.salaire--journalier').innerHTML = `${photographer.price}€ / jour`;
+  document.querySelectorAll('.heart').forEach((element) => {
+    element.addEventListener('click', () => {
+      console.log(totalLikes.textContent);
+      let numberTotalLikes = new Number(totalLikes.textContent) + 1;
+      console.log(numberTotalLikes);
+      // document.querySelector('.likes').textContent = `${numberTotalLikes}`;
+      document.querySelector('.totalLikes--number').textContent = `${numberTotalLikes}`;
+    });
+  });
 }

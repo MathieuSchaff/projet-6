@@ -45,7 +45,7 @@ function createLink(link) {
     'a',
     {
       className: 'main__link',
-      href: `http://127.0.0.1:5500/photographer.html?id=${link}`,
+      href: `http://127.0.0.1:5500/index.html?id=${link}`,
     },
     undefined
   );
@@ -55,7 +55,7 @@ function createButton(button) {
   const vnode = m(
     'button',
     {
-      className: 'nav--button',
+      className: 'nav--button tagTri',
       type: 'button',
       value: `${button}`,
     },
@@ -85,7 +85,7 @@ async function createPage1(request) {
         m(
           'a',
           {
-            href: `http://127.0.0.1:5500/photographer.html?id=${photographer.id}`,
+            href: `http://127.0.0.1:5500/index.html?id=${photographer.id}`,
             className: 'main__link',
             onclick: 'mafonction(this)',
           },

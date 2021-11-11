@@ -23,24 +23,25 @@ initialise la variable page dans le contexte global.
 5) Initialise l'update des likes. 
 
 
-Problèmes : 
 
-la modif avec patch ne fonctionne pas sur le bouton tri. 
+// AUTRE 
 
-fonction close menu doit modifier le DOM ! 
+createHeaderPage2 ( cree le header )
 
-patch n'est pas asynchrone
-const patch = (el, newVNode, oldVNode) 
-prends en paramètre page qui a été initialisé au début de l'init. 
-et displayImage2(button.value).
-displayImage2 est asynchrone et renvoie le vnode approprié a la place de l'ancien vnode.
+formWrapper (cree le aside qui contient le formulaire)
+
+formulaire (initialise la possibilité d'ouvrir le formulaire et tout ses fonctions)
+
+createSortButton ( crée le bouton qui peut trier )
+
+activateSortButton ( permet au bouton de tri de fonctionner)
+
+displayImage2 ( cree les images )
+
+lightboxFunction ( permet d'ouvrir la lightbox);
+
+updateLikes ( permet d'update les likes)
 
 
-
-
-faire une fonction qui crée l'élement page, et que l'introduit dans le dom. 
-
-a chaque changement de du dom ( a chaque patch) => 
-je veux que l'événement lightbox soit initialisé à nouveau. 
 
 

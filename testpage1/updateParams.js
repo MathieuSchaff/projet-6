@@ -11,8 +11,15 @@ const updateParams = async (linkValue) => {
   }
   oldvNode = await createPage1(sortArrayPhotographer(params2));
   newVnode = await createPage1(sortArrayPhotographer(params));
-  let paramsToString = params.toString();
+  let paramsToString = params.toLocaleString();
+  console.log(params.toLocaleString());
   history.pushState({}, null, `?${paramsToString}`);
   page = document.getElementById('articles');
   patch(page, newVnode, oldvNode);
+  const linksTags = document.querySelectorAll('.tagTri');
+  linksTags.forEach((tags) => {
+    tags.addEventListener('click', () => {
+      updateParams(tags.value);
+    });
+  });
 };

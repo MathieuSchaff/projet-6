@@ -30,15 +30,6 @@ const getPhotographer = async () => {
 };
 
 /**
- * RECUPERE TOUTE LES MEDIAS
- **/
-
-const getMedia = async () => {
-  let { media } = await getRequest();
-  return media;
-};
-
-/**
  * RECUPERE TOUTE LE PHOTOGRAPHE CLIQUE GRACE AU HASH
  **/
 async function pickPhotographer() {
@@ -46,8 +37,6 @@ async function pickPhotographer() {
   for (let i = 0; i < photographers.length; i++) {
     if (photographers[i].id == searchParams.get('id')) {
       return photographers[i];
-    } else {
-      window.location = 'http://127.0.0.1:5500/index.html';
     }
   }
 }

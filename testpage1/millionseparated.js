@@ -2,6 +2,7 @@ const createElement = (vnode) => {
   if (typeof vnode === 'string') {
     return document.createTextNode(vnode); // Catch if vnode is just text
   }
+
   const el = document.createElement(vnode.tag);
   if (vnode.props) {
     Object.entries(vnode.props).forEach(([name, value]) => {
