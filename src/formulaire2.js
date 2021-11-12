@@ -1,3 +1,5 @@
+import { m } from './src/millionseparated.js';
+
 export function createFormDataDiv(label, input) {
   const vnode = m(
     'div',

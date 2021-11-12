@@ -1,3 +1,11 @@
+import { page } from './src/getData.js';
+
+import { createElement } from './src/millionseparated.js';
+import { sortArrayPhotographer } from './src/sortedPhtgphers.js';
+import { updateParams } from './src/updateParams.js';
+import { createPage1 } from './src/cardPhotographers.js';
+import { createRedirect, createHeaderPage1 } from './src/header.js';
+
 export async function createPagePhotographers() {
   let wrapper = document.querySelector('.wrapper');
   wrapper.innerHTML = '';

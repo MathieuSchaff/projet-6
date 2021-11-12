@@ -1,8 +1,15 @@
 // UPDATE LES PARAMS ET URL = > recharge page
+import { page } from './src/getData.js';
+
+import { patch } from './src/millionseparated.js';
+import { sortArrayPhotographer } from './src/sortedPhtgphers.js';
+import { oldvNode, newVnode, updateParams } from './src/updateParams.js';
+import { createPage1 } from './src/cardPhotographers.js';
+
+import { createPage1 } from './src/cardPhotographers.js';
 export let oldvNode;
 export let newVnode;
 export const updateParams = async (linkValue) => {
-  console.log('rentré update');
   let params = new URLSearchParams(window.location.search);
   let params2 = new URLSearchParams(window.location.search);
   if (params.has(linkValue)) {

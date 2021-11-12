@@ -1,4 +1,6 @@
 // FONCTION DU FORMULAIRE
+import { pickPhotographer } from './src/getData.js';
+
 export const formulaire = async () => {
   let photographer = await pickPhotographer();
   let name = document.querySelector('.contact-name');

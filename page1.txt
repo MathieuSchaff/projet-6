@@ -1,32 +1,14 @@
-initialisation : 
+sortArrayPhotographer => 
+need getRequest ( need myInit, myRequest, page)
+retour une array sans doublons des photographes 
 
-createPage1 
-(
- 1) fonction asynchrone.
- 2) prends en paramètre une array de photographes
- 3) transforme array en vnode
-)
-
-=> 
-
-init de page = createElement avec le vnode.
-
-=> 
-
-initialisation de la recherche/ tri par tags. 
-
-=> 
-
-updateParams récupère deux searchParams, 
-avec le premier , il enlève ou ajoute le params du tag selectionné
-l'autre ne bouge pas. 
-
-ensuite je récupère deux vnode en fonctions des params= 
- le vieu vnode et le nouveau vnode
- 
-
-updateParams va patch avec les deux vnode correspondants. 
-
-=> 
-
-puis j'initialise a nouveau updateParams sur les tag des carte des photographeurs créees. 
+updateParams => 
+need patch, createPage1 ( qui need  createName,
+  createCity,
+  createTagline,
+  createPrice,
+  createTags,
+  createPortrait,
+  createLink,
+  buttonPage1,
+  createButtons,)

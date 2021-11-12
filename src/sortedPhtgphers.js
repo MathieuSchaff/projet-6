@@ -1,3 +1,5 @@
+import { getRequest } from './src/getData.js';
+
 // Retour une array avec les photographer trié en fonction s'ils ont les tag
 export async function sortArrayPhotographer(paramsATester) {
   //récupère tous les photographes

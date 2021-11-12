@@ -1,3 +1,5 @@
+import { m } from './src/millionseparated.js';
+
 export function ordreWrapperButton(button1, ul) {
   const vnode = m(
     'div',

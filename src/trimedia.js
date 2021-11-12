@@ -1,3 +1,12 @@
+import { page } from './src/getData.js';
+
+import { patch } from './src/millionseparated.js';
+
+import { activateSortButton } from './src/trimedia.js';
+import { displayImage2 } from './src/createMedias.js';
+
+import { lightboxFunction } from './src/lightbox.js';
+
 export const activateSortButton = async () => {
   const button = document.getElementById('sort_button');
   let indexTri = 0;

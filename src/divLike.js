@@ -1,3 +1,5 @@
+import { m } from './src/millionseparated.js';
+
 // Creation du compteur de like
 export async function divLike() {
   const vnode = m('div', { className: 'likesContainer' }, [

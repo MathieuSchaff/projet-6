@@ -1,3 +1,6 @@
+import { createPageDuPhotographe } from './src/init.js';
+import { createPagePhotographers } from './src/initPage1.js';
+
 export const router = () => {
   // CREE PAGE DES PHOTOGRAPHES SANS TAG
   if (window.location.search === '') {

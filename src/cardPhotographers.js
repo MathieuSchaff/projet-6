@@ -1,3 +1,5 @@
+import { m } from './src/millionseparated.js';
+
 export function createName(name) {
   const vnode = m('h2', { className: 'main__name' }, [name]);
   return vnode;

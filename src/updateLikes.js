@@ -1,3 +1,5 @@
+import { pickPhotographer, sortMedia } from './src/getData.js';
+
 export async function updateLikes() {
   let photographer = await pickPhotographer();
   let media = await sortMedia();

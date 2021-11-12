@@ -1,3 +1,5 @@
+import { m } from './src/millionseparated.js';
+
 export async function createRedirect() {
   const vnode = m(
     'a',

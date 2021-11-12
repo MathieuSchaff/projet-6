@@ -1,3 +1,5 @@
+import { m } from './src/millionseparated.js';
+
 export function createArticleHeader(child) {
   const vnode = m(
     'article',

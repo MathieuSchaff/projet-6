@@ -1,3 +1,9 @@
+import { pickPhotographer } from './src/getData.js';
+
+import { m } from './src/millionseparated.js';
+
+import { sortimages } from './src/sortimages.js';
+
 export function createFigure(child1, child2) {
   const vnode = m('figure', undefined, [child1, child2]);
   return vnode;
