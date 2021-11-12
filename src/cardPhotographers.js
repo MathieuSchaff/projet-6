@@ -1,21 +1,21 @@
-function createName(name) {
+export function createName(name) {
   const vnode = m('h2', { className: 'main__name' }, [name]);
   return vnode;
 }
-function createCity(city, country) {
+export function createCity(city, country) {
   const vnode = m('p', { className: 'main__location' }, [`${city}, ${country}`]);
   return vnode;
 }
 
-function createTagline(tagline) {
+export function createTagline(tagline) {
   const vnode = m('p', { className: 'main__philosophy' }, [tagline]);
   return vnode;
 }
-function createPrice(price) {
+export function createPrice(price) {
   const vnode = m('p', { className: 'main__tarif' }, [`${price} €`]);
   return vnode;
 }
-function createTags() {
+export function createTags() {
   const vnode = m(
     'button',
     {
@@ -28,7 +28,7 @@ function createTags() {
 
   return vnode;
 }
-function createPortrait(portrait, name) {
+export function createPortrait(portrait, name) {
   const vnode = m(
     'img',
     {
@@ -40,7 +40,7 @@ function createPortrait(portrait, name) {
   );
   return vnode;
 }
-function createLink(link) {
+export function createLink(link) {
   const vnode = m(
     'a',
     {
@@ -51,7 +51,7 @@ function createLink(link) {
   );
   return vnode;
 }
-function buttonPage1(button) {
+export function buttonPage1(button) {
   const vnode = m(
     'button',
     {
@@ -63,7 +63,7 @@ function buttonPage1(button) {
   );
   return vnode;
 }
-function createButtons(btns) {
+export function createButtons(btns) {
   const vnode = m(
     'div',
     {
@@ -74,7 +74,7 @@ function createButtons(btns) {
   return vnode;
 }
 
-async function createPage1(request) {
+export async function createPage1(request) {
   let photographers = await request;
   let vnode = m(
     'main',

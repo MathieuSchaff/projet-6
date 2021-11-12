@@ -1,4 +1,4 @@
-let myInit = {
+export let myInit = {
   method: 'GET',
   headers: {
     Accept: 'application/json',
@@ -7,17 +7,16 @@ let myInit = {
   mode: 'cors',
   cache: 'default',
 };
-let myRequest = new Request('data.json', myInit);
-let loaded = 0;
-let page;
+export let myRequest = new Request('data.json', myInit);
+export let page;
 // recupère données
-const getRequest = async () => {
+export const getRequest = async () => {
   let reponse = await fetch(myRequest);
   let data = await reponse.json();
   return data;
 };
 // return une array photographer
-const getPhotographer = async () => {
+export const getPhotographer = async () => {
   let { photographers } = await getRequest();
   return photographers;
 };
@@ -25,15 +24,15 @@ const getPhotographer = async () => {
  * RECUPERE TOUTE LES MEDIAS
  **/
 
-const getMedia = async () => {
+export const getMedia = async () => {
   let { media } = await getRequest();
   return media;
 };
 
 /**
- * RECUPERE TOUTE LE PHOTOGRAPHE CLIQUE GRACE AU HASH
+ * RECUPERE TOUTE LE PHOTOGRAPHE CLIQUE GRACE AUX PARAMS
  **/
-async function pickPhotographer() {
+export async function pickPhotographer() {
   let photographers = await getPhotographer();
   let searchParams = new URLSearchParams(window.location.search);
   for (let i = 0; i < photographers.length; i++) {
@@ -47,7 +46,7 @@ async function pickPhotographer() {
  * RECUPERE LES MEDIAS DU PHOTOGRAPHE
  **/
 
-async function sortMedia() {
+export async function sortMedia() {
   let photographerMedia = await getMedia();
   let searchParams = new URLSearchParams(window.location.search);
   let mediaSorted = [];

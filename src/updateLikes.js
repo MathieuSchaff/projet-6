@@ -1,4 +1,4 @@
-async function updateLikes() {
+export async function updateLikes() {
   let photographer = await pickPhotographer();
   let media = await sortMedia();
   let likes = media.map((x) => {

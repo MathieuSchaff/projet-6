@@ -1,5 +1,5 @@
 // FONCTION DU FORMULAIRE
-const formulaire = async () => {
+export const formulaire = async () => {
   let photographer = await pickPhotographer();
   let name = document.querySelector('.contact-name');
   name.innerHTML = `${photographer.name}`;

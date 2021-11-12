@@ -1,4 +1,4 @@
-const lightboxFunction = () => {
+export const lightboxFunction = () => {
   const images = [...document.querySelectorAll('.img-card')];
   const images1 = [...document.querySelectorAll('img.img-card, source')];
   const gallery = images1.map((image) => {

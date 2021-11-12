@@ -1,4 +1,4 @@
-const sortimages = async (buttonValue) => {
+export const sortimages = async (buttonValue) => {
   let mediasorted = await sortMedia();
 
   switch (buttonValue) {

@@ -1,4 +1,4 @@
-function ordreWrapperButton(button1, ul) {
+export function ordreWrapperButton(button1, ul) {
   const vnode = m(
     'div',
     {
@@ -8,7 +8,7 @@ function ordreWrapperButton(button1, ul) {
   );
   return vnode;
 }
-function spanSort() {
+export function spanSort() {
   const vnode = m(
     'span',
     {
@@ -18,7 +18,7 @@ function spanSort() {
   );
   return vnode;
 }
-function buttonSort() {
+export function buttonSort() {
   const vnode = m(
     'button',
     {
@@ -37,7 +37,7 @@ function buttonSort() {
   );
   return vnode;
 }
-function ulSort() {
+export function ulSort() {
   const vnode = m(
     'ul',
     {
@@ -60,7 +60,7 @@ function ulSort() {
   );
   return vnode;
 }
-async function createSortButton() {
+export async function createSortButton() {
   const vnode = m(
     'div',
     {

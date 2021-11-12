@@ -1,4 +1,4 @@
-async function createPageDuPhotographe() {
+export async function createPageDuPhotographe() {
   document.querySelector('.wrapper').innerHTML = '';
   createHeaderPage2().then((res) => {
     let header = createElement(res);

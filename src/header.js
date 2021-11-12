@@ -1,4 +1,4 @@
-async function createRedirect() {
+export async function createRedirect() {
   const vnode = m(
     'a',
     {
@@ -16,11 +16,11 @@ async function createRedirect() {
   return vnode;
 }
 
-function createIndex(img) {
+export function createIndex(img) {
   const vnode = m('a', { className: 'header__logo', href: 'index.html' }, [img]);
   return vnode;
 }
-function createImgHeader() {
+export function createImgHeader() {
   const vnode = m('img', {
     src: './logo/logo.svg',
     alt: "Fisheye page d'acceuil",
@@ -29,7 +29,7 @@ function createImgHeader() {
   return vnode;
 }
 
-function createNavButtons(value) {
+export function createNavButtons(value) {
   let capitalize = value[0].toUpperCase() + value.slice(1);
   const vnode = m(
     'button',
@@ -45,7 +45,7 @@ function createNavButtons(value) {
   );
   return vnode;
 }
-function createNav() {
+export function createNav() {
   const vnode = m(
     'nav',
     {
@@ -67,7 +67,7 @@ function createNav() {
   );
   return vnode;
 }
-function createTitle() {
+export function createTitle() {
   const vnode = m(
     'h1',
     {
@@ -78,7 +78,7 @@ function createTitle() {
   );
   return vnode;
 }
-async function createHeaderPage1() {
+export async function createHeaderPage1() {
   const vnode = m(
     'header',
     {
@@ -88,7 +88,7 @@ async function createHeaderPage1() {
   );
   return vnode;
 }
-async function createHeaderPage2() {
+export async function createHeaderPage2() {
   const vnode = m('header', undefined, [createIndex(createImgHeader())]);
   return vnode;
 }

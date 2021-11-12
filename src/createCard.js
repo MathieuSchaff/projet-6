@@ -1,4 +1,4 @@
-function createArticleHeader(child) {
+export function createArticleHeader(child) {
   const vnode = m(
     'article',
     {
@@ -8,7 +8,7 @@ function createArticleHeader(child) {
   );
   return vnode;
 }
-function photographerMain(child1, child2) {
+export function photographerMain(child1, child2) {
   const vnode = m(
     'div',
     {
@@ -18,7 +18,7 @@ function photographerMain(child1, child2) {
   );
   return vnode;
 }
-function photographerProfile(child1, child2, child3, child4) {
+export function photographerProfile(child1, child2, child3, child4) {
   const vnode = m(
     'div',
     {
@@ -28,7 +28,7 @@ function photographerProfile(child1, child2, child3, child4) {
   );
   return vnode;
 }
-function photographerName(child) {
+export function photographerName(child) {
   const vnode = m(
     'h1',
     {
@@ -38,7 +38,7 @@ function photographerName(child) {
   );
   return vnode;
 }
-function photographerLocation(child1, child2) {
+export function photographerLocation(child1, child2) {
   const vnode = m(
     'p',
     {
@@ -48,7 +48,7 @@ function photographerLocation(child1, child2) {
   );
   return vnode;
 }
-function photographerPhilosophy(child) {
+export function photographerPhilosophy(child) {
   const vnode = m(
     'p',
     {
@@ -58,7 +58,7 @@ function photographerPhilosophy(child) {
   );
   return vnode;
 }
-function photographerButton(child) {
+export function photographerButton(child) {
   const vnode = m(
     'button',
     {
@@ -68,7 +68,7 @@ function photographerButton(child) {
   );
   return vnode;
 }
-function photographerDivImg(child) {
+export function photographerDivImg(child) {
   const vnode = m(
     'div',
     {
@@ -78,7 +78,7 @@ function photographerDivImg(child) {
   );
   return vnode;
 }
-function photographerImage(portrait) {
+export function photographerImage(portrait) {
   const vnode = m(
     'img',
     {
@@ -90,7 +90,7 @@ function photographerImage(portrait) {
   );
   return vnode;
 }
-function createButton(button) {
+export function createButton(button) {
   const vnode = m(
     'a',
     {
@@ -102,7 +102,7 @@ function createButton(button) {
   );
   return vnode;
 }
-function createButtons(btns) {
+export function createButtons2(btns) {
   const vnode = m(
     'div',
     {
@@ -112,7 +112,7 @@ function createButtons(btns) {
   );
   return vnode;
 }
-function buttonForm() {
+export function buttonForm() {
   const vnode = m(
     'button',
     {
@@ -122,7 +122,7 @@ function buttonForm() {
   );
   return vnode;
 }
-async function createCard() {
+export async function createCard() {
   let photographer = await pickPhotographer();
   let btns = photographer.tags.map((x) => createButton(x));
   const vnode = m('article', { className: 'photographer-header' }, [
@@ -131,7 +131,7 @@ async function createCard() {
         photographerName(photographer.name),
         photographerLocation(photographer.city, photographer.country),
         photographerPhilosophy(photographer.tagline),
-        createButtons(btns)
+        createButtons2(btns)
       ),
       buttonForm()
     ),

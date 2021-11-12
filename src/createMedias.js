@@ -1,8 +1,8 @@
-function createFigure(child1, child2) {
+export function createFigure(child1, child2) {
   const vnode = m('figure', undefined, [child1, child2]);
   return vnode;
 }
-function createImagePhotographer(name, image, altText) {
+export function createImagePhotographer(name, image, altText) {
   const vnode = m(
     'img',
     {
@@ -15,7 +15,7 @@ function createImagePhotographer(name, image, altText) {
   );
   return vnode;
 }
-function createVideo(child) {
+export function createVideo(child) {
   const vnode = m(
     'video',
     {
@@ -27,7 +27,7 @@ function createVideo(child) {
   );
   return vnode;
 }
-function createSource(name, video, alt) {
+export function createSource(name, video, alt) {
   const vnode = m(
     'source',
     {
@@ -40,15 +40,15 @@ function createSource(name, video, alt) {
   );
   return vnode;
 }
-function createFigcaption(child1, child2) {
+export function createFigcaption(child1, child2) {
   const vnode = m('figcaption', undefined, [child1, child2]);
   return vnode;
 }
-function createFigcaptionText(child) {
+export function createFigcaptionText(child) {
   const vnode = m('p', { className: 'textfig' }, [child]);
   return vnode;
 }
-function createFigcaptionLike(child1) {
+export function createFigcaptionLike(child1) {
   const vnode = m(
     'button',
     { className: 'heart', tabIndex: '0', ariaLabel: `Nombre de likes ${child1}` },
@@ -56,7 +56,7 @@ function createFigcaptionLike(child1) {
   );
   return vnode;
 }
-const displayImage2 = async (buttonValue) => {
+export const displayImage2 = async (buttonValue) => {
   let photographer = await pickPhotographer();
   let mediasorted = await sortimages(buttonValue);
   const vnode = m(

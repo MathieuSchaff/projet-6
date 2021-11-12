@@ -1,4 +1,4 @@
-const router = () => {
+export const router = () => {
   // CREE PAGE DES PHOTOGRAPHES SANS TAG
   if (window.location.search === '') {
     createPagePhotographers();

@@ -1,5 +1,5 @@
 // Creation du compteur de like
-async function divLike() {
+export async function divLike() {
   const vnode = m('div', { className: 'likesContainer' }, [
     m('div', { className: 'totalLikes' }, [
       m('p', { className: 'totalLikes--number' }, undefined),

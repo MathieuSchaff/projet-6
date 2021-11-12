@@ -1,4 +1,4 @@
-function createFormDataDiv(label, input) {
+export function createFormDataDiv(label, input) {
   const vnode = m(
     'div',
     {
@@ -8,7 +8,7 @@ function createFormDataDiv(label, input) {
   );
   return vnode;
 }
-function createLabel(type, texte) {
+export function createLabel(type, texte) {
   const vnode = m(
     'label',
     {
@@ -18,7 +18,7 @@ function createLabel(type, texte) {
   );
   return vnode;
 }
-function createInputForm(type, id, ariaLabel, secclass) {
+export function createInputForm(type, id, ariaLabel, secclass) {
   const vnode = m(
     'input',
     {
@@ -33,7 +33,7 @@ function createInputForm(type, id, ariaLabel, secclass) {
   );
   return vnode;
 }
-function submitForm() {
+export function submitForm() {
   const vnode = m(
     'input',
     {
@@ -46,7 +46,7 @@ function submitForm() {
   );
   return vnode;
 }
-function createForm() {
+export function createForm() {
   const vnode = m(
     'form',
     {
@@ -69,7 +69,7 @@ function createForm() {
   );
   return vnode;
 }
-function headerModalWrapper() {
+export function headerModalWrapper() {
   const vnode = m(
     'header',
     {
@@ -90,7 +90,7 @@ function headerModalWrapper() {
   );
   return vnode;
 }
-function modalWrapper() {
+export function modalWrapper() {
   const vnode = m(
     'div',
     {
@@ -100,7 +100,7 @@ function modalWrapper() {
   );
   return vnode;
 }
-function formWrapper() {
+export function formWrapper() {
   const vnode = m(
     'aside',
     {

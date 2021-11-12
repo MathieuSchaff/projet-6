@@ -1,4 +1,4 @@
-const activateSortButton = async () => {
+export const activateSortButton = async () => {
   const button = document.getElementById('sort_button');
   let indexTri = 0;
   let ul = null;
