@@ -1,11 +1,7 @@
-import { page } from './src/getData.js';
-
-import { patch } from './src/millionseparated.js';
-
-import { activateSortButton } from './src/trimedia.js';
-import { displayImage2 } from './src/createMedias.js';
-
-import { lightboxFunction } from './src/lightbox.js';
+import { page } from './getData.js';
+import { patch } from './millionseparated.js';
+import { displayImage2 } from './createMedias.js';
+import { lightboxFunction } from './lightbox.js';
 
 export const activateSortButton = async () => {
   const button = document.getElementById('sort_button');
@@ -73,7 +69,7 @@ export const activateSortButton = async () => {
     triLi[indexTri].classList.remove('focused');
     ul.querySelector('.chevronRotate').classList.remove('activateRotate');
 
-    page = document.querySelector('.sectioncontainer');
+    let page = document.querySelector('.sectioncontainer');
     let newVnode = await displayImage2(button.value);
     console.log(newVnode);
     patch(page, newVnode);

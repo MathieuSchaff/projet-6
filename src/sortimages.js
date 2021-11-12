@@ -1,4 +1,4 @@
-import { sortMedia } from './src/getData.js';
+import { sortMedia } from './getData.js';
 
 export const sortimages = async (buttonValue) => {
   let mediasorted = await sortMedia();

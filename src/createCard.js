@@ -1,5 +1,5 @@
-import { m } from './src/millionseparated.js';
-
+import { m } from './millionseparated.js';
+import { pickPhotographer } from './getData.js';
 export function createArticleHeader(child) {
   const vnode = m(
     'article',

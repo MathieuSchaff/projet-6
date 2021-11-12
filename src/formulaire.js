@@ -1,5 +1,5 @@
 // FONCTION DU FORMULAIRE
-import { pickPhotographer } from './src/getData.js';
+import { pickPhotographer } from './getData.js';
 
 export const formulaire = async () => {
   let photographer = await pickPhotographer();

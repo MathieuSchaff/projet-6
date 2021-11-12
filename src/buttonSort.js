@@ -1,4 +1,4 @@
-import { m } from './src/millionseparated.js';
+import { m } from './millionseparated.js';
 
 export function ordreWrapperButton(button1, ul) {
   const vnode = m(

@@ -1,4 +1,4 @@
-import { m } from './src/millionseparated.js';
+import { m } from './millionseparated.js';
 
 // Creation du compteur de like
 export async function divLike() {

@@ -11,4 +11,4 @@ need patch, createPage1 ( qui need  createName,
   createPortrait,
   createLink,
   buttonPage1,
-  createButtons,)
+  createButtons,), et need sortArrayPhotographer

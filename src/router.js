@@ -1,5 +1,5 @@
-import { createPageDuPhotographe } from './src/init.js';
-import { createPagePhotographers } from './src/initPage1.js';
+import { createPageDuPhotographe } from './init.js';
+import { createPagePhotographers } from './initPage1.js';
 
 export const router = () => {
   // CREE PAGE DES PHOTOGRAPHES SANS TAG
@@ -15,4 +15,3 @@ export const router = () => {
     console.log('erreur route');
   }
 };
-router();

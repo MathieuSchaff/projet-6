@@ -1,10 +1,10 @@
-import { page } from './src/getData.js';
+import { page } from './getData.js';
 
-import { createElement } from './src/millionseparated.js';
-import { sortArrayPhotographer } from './src/sortedPhtgphers.js';
-import { updateParams } from './src/updateParams.js';
-import { createPage1 } from './src/cardPhotographers.js';
-import { createRedirect, createHeaderPage1 } from './src/header.js';
+import { createElement } from './millionseparated.js';
+import { sortArrayPhotographer } from './sortedPhtgphers.js';
+import { updateParams } from './updateParams.js';
+import { createPage1 } from './cardPhotographers.js';
+import { createRedirect, createHeaderPage1 } from './header.js';
 
 export async function createPagePhotographers() {
   let wrapper = document.querySelector('.wrapper');
@@ -31,8 +31,8 @@ export async function createPagePhotographers() {
     });
   });
   let params = new URLSearchParams(window.location.search);
-  pageVnode = await createPage1(sortArrayPhotographer(params));
-  page = createElement(pageVnode);
+  let pageVnode = await createPage1(sortArrayPhotographer(params));
+  let page = createElement(pageVnode);
   wrapper.insertAdjacentElement('beforeEnd', page);
   const links = document.querySelectorAll('button.nav--button');
   links.forEach((link) => {

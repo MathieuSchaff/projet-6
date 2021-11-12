@@ -1,19 +1,15 @@
-import { page } from './src/getData.js';
-
-import { createElement } from './src/millionseparated.js';
-
-import { createHeaderPage2 } from './src/header.js';
-
-import { createSortButton } from './src/buttonSort.js';
-import { createCard } from './src/createCard.js';
-import { divLike } from './src/divLike.js';
-import { formulaire } from './src/formulaire.js';
-import { formWrapper } from './src/formulaire2.js';
-import { updateLikes } from './src/updateLikes.js';
-import { activateSortButton } from './src/trimedia.js';
-import { displayImage2 } from './src/createMedias.js';
-import { createPageDuPhotographe } from './src/init.js';
-import { lightboxFunction } from './src/lightbox.js';
+import { page } from './getData.js';
+import { createElement } from './millionseparated.js';
+import { createHeaderPage2 } from './header.js';
+import { createSortButton } from './buttonSort.js';
+import { createCard } from './createCard.js';
+import { divLike } from './divLike.js';
+import { formulaire } from './formulaire.js';
+import { formWrapper } from './formulaire2.js';
+import { updateLikes } from './updateLikes.js';
+import { activateSortButton } from './trimedia.js';
+import { displayImage2 } from './createMedias.js';
+import { lightboxFunction } from './lightbox.js';
 
 export async function createPageDuPhotographe() {
   document.querySelector('.wrapper').innerHTML = '';
@@ -47,7 +43,7 @@ export async function createPageDuPhotographe() {
     .then(() => {
       displayImage2().then((res) => {
         console.log(res);
-        page = createElement(res);
+        let page = createElement(res);
         document.querySelector('.wrapper').insertAdjacentElement('beforeEnd', page);
         lightboxFunction();
       });
