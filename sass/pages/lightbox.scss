@@ -16,31 +16,36 @@
   width: 30px;
   height: 100%;
   position: fixed;
-  right: 0;
+  right: 10px;
   z-index: 100;
   top: 0;
   @include mobile-only {
-    background: url(/images/Vector.svg) center center / 30px 30px no-repeat transparent;
+    background: url(/images/Vector.svg) center center / 20px 20px no-repeat transparent;
+    right: 0;
   }
 }
 
 .lightbox__prev {
   right: auto;
-  left: 0;
+  left: 10px;
   transform: rotate(180deg);
+  @include mobile-only {
+    left: 0;
+  }
 }
 .lightbox__close {
   width: 42px;
   height: 42px;
-  background: url(/images/cross.svg) center center / 100% 100% no-repeat transparent;
+  background: url(/images/cross.svg) center center / 100% 70% no-repeat transparent;
   position: fixed;
   right: 10px;
-  z-index: 100;
-  top: 20px;
+  z-index: 1000;
+  top: 15%;
   text-indent: -3000px;
   cursor: pointer;
   @include mobile-only {
-    background: url(/images/cross.svg) center center / 100% 70% no-repeat transparent;
+    background: url(/images/cross.svg) center center / 50% 50% no-repeat transparent;
+    right: -5px;
   }
 }
 .lightbox button {
@@ -52,6 +57,11 @@
 }
 .lightbox button:hover {
   opacity: 1;
+  color: black;
+}
+.lightbox button:focus {
+  opacity: 1;
+  color: black;
 }
 .lightbox__container {
   margin-left: 50px;
@@ -60,6 +70,10 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  @include mobile-only {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
 }
 .lightbox__container img {
   max-width: 100%;

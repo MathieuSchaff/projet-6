@@ -1,22 +1,25 @@
 export const lightboxFunction = () => {
   const images = [...document.querySelectorAll('.img-card')];
   const images1 = [...document.querySelectorAll('img.img-card, source')];
+  // const video = document.querySelector('video');
+  // video.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  // });
   const gallery = images1.map((image) => {
     return `${image.src}`;
   });
   images.forEach((image) => {
     image.addEventListener('click', (e) => {
-      e.preventDefault();
-      const dom = document.createElement('div');
+      let dom = document.createElement('div');
       dom.classList.add('lightbox');
       if (image.nodeName == 'IMG') {
         dom.innerHTML = `
-        <button class="lightbox__close">Fermer</button>
-          <button class="lightbox__next">Suivant</button>
-          <button class="lightbox__prev">Précédent</button>
+        <button class="lightbox__close" tab-index="1">Fermer</button>
+          <button class="lightbox__next" tab-index="1">Suivant</button>
+          <button class="lightbox__prev"tab-index="1" >Précédent</button>
   
           <div class="lightbox__container">
-           <img src="${image.src}" alt="${image.alt}">
+           <img src="${image.src}" alt="${image.alt}" tab-index="1">
           </div>
         `;
       } else {
@@ -34,13 +37,14 @@ export const lightboxFunction = () => {
           </div>
         `;
       }
+
       function closeLightbox(element) {
         console.log('clické sur close');
         dom.classList.add('fadeOut');
         window.setTimeout(() => {
           dom.remove();
+          dom = null;
         }, 500);
-        // dom.removeEventListener('click', closeLightbox);
       }
       function next() {
         e.preventDefault();
@@ -94,6 +98,33 @@ export const lightboxFunction = () => {
           `;
         }
       }
+
+      function focusNext(e) {
+        e.preventDefault();
+
+        let focusables = Array.from(
+          document.querySelectorAll(
+            '.lightbox__prev, .lightbox__next, .lightbox__close, .lightbox__container img'
+          )
+        );
+        console.log(focusables);
+        let index = focusables.findIndex((f) => f === document.querySelector(':focus'));
+        console.log(index);
+        if (e.shiftKey === true) {
+          index--;
+        } else {
+          index++;
+        }
+
+        if (index >= focusables.length - 1) {
+          index = 0;
+        }
+        if (index < 0) {
+          index = focusables.length - 1;
+        }
+        focusables[index].focus();
+      }
+
       dom.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
       dom.querySelector('.lightbox__prev').addEventListener('click', prev);
       dom.querySelector('.lightbox__next').addEventListener('click', next);
@@ -107,8 +138,12 @@ export const lightboxFunction = () => {
         if (dom !== null && e.key === 'ArrowRight') {
           next();
         }
+        if (dom !== null && e.key === 'Tab') {
+          focusNext(e);
+        }
       });
       document.body.appendChild(dom);
+      document.querySelector('.lightbox__close').focus();
     });
   });
 };

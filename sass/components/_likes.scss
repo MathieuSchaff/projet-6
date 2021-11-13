@@ -17,6 +17,9 @@
   line-height: 31px;
   letter-spacing: 0em;
   color: #000000;
+  @include pad {
+    display: none;
+  }
 }
 .totalLikes {
   display: flex;

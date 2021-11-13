@@ -12,6 +12,8 @@ export const router = () => {
   } else if (window.location.search.startsWith('?id')) {
     createPageDuPhotographe();
   } else {
-    console.log('erreur route');
+    window.location.search = '';
+    history.pushState({}, null, `index.html`);
+    createPagePhotographers();
   }
 };

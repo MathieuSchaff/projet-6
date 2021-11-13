@@ -35,6 +35,20 @@ export function createInputForm(type, id, ariaLabel, secclass) {
   );
   return vnode;
 }
+export function createInputTextArea(type, id, ariaLabel, secclass) {
+  const vnode = m(
+    'textarea',
+    {
+      className: `text-control ${secclass}`,
+      // type: `${type}`,
+      id: `${id}`,
+      ariaLabel: `${ariaLabel}`,
+      required: 'true',
+    },
+    undefined
+  );
+  return vnode;
+}
 export function submitForm() {
   const vnode = m(
     'input',
@@ -56,15 +70,15 @@ export function createForm() {
       name: 'fisheye',
     },
     [
+      createFormDataDiv(createLabel('first', 'Prénom'), createInputForm('text', 'first', 'prénom')),
       createFormDataDiv(
-        createLabel('first', 'Prénom'),
-        createInputForm('text', 'first', 'firstname')
+        createLabel('last', 'Nom'),
+        createInputForm('text', 'last', 'nom de famille')
       ),
-      createFormDataDiv(createLabel('last', 'Nom'), createInputForm('text', 'last', 'lastname')),
       createFormDataDiv(createLabel('email', 'E-mail'), createInputForm('email', 'email', 'email')),
       createFormDataDiv(
         createLabel('comment', 'Votre message'),
-        createInputForm('text', 'comment', 'comment', 'comment')
+        createInputTextArea('textarea', 'comment', 'commentaire', 'comment')
       ),
       submitForm(),
     ]

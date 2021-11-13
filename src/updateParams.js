@@ -20,10 +20,40 @@ export const updateParams = async (linkValue) => {
   history.pushState({}, null, `?${paramsToString}`);
   let page = document.getElementById('articles');
   patch(page, newVnode, oldvNode);
-  const linksTags = document.querySelectorAll('.tagTri');
-  linksTags.forEach((tags) => {
-    tags.addEventListener('click', () => {
-      updateParams(tags.value);
+
+  const links = document.querySelectorAll('button.nav--button');
+
+  for (let i = 0; i < links.length; i++) {
+    for (const [key, value] of params.entries()) {
+      console.log(key);
+      if (links[i].value == key) {
+        console.log(`${links} + key = ${key}`);
+        links[i].classList.add('focused');
+      } else if (links[i].classList.contains('focused') && !(links[i].value == key)) {
+        links[i].classList.remove('focused');
+      }
+    }
+  }
+
+  const linksNav = document.querySelectorAll('nav button.nav--button');
+  let paramsArray = [];
+  for (var key of params.keys()) {
+    paramsArray.push(key);
+  }
+  for (let i = 0; i < linksNav.length; i++) {
+    if (linksNav[i].classList.contains('focused')) {
+      linksNav[i].classList.remove('focused');
+    }
+  }
+  for (let i = 0; i < linksNav.length; i++) {
+    if (paramsArray.includes(linksNav[i].value)) {
+      linksNav[i].classList.add('focused');
+    }
+  }
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      updateParams(link.value);
     });
   });
 };

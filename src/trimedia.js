@@ -2,7 +2,7 @@ import { page } from './getData.js';
 import { patch } from './millionseparated.js';
 import { displayImage2 } from './createMedias.js';
 import { lightboxFunction } from './lightbox.js';
-
+import { updateLikes } from './updateLikes.js';
 export const activateSortButton = async () => {
   const button = document.getElementById('sort_button');
   let indexTri = 0;
@@ -22,7 +22,7 @@ export const activateSortButton = async () => {
     triLi = Array.from(document.querySelectorAll('li.choose'));
     // VA FOCUS SUR LE PREMIER ELEMENT = > LE BOUTON
     triLi[0].focus();
-    triLi[0].classList.add('focused');
+    triLi[0].classList.add('buttonSortClicked');
     triLi[0].setAttribute('aria-selected', true);
     //UL ETAIT DISPLAY : NONE => va donc montrer la liste
     ul.style.display = null;
@@ -66,7 +66,7 @@ export const activateSortButton = async () => {
     ul.style.display = 'none';
     button.focus();
 
-    triLi[indexTri].classList.remove('focused');
+    triLi[indexTri].classList.remove('buttonSortClicked');
     ul.querySelector('.chevronRotate').classList.remove('activateRotate');
 
     let page = document.querySelector('.sectioncontainer');
@@ -74,7 +74,7 @@ export const activateSortButton = async () => {
     console.log(newVnode);
     patch(page, newVnode);
     lightboxFunction();
-    // displayImage2(button.value);
+    updateLikes();
     ul = null;
   }
 
@@ -85,9 +85,9 @@ export const activateSortButton = async () => {
 
   const focusMenu = function (e) {
     e.preventDefault();
-    triLi[0].classList.remove('focused');
+    triLi[0].classList.remove('buttonSortClicked');
     triLi[indexTri].setAttribute('aria-selected', false);
-    triLi[indexTri].classList.remove('focused');
+    triLi[indexTri].classList.remove('buttonSortClicked');
     console.log(indexTri);
     // tri[indexTri].style.border = 'none';
     if (e.shiftKey === true || e.key === 'ArrowUp') {
@@ -110,7 +110,7 @@ export const activateSortButton = async () => {
     button.querySelector('span').innerText = triLi[indexTri].innerText.trim();
     ul.setAttribute('aria-activedescendant', triLi[indexTri].id);
 
-    triLi[indexTri].classList.add('focused');
+    triLi[indexTri].classList.add('buttonSortClicked');
   };
 
   const stopPropagationClose = function (e) {

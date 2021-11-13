@@ -12,3 +12,7 @@ need patch, createPage1 ( qui need  createName,
   createLink,
   buttonPage1,
   createButtons,), et need sortArrayPhotographer
+
+  readme comment lancer le projet, le projet est disponible sur port blabla. 
+
+  

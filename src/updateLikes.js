@@ -17,7 +17,6 @@ export async function updateLikes() {
   console.log(allHeart);
   allHeart.forEach((element) => {
     element.addEventListener('click', () => {
-      console.log();
       console.log(typeof Number(totalLikes.textContent));
       totalLikes.textContent = `${Number(totalLikes.textContent) + 1}`;
       element.firstElementChild.textContent = `${

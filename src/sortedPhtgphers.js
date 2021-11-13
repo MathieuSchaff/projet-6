@@ -16,13 +16,10 @@ export async function sortArrayPhotographer(paramsATester) {
     // pour chaqué clé, va boucler sur tous les photographer.
     // Si le photographer à la clé, alors ça push le photographer dans l'array
     // PB DE DOUBLONS
-    const linksnav = document.querySelectorAll('nav button');
+    // let params3 = new URLSearchParams(window.location.search);
+    // for (const [key, value] of params.entries()) {
+
     for (const [key, value] of params.entries()) {
-      for (let i = 0; i < linksnav.length; i++) {
-        if (linksnav[i].value == key) {
-          linksnav[i].classList.add('focused');
-        }
-      }
       for (let i = 0; i < photographers.length; i++) {
         if (photographers[i].tags.includes(key)) {
           sortDisplayPhotographer.push(photographers[i]);
