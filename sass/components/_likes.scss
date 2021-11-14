@@ -4,17 +4,14 @@
   right: 36px;
   background-color: $colour-form;
   border-radius: 5px;
-  height: 73px;
-  padding: 23px 23px;
+  padding: 1rem;
   border-radius: 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-family: DM Sans;
-  font-size: 24px;
-  font-style: normal;
+  font-size: 1.5rem;
   font-weight: 500;
-  line-height: 31px;
   letter-spacing: 0em;
   color: #000000;
   @include pad {
@@ -23,7 +20,8 @@
 }
 .totalLikes {
   display: flex;
-  margin-right: 1.5rem;
+  margin-right: 2rem;
+  margin-left: 0.5rem;
   &--heart {
     padding-left: 5px;
   }

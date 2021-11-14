@@ -67,8 +67,8 @@ export const displayImage2 = async (buttonValue) => {
   let photographer = await pickPhotographer();
   let mediasorted = await sortimages(buttonValue);
   const vnode = m(
-    'section',
-    { className: 'sectioncontainer' },
+    'main',
+    { className: 'sectioncontainer', role: 'main' },
     mediasorted.map((mediasDuPhotographe) => {
       if (Object.keys(mediasDuPhotographe).includes('image')) {
         return createFigure(

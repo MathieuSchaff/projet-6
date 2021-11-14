@@ -121,8 +121,8 @@ export function formWrapper() {
     'aside',
     {
       className: 'contact-modal',
-      role: 'dialog',
-      ariaModal: 'false',
+      // role: 'dialog',
+      // ariaModal: 'false',
       ariaHidden: 'true',
       ariaLabelledby: 'contact__title',
       style: 'display: none',

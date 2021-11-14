@@ -42,7 +42,7 @@ export function photographerName(child) {
 }
 export function photographerLocation(child1, child2) {
   const vnode = m(
-    'p',
+    'h2',
     {
       className: 'photographer-profile--location',
     },
@@ -127,7 +127,7 @@ export function buttonForm() {
 export async function createCard() {
   let photographer = await pickPhotographer();
   let btns = photographer.tags.map((x) => createButton(x));
-  const vnode = m('article', { className: 'photographer-header' }, [
+  const vnode = m('section', { className: 'photographer-header', role: 'region' }, [
     photographerMain(
       photographerProfile(
         photographerName(photographer.name),

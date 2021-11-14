@@ -2,11 +2,11 @@ import { m } from './millionseparated.js';
 
 // Creation du compteur de like
 export async function divLike() {
-  const vnode = m('div', { className: 'likesContainer' }, [
+  const vnode = m('aside', { className: 'likesContainer' }, [
     m('div', { className: 'totalLikes' }, [
       m('p', { className: 'totalLikes--number' }, undefined),
       m('p', { className: 'totalLikes--heart' }, [
-        m('img', { src: './images/heart.svg', role: 'image' }, undefined),
+        m('img', { src: './images/heart.svg', role: 'img', alt: 'coeur' }, undefined),
       ]),
     ]),
     m('div', { className: 'salaire' }, [m('p', { className: 'salaire--journalier' }, undefined)]),

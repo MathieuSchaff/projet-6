@@ -1,7 +1,7 @@
 import { m } from './millionseparated.js';
 
 export function createName(name) {
-  const vnode = m('h2', { className: 'main__name' }, [name]);
+  const vnode = m('p', { className: 'main__name' }, [name]);
   return vnode;
 }
 export function createCity(city, country) {
@@ -89,7 +89,6 @@ export async function createPage1(request) {
           {
             href: `http://127.0.0.1:5500/index.html?id=${photographer.id}`,
             className: 'main__link',
-            onclick: 'mafonction(this)',
           },
           [createPortrait(photographer.portrait, photographer.name), createName(photographer.name)]
         ),

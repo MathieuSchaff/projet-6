@@ -26,8 +26,8 @@ export function buttonSort() {
     {
       id: 'sort_button',
       role: 'button',
-      ariaHashpopup: 'listbox',
-      ariaLabelledby: 'Order_by sort_button',
+      ariaHasPopup: 'listbox',
+      'aria-labelledby': 'Order_by sort_button',
       ariaExpanded: 'false',
       className: 'choose',
       value: 'popularité',

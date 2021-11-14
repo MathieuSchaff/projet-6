@@ -12,11 +12,14 @@ export const lightboxFunction = () => {
     image.addEventListener('click', (e) => {
       let dom = document.createElement('div');
       dom.classList.add('lightbox');
+      dom.setAttribute('role', 'dialog');
+      dom.setAttribute('ariaLabel', 'image agrandie');
+      dom.setAttribute('title', 'image agrandie');
       if (image.nodeName == 'IMG') {
         dom.innerHTML = `
-        <button class="lightbox__close" tab-index="1">Fermer</button>
-          <button class="lightbox__next" tab-index="1">Suivant</button>
-          <button class="lightbox__prev"tab-index="1" >Précédent</button>
+        <button class="lightbox__close" tab-index="1" aria-label="fermer"><span class="sr-only"> Fermer </span></button>
+          <button class="lightbox__next" tab-index="1" aria-label="suivant"><span class="sr-only"> Suivant </span></button>
+          <button class="lightbox__prev"tab-index="1" aria-label="précédent"><span class="sr-only"> Précédent </span></button>
   
           <div class="lightbox__container">
            <img src="${image.src}" alt="${image.alt}" tab-index="1">

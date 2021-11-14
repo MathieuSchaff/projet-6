@@ -33,8 +33,8 @@ export const formulaire = async () => {
     window.setTimeout(function () {
       modal.style.display = 'none';
     }, 300);
-    modal.setAttribute('aria-hidden', true);
-    modal.removeAttribute('aria-modal');
+    // modal.setAttribute('aria-hidden', true);
+    // modal.removeAttribute('aria-modal');
     closeButton.removeEventListener('click', closeModal);
     modal.removeEventListener('click', closeModal);
     let wrapper = document.querySelector('.modal--wrapper');
