@@ -6,7 +6,7 @@ export async function divLike() {
     m('div', { className: 'totalLikes' }, [
       m('p', { className: 'totalLikes--number' }, undefined),
       m('p', { className: 'totalLikes--heart' }, [
-        m('img', { src: './images/heart.svg' }, undefined),
+        m('img', { src: './images/heart.svg', role: 'image' }, undefined),
       ]),
     ]),
     m('div', { className: 'salaire' }, [m('p', { className: 'salaire--journalier' }, undefined)]),

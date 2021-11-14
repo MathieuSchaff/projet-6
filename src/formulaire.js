@@ -10,13 +10,12 @@ export const formulaire = async () => {
   const contactMe = document.querySelector('.contact-me');
   const focusable = 'button, a, input, textarea';
   let focusables = [];
+  let submitBtn = document.querySelector('input[type=submit]');
   const openModal = function (e) {
     e.preventDefault();
     modal = document.querySelector('.contact-modal');
     focusables = Array.from(modal.querySelectorAll(focusable));
     focusables[0].focus();
-    console.log(modal.querySelectorAll(focusable));
-    console.log(focusables);
     modal.style.display = null;
     modal.removeAttribute('aria-hidden');
     modal.setAttribute('aria-modal', true);
@@ -24,9 +23,8 @@ export const formulaire = async () => {
     modal.addEventListener('click', closeModal);
     let wrapper = document.querySelector('.modal--wrapper');
     wrapper.addEventListener('click', stopPropagation);
-    console.log(document.querySelector('.contact-me').style.zIndex);
     document.querySelector('.contact-me').style.zIndex = '-1';
-    console.log(document.querySelector('.Order-wrapper'));
+
     document.querySelector('#Order-wrapper').style.zIndex = '0';
   };
 
@@ -71,6 +69,13 @@ export const formulaire = async () => {
   const stopPropagation = function (e) {
     e.stopPropagation();
   };
+  submitBtn;
+  addEventListener('submit', () => {
+    let inputs = document.querySelectorAll('.text-control');
+    inputs.forEach((input) => {
+      console.log(`Input = ${input.ariaLabel}; value = ${input.value}`);
+    });
+  });
   window.addEventListener('keydown', function (e) {
     if ((e.key === 'Escape' || e.key === 'Esc') && modal !== null) {
       console.log('close modal');

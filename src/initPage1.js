@@ -53,7 +53,6 @@ export async function createPagePhotographers() {
       linksNav[i].classList.add('focused');
     }
   }
-  console.log(paramsArray);
   links.forEach((link) => {
     link.addEventListener('click', () => {
       updateParams(link.value);

@@ -26,6 +26,7 @@ export function createImgHeader() {
   const vnode = m('img', {
     src: './logo/logo.svg',
     alt: "Fisheye page d'acceuil",
+    role: 'img',
     tabindex: '0',
   });
   return vnode;
