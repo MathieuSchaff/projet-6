@@ -47,7 +47,7 @@ export function createLink(link) {
     'a',
     {
       className: 'main__link',
-      href: `http://127.0.0.1:5500/index.html?id=${link}`,
+      href: `?id=${link}`,
     },
     undefined
   );

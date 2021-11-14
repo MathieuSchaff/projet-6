@@ -21,13 +21,14 @@ export function createImagePhotographer(name, image, altText) {
   );
   return vnode;
 }
-export function createVideo(child) {
+export function createVideo(child, alt) {
   const vnode = m(
     'video',
     {
       className: 'img-card',
       muted: true,
       controls: true,
+      title: `${alt}`,
     },
     [child]
   );
@@ -88,7 +89,8 @@ export const displayImage2 = async (buttonValue) => {
               photographer.name,
               mediasDuPhotographe.video,
               mediasDuPhotographe.altTextMedia
-            )
+            ),
+            mediasDuPhotographe.altTextMedia
           ),
           createFigcaption(
             createFigcaptionText(mediasDuPhotographe.title),
