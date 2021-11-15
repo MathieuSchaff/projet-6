@@ -101,7 +101,7 @@ export function headerModalWrapper() {
       m(
         'a',
         { href: '', id: 'closeButton', className: 'close', ariaLabel: 'Fermer le formulaire' },
-        [m('img', { src: 'logo/Vector (2).svg', alt: 'cross' }, undefined)]
+        [m('img', { src: 'images/cross2.svg', alt: 'cross' }, undefined)]
       ),
     ]
   )
