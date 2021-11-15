@@ -1,4 +1,4 @@
-import { m } from './millionseparated.js';
+import { m } from './millionseparated.js'
 
 export function createFormDataDiv(label, input) {
   const vnode = m(
@@ -7,8 +7,8 @@ export function createFormDataDiv(label, input) {
       className: 'formData',
     },
     [label, input]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createLabel(type, texte) {
   const vnode = m(
@@ -17,8 +17,8 @@ export function createLabel(type, texte) {
       for: `${type}`,
     },
     [`${texte}`]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createInputForm(type, id, ariaLabel, secclass) {
   const vnode = m(
@@ -32,8 +32,8 @@ export function createInputForm(type, id, ariaLabel, secclass) {
       required: 'true',
     },
     undefined
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createInputTextArea(type, id, ariaLabel, secclass) {
   const vnode = m(
@@ -46,8 +46,8 @@ export function createInputTextArea(type, id, ariaLabel, secclass) {
       required: 'true',
     },
     undefined
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function submitForm() {
   const vnode = m(
@@ -59,8 +59,8 @@ export function submitForm() {
       type: 'submit',
     },
     undefined
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createForm() {
   const vnode = m(
@@ -83,8 +83,8 @@ export function createForm() {
       ),
       submitForm(),
     ]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function headerModalWrapper() {
   const vnode = m(
@@ -104,8 +104,8 @@ export function headerModalWrapper() {
         [m('img', { src: 'logo/Vector (2).svg', alt: 'cross' }, undefined)]
       ),
     ]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function modalWrapper() {
   const vnode = m(
@@ -114,8 +114,8 @@ export function modalWrapper() {
       className: 'modal--wrapper',
     },
     [headerModalWrapper(), createForm()]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function formWrapper() {
   const vnode = m(
@@ -129,6 +129,6 @@ export function formWrapper() {
       style: 'display: none',
     },
     [modalWrapper()]
-  );
-  return vnode;
+  )
+  return vnode
 }

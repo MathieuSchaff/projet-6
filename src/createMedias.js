@@ -1,12 +1,12 @@
-import { pickPhotographer } from './getData.js';
+import { pickPhotographer } from './getData.js'
 
-import { m } from './millionseparated.js';
+import { m } from './millionseparated.js'
 
-import { sortimages } from './sortimages.js';
+import { sortimages } from './sortimages.js'
 
 export function createFigure(child1, child2) {
-  const vnode = m('figure', undefined, [child1, child2]);
-  return vnode;
+  const vnode = m('figure', undefined, [child1, child2])
+  return vnode
 }
 export function createImagePhotographer(name, image, altText) {
   const vnode = m(
@@ -18,8 +18,8 @@ export function createImagePhotographer(name, image, altText) {
       tabIndex: '0',
     },
     undefined
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createVideo(child, alt) {
   const vnode = m(
@@ -31,8 +31,8 @@ export function createVideo(child, alt) {
       title: `${alt}`,
     },
     [child]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createSource(name, video, alt) {
   const vnode = m(
@@ -44,28 +44,28 @@ export function createSource(name, video, alt) {
       alt: `${alt}`,
     },
     undefined
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createFigcaption(child1, child2) {
-  const vnode = m('figcaption', undefined, [child1, child2]);
-  return vnode;
+  const vnode = m('figcaption', undefined, [child1, child2])
+  return vnode
 }
 export function createFigcaptionText(child) {
-  const vnode = m('p', { className: 'textfig' }, [child]);
-  return vnode;
+  const vnode = m('p', { className: 'textfig' }, [child])
+  return vnode
 }
 export function createFigcaptionLike(child1) {
   const vnode = m(
     'button',
     { className: 'heart', tabIndex: '0', ariaLabel: `Nombre de likes ${child1}` },
     [m('div', { className: 'likes' }, [`${child1}`]), m('i', { className: 'fas fa-heart' })]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export const displayImage2 = async (buttonValue) => {
-  let photographer = await pickPhotographer();
-  let mediasorted = await sortimages(buttonValue);
+  let photographer = await pickPhotographer()
+  let mediasorted = await sortimages(buttonValue)
   const vnode = m(
     'main',
     { className: 'sectioncontainer', role: 'main' },
@@ -81,7 +81,7 @@ export const displayImage2 = async (buttonValue) => {
             createFigcaptionText(mediasDuPhotographe.title),
             createFigcaptionLike(mediasDuPhotographe.likes)
           )
-        );
+        )
       } else {
         return createFigure(
           createVideo(
@@ -96,9 +96,9 @@ export const displayImage2 = async (buttonValue) => {
             createFigcaptionText(mediasDuPhotographe.title),
             createFigcaptionLike(mediasDuPhotographe.likes)
           )
-        );
+        )
       }
     })
-  );
-  return vnode;
-};
+  )
+  return vnode
+}

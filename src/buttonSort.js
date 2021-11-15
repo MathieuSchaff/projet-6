@@ -1,4 +1,4 @@
-import { m } from './millionseparated.js';
+import { m } from './millionseparated.js'
 
 export function ordreWrapperButton(button1, ul) {
   const vnode = m(
@@ -7,8 +7,8 @@ export function ordreWrapperButton(button1, ul) {
       id: 'Order-wrapper',
     },
     [button1, ul]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function spanSort() {
   const vnode = m(
@@ -17,8 +17,8 @@ export function spanSort() {
       id: 'Order_by',
     },
     ['Trier par']
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function buttonSort() {
   const vnode = m(
@@ -36,8 +36,8 @@ export function buttonSort() {
       m('span', { className: 'sortBy' }, [`Popularité`]),
       m('i', { className: 'chevron fas fa-chevron-up', ariaHidden: 'true' }, undefined),
     ]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function ulSort() {
   const vnode = m(
@@ -59,8 +59,8 @@ export function ulSort() {
       m('li', { className: 'dropdown-divider', role: 'separator', tabIndex: '-1' }, undefined),
       m('li', { id: 'date', className: 'choose', role: 'option' }, [`Date`]),
     ]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export async function createSortButton() {
   const vnode = m(
@@ -69,6 +69,6 @@ export async function createSortButton() {
       className: 'sort',
     },
     [spanSort(), ordreWrapperButton(buttonSort(), ulSort())]
-  );
-  return vnode;
+  )
+  return vnode
 }

@@ -1,4 +1,4 @@
-import { m } from './millionseparated.js';
+import { m } from './millionseparated.js'
 
 // Creation du compteur de like
 export async function divLike() {
@@ -10,6 +10,6 @@ export async function divLike() {
       ]),
     ]),
     m('div', { className: 'salaire' }, [m('p', { className: 'salaire--journalier' }, undefined)]),
-  ]);
-  return vnode;
+  ])
+  return vnode
 }

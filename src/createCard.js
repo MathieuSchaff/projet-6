@@ -1,5 +1,5 @@
-import { m } from './millionseparated.js';
-import { pickPhotographer } from './getData.js';
+import { m } from './millionseparated.js'
+import { pickPhotographer } from './getData.js'
 export function createArticleHeader(child) {
   const vnode = m(
     'article',
@@ -7,8 +7,8 @@ export function createArticleHeader(child) {
       className: 'photographer-header',
     },
     child
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function photographerMain(child1) {
   const vnode = m(
@@ -17,8 +17,8 @@ export function photographerMain(child1) {
       className: 'photographer-main',
     },
     [child1]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function photographerProfile(child1, child2, child3, child4) {
   const vnode = m(
@@ -27,8 +27,8 @@ export function photographerProfile(child1, child2, child3, child4) {
       className: 'photographer-profile',
     },
     [child1, child2, child3, child4]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function photographerName(child) {
   const vnode = m(
@@ -37,8 +37,8 @@ export function photographerName(child) {
       className: 'photographer-profile--name',
     },
     [child]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function photographerLocation(child1, child2) {
   const vnode = m(
@@ -47,8 +47,8 @@ export function photographerLocation(child1, child2) {
       className: 'photographer-profile--location',
     },
     [` ${child1}, ${child2}`]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function photographerPhilosophy(child) {
   const vnode = m(
@@ -57,8 +57,8 @@ export function photographerPhilosophy(child) {
       className: 'photographer-profile--philosophy',
     },
     [child]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function photographerButton(child) {
   const vnode = m(
@@ -67,8 +67,8 @@ export function photographerButton(child) {
       className: 'contact-me',
     },
     child
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function photographerDivImg(child) {
   const vnode = m(
@@ -77,8 +77,8 @@ export function photographerDivImg(child) {
       className: 'img',
     },
     [child]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function photographerImage(portrait) {
   const vnode = m(
@@ -89,8 +89,8 @@ export function photographerImage(portrait) {
       src: `./FishEyePhotos/Sample Photos/Photographers ID Photos/${portrait}`,
     },
     undefined
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createButton(button) {
   const vnode = m(
@@ -101,8 +101,8 @@ export function createButton(button) {
       value: `${button}`,
     },
     [`#${button}`, m('span', { className: 'sr-only' }, [`#${button}`])]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createButtons2(btns) {
   const vnode = m(
@@ -111,8 +111,8 @@ export function createButtons2(btns) {
       className: 'containerTags',
     },
     btns
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function buttonForm() {
   const vnode = m(
@@ -121,12 +121,12 @@ export function buttonForm() {
       className: 'contact-me',
     },
     ['Contactez-moi']
-  );
-  return vnode;
+  )
+  return vnode
 }
 export async function createCard() {
-  let photographer = await pickPhotographer();
-  let btns = photographer.tags.map((x) => createButton(x));
+  let photographer = await pickPhotographer()
+  let btns = photographer.tags.map((x) => createButton(x))
   const vnode = m('section', { className: 'photographer-header', role: 'region' }, [
     photographerMain(
       photographerProfile(
@@ -138,7 +138,7 @@ export async function createCard() {
     ),
     buttonForm(),
     photographerDivImg(photographerImage(photographer.portrait)),
-  ]);
+  ])
 
-  return vnode;
+  return vnode
 }

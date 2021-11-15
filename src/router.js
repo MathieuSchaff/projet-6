@@ -1,19 +1,19 @@
-import { createPageDuPhotographe } from './init.js';
-import { createPagePhotographers } from './initPage1.js';
+import { createPageDuPhotographe } from './init.js'
+import { createPagePhotographers } from './initPage1.js'
 
 export const router = () => {
   // CREE PAGE DES PHOTOGRAPHES SANS TAG
   if (window.location.search === '') {
-    createPagePhotographers();
+    createPagePhotographers()
     // CREE PAGE DES PHOTOGRAPHES AVEC TAG
   } else if (window.location.search.endsWith('true')) {
-    createPagePhotographers();
+    createPagePhotographers()
     // CREE PAGE DU PHOTOGRAPHE AVEC L'ID
   } else if (window.location.search.startsWith('?id')) {
-    createPageDuPhotographe();
+    createPageDuPhotographe()
   } else {
-    window.location.search = '';
-    history.pushState({}, null, `index.html`);
-    createPagePhotographers();
+    window.location.search = ''
+    history.pushState({}, null, `index.html`)
+    createPagePhotographers()
   }
-};
+}

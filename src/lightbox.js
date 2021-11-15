@@ -1,20 +1,20 @@
 export const lightboxFunction = () => {
-  const images = [...document.querySelectorAll('.img-card')];
-  const images1 = [...document.querySelectorAll('img.img-card, source')];
+  const images = [...document.querySelectorAll('.img-card')]
+  const images1 = [...document.querySelectorAll('img.img-card, source')]
   // const video = document.querySelector('video');
   // video.addEventListener('click', (e) => {
   //   e.preventDefault();
   // });
   const gallery = images1.map((image) => {
-    return `${image.src}`;
-  });
+    return `${image.src}`
+  })
   images.forEach((image) => {
     image.addEventListener('click', (e) => {
-      let dom = document.createElement('div');
-      dom.classList.add('lightbox');
-      dom.setAttribute('role', 'dialog');
-      dom.setAttribute('ariaLabel', 'image agrandie');
-      dom.setAttribute('title', 'image agrandie');
+      let dom = document.createElement('div')
+      dom.classList.add('lightbox')
+      dom.setAttribute('role', 'dialog')
+      dom.setAttribute('ariaLabel', 'image agrandie')
+      dom.setAttribute('title', 'image agrandie')
       if (image.nodeName == 'IMG') {
         dom.innerHTML = `
         <button class="lightbox__close" tab-index="1" aria-label="fermer"><span class="sr-only"> Fermer </span></button>
@@ -24,9 +24,9 @@ export const lightboxFunction = () => {
           <div class="lightbox__container">
            <img src="${image.src}" alt="${image.alt}" tab-index="1">
           </div>
-        `;
+        `
       } else {
-        image.pause();
+        image.pause()
         dom.innerHTML = `
           <button class="lightbox__close">Fermer</button>
           <button class="lightbox__next">Suivant</button>
@@ -38,27 +38,27 @@ export const lightboxFunction = () => {
   
           </video>
           </div>
-        `;
+        `
       }
 
       function closeLightbox(element) {
-        dom.classList.add('fadeOut');
+        dom.classList.add('fadeOut')
         window.setTimeout(() => {
-          dom.remove();
-          dom = null;
-        }, 500);
+          dom.remove()
+          dom = null
+        }, 500)
       }
       function next() {
-        e.preventDefault();
+        e.preventDefault()
         // RECUPERE LE MEDIA DANS LA LIGHTBOX ACTUELLEMENT
-        let mediaInlightbox = dom.querySelector('img, video');
+        let mediaInlightbox = dom.querySelector('img, video')
         if (mediaInlightbox.currentSrc.endsWith('mp4')) {
-          mediaInlightbox = mediaInlightbox.querySelector('source');
+          mediaInlightbox = mediaInlightbox.querySelector('source')
         }
-        let i = gallery.findIndex((urlMedia) => urlMedia === mediaInlightbox.src);
-        i = i + 1;
+        let i = gallery.findIndex((urlMedia) => urlMedia === mediaInlightbox.src)
+        i = i + 1
         if (i >= gallery.length) {
-          i = 0;
+          i = 0
         }
         if (gallery[i].endsWith('mp4')) {
           dom.querySelector('.lightbox__container').innerHTML = `
@@ -66,24 +66,24 @@ export const lightboxFunction = () => {
           <source src="${gallery[i]}" type="video/mp4" alt="${image.alt}">
   
           </video>
-          `;
+          `
         } else {
           dom.querySelector('.lightbox__container').innerHTML = `
           <img src="${gallery[i]}" alt="${image.alt}">
-          `;
+          `
         }
       }
       function prev() {
-        e.preventDefault();
+        e.preventDefault()
         // RECUPERE LE MEDIA DANS LA LIGHTBOX ACTUELLEMENT
-        let mediaInlightbox = dom.querySelector('img, video');
+        let mediaInlightbox = dom.querySelector('img, video')
         if (mediaInlightbox.currentSrc.endsWith('mp4')) {
-          mediaInlightbox = mediaInlightbox.querySelector('source');
+          mediaInlightbox = mediaInlightbox.querySelector('source')
         }
-        let i = gallery.findIndex((urlMedia) => urlMedia === mediaInlightbox.src);
-        i = i - 1;
+        let i = gallery.findIndex((urlMedia) => urlMedia === mediaInlightbox.src)
+        i = i - 1
         if (i < 0) {
-          i = gallery.length - 1;
+          i = gallery.length - 1
         }
         if (gallery[i].endsWith('mp4')) {
           dom.querySelector('.lightbox__container').innerHTML = `
@@ -91,57 +91,57 @@ export const lightboxFunction = () => {
           <source src="${gallery[i]}" type="video/mp4" alt="${image.alt}">
   
           </video>
-          `;
+          `
         } else {
           dom.querySelector('.lightbox__container').innerHTML = `
           <img src="${gallery[i]}" alt="${image.alt}">
-          `;
+          `
         }
       }
 
       function focusNext(e) {
-        e.preventDefault();
+        e.preventDefault()
 
         let focusables = Array.from(
           document.querySelectorAll(
             '.lightbox__prev, .lightbox__next, .lightbox__close, .lightbox__container img'
           )
-        );
-        let index = focusables.findIndex((f) => f === document.querySelector(':focus'));
+        )
+        let index = focusables.findIndex((f) => f === document.querySelector(':focus'))
         if (e.shiftKey === true) {
-          index--;
+          index--
         } else {
-          index++;
+          index++
         }
 
         if (index >= focusables.length - 1) {
-          index = 0;
+          index = 0
         }
         if (index < 0) {
-          index = focusables.length - 1;
+          index = focusables.length - 1
         }
-        focusables[index].focus();
+        focusables[index].focus()
       }
 
-      dom.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
-      dom.querySelector('.lightbox__prev').addEventListener('click', prev);
-      dom.querySelector('.lightbox__next').addEventListener('click', next);
+      dom.querySelector('.lightbox__close').addEventListener('click', closeLightbox)
+      dom.querySelector('.lightbox__prev').addEventListener('click', prev)
+      dom.querySelector('.lightbox__next').addEventListener('click', next)
       window.addEventListener('keydown', function (e) {
         if (dom !== null && e.key === 'Escape') {
-          closeLightbox();
+          closeLightbox()
         }
         if (dom !== null && e.key === 'ArrowLeft') {
-          prev();
+          prev()
         }
         if (dom !== null && e.key === 'ArrowRight') {
-          next();
+          next()
         }
         if (dom !== null && e.key === 'Tab') {
-          focusNext(e);
+          focusNext(e)
         }
-      });
-      document.body.appendChild(dom);
-      document.querySelector('.lightbox__close').focus();
-    });
-  });
-};
+      })
+      document.body.appendChild(dom)
+      document.querySelector('.lightbox__close').focus()
+    })
+  })
+}

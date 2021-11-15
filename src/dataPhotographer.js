@@ -6,37 +6,37 @@ let myInit = {
   },
   mode: 'cors',
   cache: 'default',
-};
-let myRequest = new Request('data.json', myInit);
-let searchParams = new URLSearchParams(window.location.search);
+}
+let myRequest = new Request('data.json', myInit)
+let searchParams = new URLSearchParams(window.location.search)
 
 /**
  * RECUPERE TOUTE LA DONNEE
  **/
 
 const getRequest = async () => {
-  let reponse = await fetch(myRequest);
-  let data = await reponse.json();
-  return data;
-};
+  let reponse = await fetch(myRequest)
+  let data = await reponse.json()
+  return data
+}
 
 /**
  * RECUPERE LES PHOTOGRAPHES
  **/
 
 const getPhotographer = async () => {
-  let { photographers } = await getRequest();
-  return photographers;
-};
+  let { photographers } = await getRequest()
+  return photographers
+}
 
 /**
  * RECUPERE TOUTE LE PHOTOGRAPHE CLIQUE GRACE AU HASH
  **/
 async function pickPhotographer() {
-  let photographers = await getPhotographer();
+  let photographers = await getPhotographer()
   for (let i = 0; i < photographers.length; i++) {
     if (photographers[i].id == searchParams.get('id')) {
-      return photographers[i];
+      return photographers[i]
     }
   }
 }
@@ -46,12 +46,12 @@ async function pickPhotographer() {
  **/
 
 async function sortMedia() {
-  let photographerMedia = await getMedia();
-  let mediaSorted = [];
+  let photographerMedia = await getMedia()
+  let mediaSorted = []
   photographerMedia.forEach((med) => {
     if (med.photographerId == searchParams.get('id')) {
-      mediaSorted.push(med);
+      mediaSorted.push(med)
     }
-  });
-  return mediaSorted;
+  })
+  return mediaSorted
 }

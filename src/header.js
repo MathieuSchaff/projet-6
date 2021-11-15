@@ -1,4 +1,4 @@
-import { m } from './millionseparated.js';
+import { m } from './millionseparated.js'
 
 export async function createRedirect() {
   const vnode = m(
@@ -14,13 +14,13 @@ export async function createRedirect() {
       ariaExpanded: 'false',
     },
     ['Passer au contenu']
-  );
-  return vnode;
+  )
+  return vnode
 }
 
 export function createIndex(img) {
-  const vnode = m('a', { className: 'header__logo', href: 'index.html' }, [img]);
-  return vnode;
+  const vnode = m('a', { className: 'header__logo', href: 'index.html' }, [img])
+  return vnode
 }
 export function createImgHeader() {
   const vnode = m('img', {
@@ -28,12 +28,12 @@ export function createImgHeader() {
     alt: "Fisheye page d'acceuil",
     role: 'img',
     tabindex: '0',
-  });
-  return vnode;
+  })
+  return vnode
 }
 
 export function createNavButtons(value) {
-  let capitalize = value[0].toUpperCase() + value.slice(1);
+  let capitalize = value[0].toUpperCase() + value.slice(1)
   const vnode = m(
     'button',
     {
@@ -45,8 +45,8 @@ export function createNavButtons(value) {
       value: `${value}`,
     },
     [`#${capitalize}`]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createNav() {
   const vnode = m(
@@ -67,8 +67,8 @@ export function createNav() {
       createNavButtons('animals'),
       createNavButtons('events'),
     ]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createTitle() {
   const vnode = m(
@@ -78,8 +78,8 @@ export function createTitle() {
       tabindex: '0',
     },
     ['Nos photographes']
-  );
-  return vnode;
+  )
+  return vnode
 }
 export async function createHeaderPage1() {
   const vnode = m(
@@ -88,10 +88,10 @@ export async function createHeaderPage1() {
       className: 'header',
     },
     [createIndex(createImgHeader()), createNav(), createTitle()]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export async function createHeaderPage2() {
-  const vnode = m('header', { role: 'banner' }, [createIndex(createImgHeader())]);
-  return vnode;
+  const vnode = m('header', { role: 'banner' }, [createIndex(createImgHeader())])
+  return vnode
 }

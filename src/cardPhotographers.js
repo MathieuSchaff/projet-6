@@ -1,21 +1,21 @@
-import { m } from './millionseparated.js';
+import { m } from './millionseparated.js'
 
 export function createName(name) {
-  const vnode = m('p', { className: 'main__name' }, [name]);
-  return vnode;
+  const vnode = m('p', { className: 'main__name' }, [name])
+  return vnode
 }
 export function createCity(city, country) {
-  const vnode = m('p', { className: 'main__location' }, [`${city}, ${country}`]);
-  return vnode;
+  const vnode = m('p', { className: 'main__location' }, [`${city}, ${country}`])
+  return vnode
 }
 
 export function createTagline(tagline) {
-  const vnode = m('p', { className: 'main__philosophy' }, [tagline]);
-  return vnode;
+  const vnode = m('p', { className: 'main__philosophy' }, [tagline])
+  return vnode
 }
 export function createPrice(price) {
-  const vnode = m('p', { className: 'main__tarif' }, [`${price} €`]);
-  return vnode;
+  const vnode = m('p', { className: 'main__tarif' }, [`${price} €`])
+  return vnode
 }
 export function createTags() {
   const vnode = m(
@@ -26,9 +26,9 @@ export function createTags() {
       onclick: 'sortPhotographer',
     },
     [`${element.name}`]
-  );
+  )
 
-  return vnode;
+  return vnode
 }
 export function createPortrait(portrait, name) {
   const vnode = m(
@@ -39,8 +39,8 @@ export function createPortrait(portrait, name) {
       alt: `Portrait du photographe ${name}`,
     },
     undefined
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createLink(link) {
   const vnode = m(
@@ -50,8 +50,8 @@ export function createLink(link) {
       href: `?id=${link}`,
     },
     undefined
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function buttonPage1(button) {
   const vnode = m(
@@ -62,8 +62,8 @@ export function buttonPage1(button) {
       value: `${button}`,
     },
     [`#${button}`]
-  );
-  return vnode;
+  )
+  return vnode
 }
 export function createButtons(btns) {
   const vnode = m(
@@ -72,17 +72,17 @@ export function createButtons(btns) {
       className: 'tags',
     },
     btns
-  );
-  return vnode;
+  )
+  return vnode
 }
 
 export async function createPage1(request) {
-  let photographers = await request;
+  let photographers = await request
   let vnode = m(
     'main',
     { id: 'articles' },
     photographers.map((photographer) => {
-      let btns = photographer.tags.map((x) => buttonPage1(x));
+      let btns = photographer.tags.map((x) => buttonPage1(x))
       return m('article', { className: 'main' }, [
         m(
           'a',
@@ -98,8 +98,8 @@ export async function createPage1(request) {
           createPrice(photographer.price),
           createButtons(btns),
         ]),
-      ]);
+      ])
     })
-  );
-  return vnode;
+  )
+  return vnode
 }
