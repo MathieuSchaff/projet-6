@@ -35,3 +35,42 @@ Les outils utilisés :
 3- Ouvre le dans un éditeur de code.
 
 4- Lancez le live serveur
+
+## Structure du projet
+
+.vscode :
+
+- Contient la configuration que j'utilise pour le formatage dès que j'enregistre
+
+.accessibility:
+
+- Les captures d'écrans de l'accéssibilité du site vu par Achecker
+
+css :
+
+- Contient le style css importe depuis le main.scss qui se trouve dans le dossier SASS
+
+FisheEyePhotos:
+
+- Contient toutes les photos et vidéos disponibles du site
+- Contient aussi les logos et autres images décoratives du site.
+
+nodes_modules :
+
+- Contient les plugins et toutes les configuration utiles que j'ai utilisé pour développer ce site.
+
+sass :
+
+- Contient tous les fichiers scss. Qui sont par la suite importé dans le fichier main.scss
+
+index.js :
+
+- Fichier qui va importé tous les autres fichiers javascript du dossier src.
+
+dist :
+
+- contient le fichier app.bundle.js qui est une compilation du fichier index.js
+
+Détails du fonctionnement du site :
+
+![schema](./schema.png)
