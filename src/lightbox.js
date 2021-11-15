@@ -42,7 +42,6 @@ export const lightboxFunction = () => {
       }
 
       function closeLightbox(element) {
-        console.log('clické sur close');
         dom.classList.add('fadeOut');
         window.setTimeout(() => {
           dom.remove();
@@ -62,7 +61,6 @@ export const lightboxFunction = () => {
           i = 0;
         }
         if (gallery[i].endsWith('mp4')) {
-          console.log('ceci est une vidéo');
           dom.querySelector('.lightbox__container').innerHTML = `
           <video class="img-card" muted  controls>
           <source src="${gallery[i]}" type="video/mp4" alt="${image.alt}">
@@ -88,7 +86,6 @@ export const lightboxFunction = () => {
           i = gallery.length - 1;
         }
         if (gallery[i].endsWith('mp4')) {
-          console.log('ceci est une vidéo');
           dom.querySelector('.lightbox__container').innerHTML = `
           <video class="img-card" muted  controls>
           <source src="${gallery[i]}" type="video/mp4" alt="${image.alt}">
@@ -110,9 +107,7 @@ export const lightboxFunction = () => {
             '.lightbox__prev, .lightbox__next, .lightbox__close, .lightbox__container img'
           )
         );
-        console.log(focusables);
         let index = focusables.findIndex((f) => f === document.querySelector(':focus'));
-        console.log(index);
         if (e.shiftKey === true) {
           index--;
         } else {

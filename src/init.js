@@ -19,7 +19,6 @@ export async function createPageDuPhotographe() {
   });
   createCard()
     .then((res) => {
-      console.log('jetnre dabord ans le card');
       let cardPhotographerPage = createElement(res);
       document.querySelector('.wrapper').insertAdjacentElement('beforeend', cardPhotographerPage);
     })
@@ -42,7 +41,6 @@ export async function createPageDuPhotographe() {
     })
     .then(() => {
       displayImage2().then((res) => {
-        console.log(res);
         let page = createElement(res);
         document.querySelector('.wrapper').insertAdjacentElement('beforeEnd', page);
         lightboxFunction();

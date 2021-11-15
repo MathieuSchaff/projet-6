@@ -25,9 +25,7 @@ export const updateParams = async (linkValue) => {
 
   for (let i = 0; i < links.length; i++) {
     for (const [key, value] of params.entries()) {
-      console.log(key);
       if (links[i].value == key) {
-        console.log(`${links} + key = ${key}`);
         links[i].classList.add('focused');
       } else if (links[i].classList.contains('focused') && !(links[i].value == key)) {
         links[i].classList.remove('focused');

@@ -10,13 +10,13 @@ export function createArticleHeader(child) {
   );
   return vnode;
 }
-export function photographerMain(child1, child2) {
+export function photographerMain(child1) {
   const vnode = m(
     'div',
     {
       className: 'photographer-main',
     },
-    [child1, child2]
+    [child1]
   );
   return vnode;
 }
@@ -134,9 +134,9 @@ export async function createCard() {
         photographerLocation(photographer.city, photographer.country),
         photographerPhilosophy(photographer.tagline),
         createButtons2(btns)
-      ),
-      buttonForm()
+      )
     ),
+    buttonForm(),
     photographerDivImg(photographerImage(photographer.portrait)),
   ]);
 

@@ -6,7 +6,7 @@
   /* border: 1px solid #333; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
-  justify-content: center;
+  justify-content: space-between;
   grid-column-gap: 30px;
   grid-row-gap: 30px;
   @include pad {

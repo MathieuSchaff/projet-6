@@ -92,6 +92,6 @@ export async function createHeaderPage1() {
   return vnode;
 }
 export async function createHeaderPage2() {
-  const vnode = m('header', undefined, [createIndex(createImgHeader())]);
+  const vnode = m('header', { role: 'banner' }, [createIndex(createImgHeader())]);
   return vnode;
 }

@@ -78,7 +78,6 @@ export const formulaire = async () => {
   });
   window.addEventListener('keydown', function (e) {
     if ((e.key === 'Escape' || e.key === 'Esc') && modal !== null) {
-      console.log('close modal');
       closeModal(e);
     }
     if ((e.key === 'Tab' || e.key === 'ArrowDown' || e.key === 'ArrowUp') && modal !== null) {

@@ -67,6 +67,7 @@ export function createForm() {
     'form',
     {
       id: 'form',
+      role: 'form',
       name: 'fisheye',
     },
     [

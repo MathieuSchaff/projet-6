@@ -35,14 +35,6 @@ export async function createPagePhotographers() {
   let page = createElement(pageVnode);
   wrapper.insertAdjacentElement('beforeEnd', page);
   const links = document.querySelectorAll('button.nav--button');
-  // for (const [key, value] of params.entries()) {
-  //   for (let i = 0; i < links.length; i++) {
-  //     if (links[i].value == key) {
-  //       // console.log(`${links} + key = ${key}`);
-  //       links[i].classList.add('focused');
-  //     }
-  //   }
-  // }
   const linksNav = document.querySelectorAll('nav button.nav--button');
   let paramsArray = [];
   for (var key of params.keys()) {

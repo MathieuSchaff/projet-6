@@ -38,20 +38,11 @@ export const activateSortButton = async () => {
         el.setAttribute('aria-selected', true);
         button.value = el.innerText.trim();
         button.querySelector('span').innerText = el.innerText.trim();
-        console.log('cliqué sur les LI pour et ça a close');
         closeMenu();
       })
     );
-    // document.addEventListener('click', () => {
-    //   console.log('cliqué sur le document pour et ça a close');
-    //   closeMenu();
-    // });
-    // button.addEventListener('click', () => {
-    //   console.log('cliqué sur le bouton pour et ça a close');
-    //   closeMenu();
-    // });
+
     document.addEventListener('click', closeMenu);
-    // button.addEventListener('click', closeMenu);
   };
 
   async function closeMenu() {
@@ -71,7 +62,7 @@ export const activateSortButton = async () => {
 
     let page = document.querySelector('.sectioncontainer');
     let newVnode = await displayImage2(button.value);
-    console.log(newVnode);
+
     patch(page, newVnode);
     lightboxFunction();
     updateLikes();
@@ -79,7 +70,6 @@ export const activateSortButton = async () => {
   }
 
   button.addEventListener('click', () => {
-    console.log('bouton openmenu');
     openMenu();
   });
 
@@ -88,7 +78,6 @@ export const activateSortButton = async () => {
     triLi[0].classList.remove('buttonSortClicked');
     triLi[indexTri].setAttribute('aria-selected', false);
     triLi[indexTri].classList.remove('buttonSortClicked');
-    console.log(indexTri);
     // tri[indexTri].style.border = 'none';
     if (e.shiftKey === true || e.key === 'ArrowUp') {
       indexTri--;
@@ -102,8 +91,6 @@ export const activateSortButton = async () => {
     if (indexTri < 0) {
       indexTri = triLi.length - 1;
     }
-    console.log(indexTri);
-    console.log(triLi[indexTri]);
     triLi[indexTri].focus();
     triLi[indexTri].setAttribute('aria-selected', true);
     button.setAttribute('value', triLi[indexTri].innerText.trim());
@@ -114,17 +101,14 @@ export const activateSortButton = async () => {
   };
 
   const stopPropagationClose = function (e) {
-    console.log('arrête de te propager');
     e.stopPropagation();
   };
 
   window.addEventListener('keydown', function (e) {
     if (e.key === 'Tab' && ul !== null) {
-      console.log('tab close');
       closeMenu();
     }
     if (e.key === 'Escape' || e.key === 'Esc') {
-      console.log('escape');
       closeMenu();
     }
     if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && ul !== null) {

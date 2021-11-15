@@ -1,8 +1,9 @@
 .wrapper {
   padding: 40px 100px;
-  margin: 0 !important;
+  margin: auto;
   // width: calc(100vw - 40px);
   width: 100%;
+  max-width: 1440px;
   @include mobile {
     padding: 40px 20px;
   }
@@ -91,7 +92,7 @@
   text-align: center;
   cursor: pointer;
   border: none;
-  margin-left: 20px;
+  align-self: center;
   @include pad {
     margin-left: 0px;
     position: fixed;

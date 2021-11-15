@@ -14,10 +14,8 @@ export async function updateLikes() {
   totalLikes.innerHTML = `${sumLikes}`;
   document.querySelector('.salaire--journalier').innerHTML = `${photographer.price}€ / jour`;
   let allHeart = document.querySelectorAll('.heart');
-  console.log(allHeart);
   allHeart.forEach((element) => {
     element.addEventListener('click', () => {
-      console.log(typeof Number(totalLikes.textContent));
       totalLikes.textContent = `${Number(totalLikes.textContent) + 1}`;
       element.firstElementChild.textContent = `${
         Number(element.firstElementChild.textContent) + 1
