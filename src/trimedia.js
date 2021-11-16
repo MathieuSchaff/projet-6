@@ -34,7 +34,7 @@ export const activateSortButton = async () => {
     // ariaactivedescendant sur ul qui doit etre l'id du focus / choisit
     triLi.forEach((el) =>
       el.addEventListener('click', function () {
-        // ul.setAttribute('aria-activedescendant', el.id);
+        ul.setAttribute('aria-activedescendant', el.id);
         el.setAttribute('aria-selected', true)
         button.value = el.innerText.trim()
         button.querySelector('span').innerText = el.innerText.trim()

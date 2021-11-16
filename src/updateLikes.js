@@ -15,9 +15,16 @@ export async function updateLikes() {
   document.querySelector('.salaire--journalier').innerHTML = `${photographer.price}€ / jour`
   let allHeart = document.querySelectorAll('.heart')
   allHeart.forEach((element) => {
-    element.addEventListener('click', () => {
-      totalLikes.textContent = `${Number(totalLikes.textContent) + 1}`
-      element.firstElementChild.textContent = `${Number(element.firstElementChild.textContent) + 1}`
-    })
+    if(element.getAttribute('data-foo') == "true"){
+      console.log()
+    }else {
+      element.setAttribute('data-foo', 'true');
+
+      element.addEventListener('click', function likesalot() {
+        totalLikes.textContent = `${Number(totalLikes.textContent) + 1}`
+        element.firstElementChild.textContent = `${Number(element.firstElementChild.textContent) + 1}`
+      })
+    }
+  
   })
 }

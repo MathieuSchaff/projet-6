@@ -28,9 +28,9 @@ export const lightboxFunction = () => {
       } else {
         image.pause()
         dom.innerHTML = `
-          <button class="lightbox__close">Fermer</button>
-          <button class="lightbox__next">Suivant</button>
-          <button class="lightbox__prev">Précédent</button>
+          <button class="lightbox__close"><span class="sr-only"> Fermer </span></button>
+          <button class="lightbox__next"><span class="sr-only"> Suivant </span></button>
+          <button class="lightbox__prev"><span class="sr-only"> Précédent </span></button>
   
           <div class="lightbox__container">
           <video class="img-card" muted  controls>
@@ -63,13 +63,13 @@ export const lightboxFunction = () => {
         if (gallery[i].endsWith('mp4')) {
           dom.querySelector('.lightbox__container').innerHTML = `
           <video class="img-card" muted  controls>
-          <source src="${gallery[i]}" type="video/mp4" alt="${image.alt}">
+          <source src="${gallery[i]}" type="video/mp4" alt="Image agrandie">
   
           </video>
           `
         } else {
           dom.querySelector('.lightbox__container').innerHTML = `
-          <img src="${gallery[i]}" alt="${image.alt}">
+          <img src="${gallery[i]}" alt="Image agrandie">
           `
         }
       }

@@ -58,7 +58,7 @@ export function createFigcaptionText(child) {
 export function createFigcaptionLike(child1) {
   const vnode = m(
     'button',
-    { className: 'heart', tabIndex: '0', ariaLabel: `Nombre de likes ${child1}` },
+    { className: 'heart', tabIndex: '0', ariaLabel: `likes }` },
     [m('div', { className: 'likes' }, [`${child1}`]), m('i', { className: 'fas fa-heart' })]
   )
   return vnode

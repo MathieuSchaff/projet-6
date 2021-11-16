@@ -1,7 +1,7 @@
 import { m } from './millionseparated.js'
 
 export function createName(name) {
-  const vnode = m('p', { className: 'main__name' }, [name])
+  const vnode = m('h2', { className: 'main__name' }, [name])
   return vnode
 }
 export function createCity(city, country) {
@@ -14,7 +14,7 @@ export function createTagline(tagline) {
   return vnode
 }
 export function createPrice(price) {
-  const vnode = m('p', { className: 'main__tarif' }, [`${price} €`])
+  const vnode = m('p', { className: 'main__tarif' }, [`${price} € / jour`])
   return vnode
 }
 export function createTags() {
@@ -87,7 +87,7 @@ export async function createPage1(request) {
         m(
           'a',
           {
-            href: `http://127.0.0.1:5500/index.html?id=${photographer.id}`,
+            href: `?id=${photographer.id}`,
             className: 'main__link',
           },
           [createPortrait(photographer.portrait, photographer.name), createName(photographer.name)]

@@ -12,7 +12,7 @@ export function ordreWrapperButton(button1, ul) {
 }
 export function spanSort() {
   const vnode = m(
-    'span',
+    'div',
     {
       id: 'Order_by',
     },
@@ -27,12 +27,12 @@ export function buttonSort() {
       id: 'sort_button',
       role: 'button',
       ariaHasPopup: 'listbox',
-      'aria-labelledby': 'Order_by sort_button',
       ariaExpanded: 'false',
       className: 'choose',
       value: 'popularité',
     },
     [
+      m('p', { className: 'sr-only' }, [`trier par`]),
       m('span', { className: 'sortBy' }, [`Popularité`]),
       m('i', { className: 'chevron fas fa-chevron-up', ariaHidden: 'true' }, undefined),
     ]
@@ -52,11 +52,11 @@ export function ulSort() {
     [
       m('li', { id: 'pop', className: 'choose', role: 'option' }, [`Popularité`]),
       m('li', { className: 'chevronRotate' }, [
-        m('i', { className: 'chevron fas fa-chevron-up', ariaHidden: 'true' }, undefined),
+        m('i', { className: 'chevron fas fa-chevron-up', ariaHidden: 'true' , tabIndex: '-1'}, undefined),
       ]),
-      m('li', { className: 'dropdown-divider', role: 'separator', tabIndex: '-1' }, undefined),
-      m('li', { id: 'titre', className: 'choose', role: 'option' }, [`Titre`]),
-      m('li', { className: 'dropdown-divider', role: 'separator', tabIndex: '-1' }, undefined),
+      m('li', { className: 'dropdown-divider', role: 'separator', tabIndex: '-1', ariaHidden: 'true' }, undefined),
+      m('li', { id: 'titre', className: 'choose', role: 'option'}, [`Titre`]),
+      m('li', { className: 'dropdown-divider', role: 'separator', tabIndex: '-1',  ariaHidden: 'true' }, undefined),
       m('li', { id: 'date', className: 'choose', role: 'option' }, [`Date`]),
     ]
   )
