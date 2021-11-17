@@ -27,7 +27,7 @@ export function createVideo(child, alt) {
     {
       className: 'img-card',
       muted: true,
-      controls: true,
+      tabIndex: '0',
       title: `${alt}`,
     },
     [child]
