@@ -17,23 +17,23 @@ export const lightboxFunction = () => {
       dom.setAttribute('title', 'image agrandie')
       if (image.nodeName == 'IMG') {
         dom.innerHTML = `
-        <button class="lightbox__close" tab-index="1" aria-label="fermer" tabindex="1"><span class="sr-only"> Fermer </span></button>
-          <button class="lightbox__next" tab-index="1" aria-label="suivant" tabindex="1" ><span class="sr-only"> Suivant </span></button>
-          <button class="lightbox__prev"tab-index="1" aria-label="précédent" tabindex="1"><span class="sr-only"> Précédent </span></button>
+        <button class="lightbox__close" aria-label="fermer" tabindex="1"><span class="sr-only"> Fermer </span></button>
+          <button class="lightbox__next"  aria-label="suivant" tabindex="1" ><span class="sr-only"> Suivant </span></button>
+          <button class="lightbox__prev" aria-label="précédent" tabindex="1"><span class="sr-only"> Précédent </span></button>
   
           <div class="lightbox__container">
-           <img src="${image.src}" alt="${image.alt}"  class="img-card" tabindex="1">
+           <img src="${image.src}" alt="${image.alt}"  class="lightboxImg" tabindex="1">
           </div>
         `
       } else {
-        image.pause()
+       
         dom.innerHTML = `
-          <button class="lightbox__close"><span class="sr-only"> Fermer </span></button>
-          <button class="lightbox__next"><span class="sr-only"> Suivant </span></button>
-          <button class="lightbox__prev"><span class="sr-only"> Précédent </span></button>
+          <button class="lightbox__close" aria-label="fermer" tabindex="1"><span class="sr-only"> Fermer </span></button>
+          <button class="lightbox__next"  aria-label="suivant" tabindex="1"><span class="sr-only"> Suivant </span></button>
+          <button class="lightbox__prev" aria-label="précédent" tabindex="1"><span class="sr-only"> Précédent </span></button>
   
-          <div class="lightbox__container">
-          <video class="img-card" muted  controls>
+          <div class="lightbox__container" >
+          <video class="lightboxImg"  tabindex="1" autoplay loop  controls>
           <source src="${image.currentSrc}" type="video/mp4" alt="${image.alt}">
   
           </video>
@@ -62,14 +62,14 @@ export const lightboxFunction = () => {
         }
         if (gallery[i].endsWith('mp4')) {
           dom.querySelector('.lightbox__container').innerHTML = `
-          <video class="img-card" muted  controls>
+          <video class="lightboxImg"   tabindex="1" autoplay loop  controls>
           <source src="${gallery[i]}" type="video/mp4" alt="Image agrandie">
   
           </video>
           `
         } else {
           dom.querySelector('.lightbox__container').innerHTML = `
-          <img src="${gallery[i]}" alt="Image agrandie">
+          <img src="${gallery[i]}" class="lightboxImg"   tabindex="1" alt="Image agrandie">
           `
         }
       }
@@ -87,41 +87,16 @@ export const lightboxFunction = () => {
         }
         if (gallery[i].endsWith('mp4')) {
           dom.querySelector('.lightbox__container').innerHTML = `
-          <video class="img-card" muted  controls>
+          <video class="lightboxImg"  tabindex="1"  autoplay loop  controls>
           <source src="${gallery[i]}" type="video/mp4" alt="${image.alt}">
   
           </video>
           `
         } else {
           dom.querySelector('.lightbox__container').innerHTML = `
-          <img src="${gallery[i]}" alt="${image.alt}">
+          <img src="${gallery[i]}"  tabindex="1" class="lightboxImg" alt="${image.alt}">
           `
         }
-      }
-
-      function focusNext(e) {
-        e.preventDefault()
-
-        let focusables = Array.from(
-          document.querySelectorAll(
-            '.lightbox__prev, .lightbox__next, .lightbox__close, .lightbox__container .img-card'
-          )
-        )
-        console.log(focusables)
-        let index = focusables.findIndex((f) => f === document.querySelector(':focus'))
-        if (e.shiftKey === true) {
-          index--
-        } else {
-          index++
-        }
-
-        if (index >= focusables.length - 1) {
-          index = 0
-        }
-        if (index < 0) {
-          index = focusables.length - 1
-        }
-        focusables[index].focus()
       }
 
       dom.querySelector('.lightbox__close').addEventListener('click', closeLightbox)
@@ -136,9 +111,6 @@ export const lightboxFunction = () => {
         }
         if (dom !== null && e.key === 'ArrowRight') {
           next()
-        }
-        if (dom !== null && e.key === 'Tab') {
-          focusNext(e)
         }
       })
       document.body.appendChild(dom)
