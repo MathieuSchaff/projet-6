@@ -17,12 +17,12 @@ export const lightboxFunction = () => {
       dom.setAttribute('title', 'image agrandie')
       if (image.nodeName == 'IMG') {
         dom.innerHTML = `
-        <button class="lightbox__close" tab-index="1" aria-label="fermer"><span class="sr-only"> Fermer </span></button>
-          <button class="lightbox__next" tab-index="1" aria-label="suivant"><span class="sr-only"> Suivant </span></button>
-          <button class="lightbox__prev"tab-index="1" aria-label="précédent"><span class="sr-only"> Précédent </span></button>
+        <button class="lightbox__close" tab-index="1" aria-label="fermer" tabindex="1"><span class="sr-only"> Fermer </span></button>
+          <button class="lightbox__next" tab-index="1" aria-label="suivant" tabindex="1" ><span class="sr-only"> Suivant </span></button>
+          <button class="lightbox__prev"tab-index="1" aria-label="précédent" tabindex="1"><span class="sr-only"> Précédent </span></button>
   
           <div class="lightbox__container">
-           <img src="${image.src}" alt="${image.alt}" tab-index="1">
+           <img src="${image.src}" alt="${image.alt}"  class="img-card" tabindex="1">
           </div>
         `
       } else {
@@ -104,9 +104,10 @@ export const lightboxFunction = () => {
 
         let focusables = Array.from(
           document.querySelectorAll(
-            '.lightbox__prev, .lightbox__next, .lightbox__close, .lightbox__container img'
+            '.lightbox__prev, .lightbox__next, .lightbox__close, .lightbox__container .img-card'
           )
         )
+        console.log(focusables)
         let index = focusables.findIndex((f) => f === document.querySelector(':focus'))
         if (e.shiftKey === true) {
           index--
