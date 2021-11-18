@@ -14,43 +14,44 @@ export const updateParams = async (linkValue) => {
   } else if (linkValue !== null) {
     params.append(linkValue, true)
   }
-  oldvNode = await createPage1(sortArrayPhotographer(params2))
+  // oldvNode = await createPage1(sortArrayPhotographer(params2))
   newVnode = await createPage1(sortArrayPhotographer(params))
   let paramsToString = params.toLocaleString()
   history.pushState({}, null, `?${paramsToString}`)
   let page = document.getElementById('articles')
-  patch(page, newVnode, oldvNode)
+  patch(page, newVnode)
 
   const links = document.querySelectorAll('button.nav--button')
 
-  for (let i = 0; i < links.length; i++) {
-    for (const [key, value] of params.entries()) {
-      if (links[i].value == key) {
-        links[i].classList.add('focused')
-      } else if (links[i].classList.contains('focused') && !(links[i].value == key)) {
-        links[i].classList.remove('focused')
-      }
-    }
-  }
+  // for (let i = 0; i < links.length; i++) {
+  //   for (const [key, value] of params.entries()) {
+  //     if (links[i].value == key) {
+  //       links[i].classList.add('focused')
+  //     } else if (links[i].classList.contains('focused') && !(links[i].value == key)) {
+  //       links[i].classList.remove('focused')
+  //     }
+  //   }
+  // }
 
-  const linksNav = document.querySelectorAll('nav button.nav--button')
-  let paramsArray = []
-  for (var key of params.keys()) {
-    paramsArray.push(key)
-  }
-  for (let i = 0; i < linksNav.length; i++) {
-    if (linksNav[i].classList.contains('focused')) {
-      linksNav[i].classList.remove('focused')
-    }
-  }
-  for (let i = 0; i < linksNav.length; i++) {
-    if (paramsArray.includes(linksNav[i].value)) {
-      linksNav[i].classList.add('focused')
-    }
-  }
+  // const linksNav = document.querySelectorAll('nav button.nav--button')
+  // let paramsArray = []
+  // for (var key of params.keys()) {
+  //   paramsArray.push(key)
+  // }
+  // for (let i = 0; i < linksNav.length; i++) {
+  //   if (linksNav[i].classList.contains('focused')) {
+  //     linksNav[i].classList.remove('focused')
+  //   }
+  // }
+  // for (let i = 0; i < linksNav.length; i++) {
+  //   if (paramsArray.includes(linksNav[i].value)) {
+  //     linksNav[i].classList.add('focused')
+  //   }
+  // }
 
   links.forEach((link) => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
       updateParams(link.value)
     })
   })

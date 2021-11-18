@@ -55,11 +55,12 @@ export function createLink(link) {
 }
 export function buttonPage1(button) {
   const vnode = m(
-    'button',
+    'a',
     {
       className: 'nav--button tagTri',
       type: 'button',
       value: `${button}`,
+      href: `?${button}=true`
     },
     [`#${button}`]
   )

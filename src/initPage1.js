@@ -35,18 +35,19 @@ export async function createPagePhotographers() {
   let page = createElement(pageVnode)
   wrapper.insertAdjacentElement('beforeEnd', page)
   const links = document.querySelectorAll('button.nav--button')
-  const linksNav = document.querySelectorAll('nav button.nav--button')
-  let paramsArray = []
-  for (var key of params.keys()) {
-    paramsArray.push(key)
-  }
-  for (let i = 0; i < linksNav.length; i++) {
-    if (paramsArray.includes(linksNav[i].value)) {
-      linksNav[i].classList.add('focused')
-    }
-  }
+  // const linksNav = document.querySelectorAll('nav button.nav--button')
+  // let paramsArray = []
+  // for (var key of params.keys()) {
+  //   paramsArray.push(key)
+  // }
+  // for (let i = 0; i < linksNav.length; i++) {
+  //   if (paramsArray.includes(linksNav[i].value)) {
+  //     linksNav[i].classList.add('focused')
+  //   }
+  // }
   links.forEach((link) => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
       updateParams(link.value)
     })
   })
