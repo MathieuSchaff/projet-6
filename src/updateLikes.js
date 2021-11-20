@@ -19,12 +19,10 @@ export async function updateLikes() {
       console.log()
     }else {
       element.setAttribute('data-foo', 'true');
-
       element.addEventListener('click', function likesalot() {
         totalLikes.textContent = `${Number(totalLikes.textContent) + 1}`
         element.firstElementChild.textContent = `${Number(element.firstElementChild.textContent) + 1}`
       })
     }
-  
   })
 }

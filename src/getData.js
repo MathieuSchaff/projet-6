@@ -1,3 +1,4 @@
+
 export let myInit = {
   method: 'GET',
   headers: {
@@ -13,11 +14,13 @@ export let page
 export const getRequest = async () => {
   let reponse = await fetch(myRequest)
   let data = await reponse.json()
+
   return data
 }
 // return une array photographer
 export const getPhotographer = async () => {
   let { photographers } = await getRequest()
+
   return photographers
 }
 /**

@@ -139,6 +139,5 @@ export async function createCard() {
     buttonForm(),
     photographerDivImg(photographerImage(photographer.portrait)),
   ])
-
   return vnode
 }

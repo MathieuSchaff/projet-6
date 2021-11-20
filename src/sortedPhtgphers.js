@@ -3,7 +3,8 @@ import { getRequest } from './getData.js'
 // Retour une array avec les photographer trié en fonction s'ils ont les tag
 export async function sortArrayPhotographer(paramsATester) {
   //récupère tous les photographes
-  let { photographers } = await getRequest()
+  // let photographers = JSON.parse(localStorage.users);
+  let {photographers } = await getRequest()
   let params
   if (paramsATester == null || paramsATester.toLocaleString() == '') {
     return photographers

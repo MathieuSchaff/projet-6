@@ -5,8 +5,13 @@ import { sortArrayPhotographer } from './sortedPhtgphers.js'
 import { updateParams } from './updateParams.js'
 import { createPage1 } from './cardPhotographers.js'
 import { createRedirect, createHeaderPage1 } from './header.js'
+import { getRequest } from './getData.js'
 
 export async function createPagePhotographers() {
+
+  // let { photographers } = await getRequest()
+  // localStorage.users = JSON.stringify(photographers)
+  // console.log(JSON.parse(localStorage.users))
   let wrapper = document.querySelector('.wrapper')
   wrapper.innerHTML = ''
   createHeaderPage1().then((res) => {
@@ -35,20 +40,25 @@ export async function createPagePhotographers() {
   let page = createElement(pageVnode)
   wrapper.insertAdjacentElement('beforeEnd', page)
   const links = document.querySelectorAll('button.nav--button')
-  // const linksNav = document.querySelectorAll('nav button.nav--button')
-  // let paramsArray = []
-  // for (var key of params.keys()) {
-  //   paramsArray.push(key)
-  // }
-  // for (let i = 0; i < linksNav.length; i++) {
-  //   if (paramsArray.includes(linksNav[i].value)) {
-  //     linksNav[i].classList.add('focused')
-  //   }
-  // }
+
+
+  const linksNav = document.querySelectorAll('nav button.nav--button')
+  let paramsArray = []
+  for (var key of params.keys()) {
+    paramsArray.push(key)
+  }
+  for (let i = 0; i < links.length; i++) {
+    if (paramsArray.includes(links[i].value)) {
+      links[i].classList.add('focused')
+    }
+  }
   links.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault()
-      updateParams(link.value)
-    })
+    if(link.getAttribute('data-event') !== 'true'){
+      link.setAttribute('data-event', true)
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+        updateParams(link.value)
+      })
+    }
   })
 }

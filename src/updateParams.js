@@ -17,10 +17,11 @@ export const updateParams = async (linkValue) => {
   // oldvNode = await createPage1(sortArrayPhotographer(params2))
   newVnode = await createPage1(sortArrayPhotographer(params))
   let paramsToString = params.toLocaleString()
-  history.pushState({}, null, `?${paramsToString}`)
+  if (window.location.pathname !== `?${paramsToString}`) {
+    window.history.pushState(null,null,`?${paramsToString}`);
+}
   let page = document.getElementById('articles')
   patch(page, newVnode)
-
   const links = document.querySelectorAll('button.nav--button')
 
   // for (let i = 0; i < links.length; i++) {
@@ -33,26 +34,30 @@ export const updateParams = async (linkValue) => {
   //   }
   // }
 
-  // const linksNav = document.querySelectorAll('nav button.nav--button')
-  // let paramsArray = []
-  // for (var key of params.keys()) {
-  //   paramsArray.push(key)
-  // }
-  // for (let i = 0; i < linksNav.length; i++) {
-  //   if (linksNav[i].classList.contains('focused')) {
-  //     linksNav[i].classList.remove('focused')
-  //   }
-  // }
-  // for (let i = 0; i < linksNav.length; i++) {
-  //   if (paramsArray.includes(linksNav[i].value)) {
-  //     linksNav[i].classList.add('focused')
-  //   }
-  // }
+  // const links = document.querySelectorAll('nav button.nav--button')
+  let paramsArray = []
+  for (var key of params.keys()) {
+    paramsArray.push(key)
+  }
+  console.log(paramsArray)
+  for (let i = 0; i < links.length; i++) {
+    if (links[i].classList.contains('focused')) {
+      links[i].classList.remove('focused')
+    }
+  }
+  for (let i = 0; i < links.length; i++) {
+    if (paramsArray.includes(links[i].value)) {
+      links[i].classList.add('focused')
+    }
+  }
 
   links.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault()
-      updateParams(link.value)
-    })
+    if(link.getAttribute('data-event') !== 'true'){
+      link.setAttribute('data-event', true)
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+        updateParams(link.value)
+      })
+    }
   })
 }
