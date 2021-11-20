@@ -23,18 +23,6 @@ export const updateParams = async (linkValue) => {
   let page = document.getElementById('articles')
   patch(page, newVnode)
   const links = document.querySelectorAll('button.nav--button')
-
-  // for (let i = 0; i < links.length; i++) {
-  //   for (const [key, value] of params.entries()) {
-  //     if (links[i].value == key) {
-  //       links[i].classList.add('focused')
-  //     } else if (links[i].classList.contains('focused') && !(links[i].value == key)) {
-  //       links[i].classList.remove('focused')
-  //     }
-  //   }
-  // }
-
-  // const links = document.querySelectorAll('nav button.nav--button')
   let paramsArray = []
   for (var key of params.keys()) {
     paramsArray.push(key)
@@ -50,7 +38,6 @@ export const updateParams = async (linkValue) => {
       links[i].classList.add('focused')
     }
   }
-
   links.forEach((link) => {
     if(link.getAttribute('data-event') !== 'true'){
       link.setAttribute('data-event', true)
