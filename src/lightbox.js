@@ -1,12 +1,13 @@
 export const lightboxFunction = () => {
   const images = [...document.querySelectorAll('.img-card')]
   const images1 = [...document.querySelectorAll('img.img-card, source')]
-
+console.log(images1)
   const gallery = images1.map((image) => {
     return `${image.src}`
   })
 
     const lightboxTestOpen = (e, image) => {
+      console.log(images1)
       let dom = document.createElement('div')
       dom.classList.add('lightbox')
       dom.setAttribute('role', 'dialog')
